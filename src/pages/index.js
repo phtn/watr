@@ -1,9 +1,10 @@
-import React from "react"
-
-export default () => {
+import React from 'react'
+import Layout from '../components/layout';
+// import Layout from '../components/layout'
+export default props => {
   return (
-    <div>
-      <a href="/products">Products</a>
-    </div>
+    <Layout>
+      
+    </Layout>
   )
 }
