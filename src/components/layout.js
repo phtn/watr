@@ -10,26 +10,26 @@ const styles = {
 const Layout = ({children}) => {
 
   const getInitialPad = () => {
-    if (window.innerWidth > 650){
+    if (typeof window !== 'undefined' && window.innerWidth > 650){
       return 100
     } else {
       return 10
     }
   }
   const getInitialBrand = () => {
-    if (window.innerWidth > 650){
+    if (typeof window !== 'undefined' && window.innerWidth > 650){
       return 'Watr'
     } else {
       return ''
     }
   }
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(typeof window !== 'undefined' && window.innerWidth)
   const [navPad, setNavPad] = useState(getInitialPad())
   const [brand, setBrand] = useState(getInitialBrand)
   
 
   useEffect(()=> {
-    const handleWidthResize = () => setWidth(window.innerWidth)
+    const handleWidthResize = () => setWidth(typeof window !== 'undefined' && window.innerWidth)
     window.addEventListener('resize', handleWidthResize)
 
     const handleNavPad = (pad) => setNavPad(pad)
@@ -43,7 +43,7 @@ const Layout = ({children}) => {
       handleShowBrand('')
     }
 
-    return () => window.removeEventListener('resize', handleWidthResize)
+    return () => typeof window !== 'undefined' && window.removeEventListener('resize', handleWidthResize)
   }, [width, navPad, brand])
 
   const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad}))
