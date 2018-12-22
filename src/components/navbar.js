@@ -37,9 +37,9 @@ const styles = {
 const Navbar = props => {
   const { pad, brand } = props
   const links = [
-    { id: 0, path: '/company', title: "company" },
-    { id: 1, path: '/blog', title: "blog" },
-    { id: 2, path: '/products', title: "products" }
+    { id: 0, path: '/company', title: "Company" },
+    { id: 1, path: '/blog', title: "Blog" },
+    { id: 2, path: '/products', title: "Products" }
   ];
 
   return (

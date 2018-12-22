@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Children, cloneElement } from 'react'
 import Navbar from './navbar';
+import '../index.css'
 const styles = {
   container: {
     margin: 0
