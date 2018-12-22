@@ -13,7 +13,7 @@ const people = [
 
 const Company = () => (
   <Layout title="Company">
-    <Trailer items={people} />
+    <Trailer items={people} headerTitle={`Meet our Team`} buttonTitle={`Like`}/>
   </Layout>
 );
 export default Company;

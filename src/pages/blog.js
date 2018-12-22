@@ -13,7 +13,7 @@ const blogs = [
 
 const Blog = () => (
   <Layout title="Blog">
-    <Trailer items={blogs} />
+    <Trailer items={blogs} headerTitle={`Blogs`} buttonTitle={`Read More`}/>
   </Layout>
 );
 export default Blog;

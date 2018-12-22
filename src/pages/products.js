@@ -4,7 +4,7 @@ import Layout from "../components/layout";
 import Trailer from "../components/trailer";
 import berkeyLogo from '../assets/bbwf-logo.png'
 import enagicLogo from '../assets/enagic-logo.svg'
-import Filter from '../assets/filter.svg'
+import Filter from '../assets/filter2.svg'
 
 const products = [
   { id: 0, title: "Big Berkey Water Filters", image: berkeyLogo },
@@ -26,7 +26,7 @@ const products = [
 const Products = () => {
   return (
     <Layout title={`Products`}>
-      <Trailer items={products}/>
+      <Trailer items={products} headerTitle={` ·  Full Filtration Systems  · `} buttonTitle={`Shop Now`}/>
     </Layout>
   )
 }
