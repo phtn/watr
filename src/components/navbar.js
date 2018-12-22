@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from 'gatsby'
-import Logo from '../../static/sea.svg'
+import { Link } from "gatsby";
+import Logo from "../../static/sea.svg";
 const styles = {
   container: {
     height: 50,
@@ -33,13 +33,13 @@ const styles = {
   linksContainer: {
     width: "100%"
   }
-}
+};
 const Navbar = props => {
-  const { pad, brand } = props
+  const { pad, brand } = props;
   const links = [
-    { id: 0, path: '/company', title: "Company" },
-    { id: 1, path: '/blog', title: "Blog" },
-    { id: 2, path: '/products', title: "Products" }
+    { id: 0, path: "/company", title: "Company" },
+    { id: 1, path: "/blog", title: "Blog" },
+    { id: 2, path: "/products", title: "Products" }
   ];
 
   return (
@@ -48,11 +48,11 @@ const Navbar = props => {
         paddingLeft: pad,
         paddingRight: pad
       })}
-
-      
     >
       <div>
-        <img src={Logo} style={styles.logo} alt=''></img>
+        <Link to="/">
+          <img src={Logo} style={styles.logo} alt="" />
+        </Link>
       </div>
       <div>
         <Link to="/" style={styles.brand}>
@@ -61,7 +61,15 @@ const Navbar = props => {
       </div>
       <div style={styles.linksContainer}>
         {links.map(link => (
-          <Link to={link.path} key={link.id} style={styles.links}>{link.title}</Link>
+          <Link 
+            to={link.path} 
+            key={link.id} 
+            style={styles.links}
+            onMouseOver={e => (e.target.style.color = "#ffd454")}
+            onMouseOut={e => (e.target.style.color = "#ccc")}
+          >
+            {link.title}
+          </Link>
         ))}
       </div>
     </div>

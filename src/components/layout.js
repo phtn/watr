@@ -7,7 +7,7 @@ const styles = {
   }
 }
 
-const Layout = ({children}) => {
+const Layout = ({children, title}) => {
 
   const getInitialPad = () => {
     if (typeof window !== 'undefined' && window.innerWidth > 650){
@@ -34,6 +34,8 @@ const Layout = ({children}) => {
 
     const handleNavPad = (pad) => setNavPad(pad)
     const handleShowBrand = (brand) => setBrand(brand)
+
+    document.title = title
 
     if (width > 650){
       handleNavPad(100)

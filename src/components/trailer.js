@@ -11,6 +11,7 @@ const styles = {
     // display: "-webkit-box",
     // display: "-ms-flexbox",
     display: "flex",
+    alignItems: 'center',
     // -webkit-box-orient: 'vertical',
     // -webkit-box-direction: 'normal',
     // -ms-flex-direction: 'column',
@@ -19,6 +20,7 @@ const styles = {
     minWidth: "264px",
     paddingLeft: "24px",
     paddingRight: "24px",
+    paddingBottom: 24
   },
   cardTitle: {
     fontFamily: "Rajdhani, sans-serif",
@@ -28,14 +30,15 @@ const styles = {
 };
 
 const Card = props => {
-  const { title, animate, pad } = props;
+  const { title, image, animate, pad } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
-        margin: `20px ${pad}px`
+        margin: `20px ${pad + 10}px`
       })}
     >
       <h3 style={styles.cardTitle}>{title}</h3>
+      <img src={image} alt='' width={300}/>
     </div>
   );
 }
@@ -50,7 +53,8 @@ const Trailer = props => {
       to={{ opacity: 1, transform: "translate3d(0,0px,0)" }}
     >
       {item => animate => (
-        <Card title={item.title} animate={animate} pad={pad}>
+        <Card title={item.title} animate={animate} pad={pad} image={item.image}>
+          
         </Card>
       )}
     </Trail>

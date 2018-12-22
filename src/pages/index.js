@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout';
-import Filter from '../../static/filter.svg'
+import water from '../assets/water.png'
 import Tilt from 'react-vanilla-tilt'
 
 const styles = {
@@ -8,17 +8,21 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 400
+    height: '100vh',
+    backgroundImage: `url(${water})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
   }
 }
 const Landing = () => {
+  // console.log(Filter)
   return (
-    <Tilt style={styles.container}><img src={Filter} alt='' height={200}/></Tilt>
+    <Tilt style={styles.container}></Tilt>
   )
 }
 export default props => {
   return (
-    <Layout>
+    <Layout title={`Watr`}>
       <Landing/>
     </Layout>
   )
