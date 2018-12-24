@@ -12,6 +12,7 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "dependencies": {
+    "babel-plugin-transform-object-assign": "^6.22.0",
     "gatsby": "^2.0.33",
     "gatsby-image": "^2.0.25",
     "gatsby-plugin-google-fonts": "^0.0.4",
