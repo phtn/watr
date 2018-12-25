@@ -11,9 +11,12 @@ const blogs = [
   { id: 5, title: "Minerals" }
 ];
 
-const Blog = () => (
-  <Layout title="Blog">
-    <Trailer items={blogs} headerTitle={`Blogs`} buttonTitle={`Read More`}/>
-  </Layout>
-);
+const Blog = props => {
+  const { pad } = props
+  return(
+    <Layout title="Blog">
+      <Trailer items={blogs} headerTitle={`Blogs`} buttonTitle={`Read More`} pad={pad}/>
+    </Layout>
+  )
+};
 export default Blog;

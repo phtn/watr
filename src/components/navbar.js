@@ -7,7 +7,8 @@ const styles = {
     backgroundColor: "#066b98",
     display: "flex",
     alignItems: "center",
-    width: "inherit"
+    width: "inherit",
+    // border: '1px solid red'
   },
   logo: {
     width: 30,
@@ -25,13 +26,14 @@ const styles = {
   links: {
     color: "#ccc",
     textDecoration: "none",
-    fontFamily: "Rajdhani, sans-serif",
+    fontFamily: "Quicksand, sans-serif",
     height: "100%",
-    padding: 20,
+    padding: 17,
     float: "right"
   },
   linksContainer: {
-    width: "100%"
+    width: "100%",
+    // border: '1px solid blue'
   }
 };
 const Navbar = props => {
@@ -49,6 +51,7 @@ const Navbar = props => {
         paddingRight: pad
       })}
     >
+      
       <div>
         <Link to="/">
           <img src={Logo} style={styles.logo} alt="" />
@@ -67,6 +70,8 @@ const Navbar = props => {
             style={styles.links}
             onMouseOver={e => (e.target.style.color = "#ffd454")}
             onMouseOut={e => (e.target.style.color = "#ccc")}
+            onFocus={(e)=> (e.target.style.fontWeight = "bolder")}
+            onClick={(e)=> (e.target.style.fontWeight = "bolder")}
           >
             {link.title}
           </Link>

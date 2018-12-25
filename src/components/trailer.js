@@ -27,8 +27,8 @@ const styles = {
     margin: 20
   },
   headerTitle: {
-    color: "#666",
-    fontSize: 24,
+    color: "#999",
+    fontSize: '1.3em',
     fontFamily: "Roboto, sans-serif",
     fontWeight: 100
   },
@@ -62,14 +62,14 @@ const styles = {
 };
 
 const Card = props => {
-  const { title, image, animate, pad, buttonTitle } = props;
+  const { title, image, animate, pad, buttonTitle, width } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
         margin: `20px ${pad + 10}px`
       })}
     >
-      <Spring from={{transform: 'translate3d(30px, 0px, 0px)'}} to={{transform: 'translate3d(0px, 0px, 0px)'}}>
+      <Spring from={{transform: 'translate3d(-5px, 0px, 0px)'}} to={{transform: 'translate3d(0px, 0px, 0px)'}}>
         {animate => (
           <h3 style={Object.assign({}, styles.cardTitle, animate)}>{title}</h3>
         )}
@@ -101,7 +101,6 @@ const Trailer = props => {
             animate={animate}
             pad={pad}
             image={item.image}
-            // headerTitle={headerTitle}
             buttonTitle={buttonTitle}
           />
         )}

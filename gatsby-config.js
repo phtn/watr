@@ -8,14 +8,21 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Roboto`,
           `Rajdhani`,
           `source sans-serif\:300|100` // you can also specify font weights and styles
         ]
       }
     },
-    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/pages`,
+        name: `pages`
+      }
+    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`
   ]
 }

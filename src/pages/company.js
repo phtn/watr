@@ -11,9 +11,12 @@ const people = [
   { id: 5, title: "Legal" }
 ];
 
-const Company = () => (
-  <Layout title="Company">
-    <Trailer items={people} headerTitle={`Meet our Team`} buttonTitle={`Like`}/>
-  </Layout>
-);
+const Company = props => {
+  const { pad } = props
+  return(
+    <Layout title="Company">
+      <Trailer items={people} headerTitle={`Meet our Team`} buttonTitle={`Like`} pad={pad}/>
+    </Layout>
+  )
+};
 export default Company;

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, Children, cloneElement } from 'react'
 import Navbar from './navbar';
+import { Helmet } from 'react-helmet'
+
 import '../index.css'
 const styles = {
   container: {
@@ -29,7 +31,7 @@ const Layout = ({children, title}) => {
   
 
   useEffect(()=> {
-    const handleWidthResize = () => setWidth(typeof window !== 'undefined' && window.innerWidth)
+    const handleWidthResize = () => setWidth(window.innerWidth)
     window.addEventListener('resize', handleWidthResize)
 
     const handleNavPad = (pad) => setNavPad(pad)
@@ -48,10 +50,13 @@ const Layout = ({children, title}) => {
     return () => typeof window !== 'undefined' && window.removeEventListener('resize', handleWidthResize)
   }, [width, navPad, brand])
 
-  const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad}))
+  const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad, width: width}))
 
   return (
     <div style={styles.container}>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"/>
+      </Helmet>
       
       <Navbar pad={navPad} brand={brand}/>
       
