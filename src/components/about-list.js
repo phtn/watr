@@ -12,9 +12,7 @@ const styles = {
     flexDirection: "column",
     marginTop: "24px",
     minWidth: "264px",
-    paddingLeft: "24px",
-    paddingRight: "24px",
-    paddingBottom: 30
+    padding: "10px 24px"
   },
   header: {
     textAlign: "left",
