@@ -55,9 +55,10 @@ const styles = {
   backslash: {
     color: '#0076ff',
     margin: '0px 10px',
-    fontSize: '.6em',
+    fontSize: '1em',
     fontWight: 'bolder',
-    fontFamily: 'Quicksand, sans-serif'
+    fontFamily: 'Quicksand, sans-serif',
+    // border: '1px solid red'
   }
 };
 
@@ -96,7 +97,7 @@ const Trailer = props => {
   return (
     <>
       <div style={Object.assign({}, styles.header, {padding: `0px ${pad}px`})}>
-        <h1 style={styles.headerTitle}>{headerTitle} <span style={styles.backslash}>\</span></h1>
+        <h1 style={styles.headerTitle}>All <span style={styles.backslash}>\</span> {headerTitle}</h1>
       </div>
       <Trail
         items={items}

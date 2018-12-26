@@ -28,7 +28,7 @@ const products = [
 const Products = () => {
   return (
     <Layout title={`Products`}>
-      <Trailer items={products} headerTitle={` All Products `} buttonTitle={`Show More`}/>
+      <Trailer items={products} headerTitle={`Products`} buttonTitle={`Show More`}/>
     </Layout>
   )
 }
