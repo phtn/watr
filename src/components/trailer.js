@@ -12,17 +12,15 @@ const styles = {
     flexDirection: "column",
     marginTop: "24px",
     minWidth: "264px",
-    paddingLeft: "24px",
-    paddingRight: "24px",
-    paddingBottom: 30
+    padding: 24
   },
   header: {
-    textAlign: "center",
-    margin: 20
+    textAlign: "left",
+    margin: 20,
   },
   headerTitle: {
     color: "#999",
-    fontSize: "1.3em",
+    fontSize: "1em",
     fontFamily: "Roboto, sans-serif",
     fontWeight: 100
   },
@@ -53,6 +51,13 @@ const styles = {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 18,
     textDecoration: "none"
+  },
+  backslash: {
+    color: '#0076ff',
+    margin: '0px 10px',
+    fontSize: '.6em',
+    fontWight: 'bolder',
+    fontFamily: 'Quicksand, sans-serif'
   }
 };
 
@@ -65,6 +70,8 @@ const Card = props => {
         margin: `20px ${pad + 10}px`
       })}
     >
+      
+      <img src={logo} alt="" width={"275"} />
       <Spring
         from={{ transform: "translate3d(-5px, 0px, 0px)" }}
         to={{ transform: "translate3d(0px, 0px, 0px)" }}
@@ -75,7 +82,7 @@ const Card = props => {
       </Spring>
 
       <hr style={styles.hr} />
-      <img src={logo} alt="" width={"275"} />
+
       <img src={image} alt="" width={"275"} />
       <Link style={styles.btn} to={`/first-post`}>
         {buttonTitle}
@@ -88,8 +95,8 @@ const Trailer = props => {
   const { items, pad, headerTitle, buttonTitle, image } = props;
   return (
     <>
-      <div style={styles.header}>
-        <h1 style={styles.headerTitle}>{headerTitle}</h1>
+      <div style={Object.assign({}, styles.header, {padding: `0px ${pad}px`})}>
+        <h1 style={styles.headerTitle}>{headerTitle} <span style={styles.backslash}>\</span></h1>
       </div>
       <Trail
         items={items}
@@ -103,7 +110,7 @@ const Trailer = props => {
             animate={animate}
             pad={pad}
             logo={item.logo}
-            image={image}
+            image={item.image}
             buttonTitle={buttonTitle}
           />
         )}

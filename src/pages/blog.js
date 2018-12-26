@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from "../components/layout";
 // import BlogList from "../components/blog-list";
-import Trailer from '../components/trailer'
+import BlogList from '../components/blog-list'
 
 const blogs = [
   { id: 0, title: "Alkaline" },
@@ -17,7 +17,7 @@ const Blog = props => {
 
   return(
     <Layout title="Blog">
-      <Trailer items={blogs} headerTitle={`Blogs`} buttonTitle={`Read More`} pad={pad}/>
+      <BlogList items={blogs} headerTitle={`Blogs`} buttonTitle={`Read More`} pad={pad}/>
       {/* <BlogList headerTitle={`Blogs`} buttonTitle={`Read More`} pad={pad}/> */}
       {/* test */}
     </Layout>

@@ -27,7 +27,7 @@ const Landing = props => {
   useEffect(()=> {
     if (pad === 10){
       handleHeight('50vh')
-      console.log(pad)
+      // console.log(pad)
     } else {
       handleHeight('140vh')
     }
