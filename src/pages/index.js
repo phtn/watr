@@ -22,9 +22,26 @@ const styles = {
   hero: {
     position: 'absolute',
     top: 100,
-    left: 100,
+    left: 220,
     zIndex: 1,
-    fontSize: 20
+    fontSize: 20,
+    fontFamily: 'Quicksand, sans-serif'
+  },
+  heroSubOne: {
+    position: 'absolute',
+    top: 120,
+    left: 220,
+    zIndex: 1,
+    fontSize: 20,
+    fontFamily: 'Quicksand, sans-serif'
+  },
+  heroSubTwo: {
+    position: 'absolute',
+    top: 140,
+    left: 220,
+    zIndex: 1,
+    fontSize: 20,
+    fontFamily: 'Quicksand, sans-serif'
   }
 }
 const Landing = props => {
@@ -43,6 +60,8 @@ const Landing = props => {
     <div style={Object.assign({}, styles.tilt, {height})}>
 
       <h1 style={styles.hero}>Pure</h1>
+      <h1 style={styles.heroSubOne}>Drinking</h1>
+      <h1 style={styles.heroSubTwo}>Water</h1>
       {/* <img src={lake} alt='' height={`100%`}/> */}
       <video muted autoPlay loop height='100%'>
         <source src={ClearWater} />
