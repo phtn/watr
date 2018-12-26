@@ -1,20 +1,14 @@
 import React from "react";
 import { Trail, Spring } from "react-spring";
-
+import { Link } from "gatsby";
 const styles = {
   container: {
     backgroundColor: "#fff",
     borderRadius: "5px",
-    // -webkit-box-shadow: '0 2px 4px 0 rgba(14,30,37,.12)',
     boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
     color: "rgba(14,30,37,.54)",
-    // display: "-webkit-box",
-    // display: "-ms-flexbox",
     display: "flex",
     alignItems: "center",
-    // -webkit-box-orient: 'vertical',
-    // -webkit-box-direction: 'normal',
-    // -ms-flex-direction: 'column',
     flexDirection: "column",
     marginTop: "24px",
     minWidth: "264px",
@@ -28,7 +22,7 @@ const styles = {
   },
   headerTitle: {
     color: "#999",
-    fontSize: '1.3em',
+    fontSize: "1.3em",
     fontFamily: "Roboto, sans-serif",
     fontWeight: 100
   },
@@ -57,33 +51,41 @@ const styles = {
     color: "white",
     border: "none",
     fontFamily: "Rajdhani, sans-serif",
-    fontSize: 18
+    fontSize: 18,
+    textDecoration: "none"
   }
 };
 
 const Card = props => {
-  const { title, image, animate, pad, buttonTitle, width } = props;
+
+  const { title, logo, image, animate, pad, buttonTitle } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
         margin: `20px ${pad + 10}px`
       })}
     >
-      <Spring from={{transform: 'translate3d(-5px, 0px, 0px)'}} to={{transform: 'translate3d(0px, 0px, 0px)'}}>
+      <Spring
+        from={{ transform: "translate3d(-5px, 0px, 0px)" }}
+        to={{ transform: "translate3d(0px, 0px, 0px)" }}
+      >
         {animate => (
           <h3 style={Object.assign({}, styles.cardTitle, animate)}>{title}</h3>
         )}
       </Spring>
 
       <hr style={styles.hr} />
+      <img src={logo} alt="" width={"275"} />
       <img src={image} alt="" width={"275"} />
-      <button style={styles.btn}>{buttonTitle}</button>
+      <Link style={styles.btn} to={`/first-post`}>
+        {buttonTitle}
+      </Link>
     </div>
   );
 };
 
 const Trailer = props => {
-  const { items, pad, headerTitle, buttonTitle } = props;
+  const { items, pad, headerTitle, buttonTitle, image } = props;
   return (
     <>
       <div style={styles.header}>
@@ -100,7 +102,8 @@ const Trailer = props => {
             title={item.title}
             animate={animate}
             pad={pad}
-            image={item.image}
+            logo={item.logo}
+            image={image}
             buttonTitle={buttonTitle}
           />
         )}

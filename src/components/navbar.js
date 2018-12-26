@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useReducer } from "react";
 import { Link } from "gatsby";
 import Logo from "../../static/sea.svg";
 const styles = {
   container: {
     height: 50,
-    backgroundColor: "#066b98",
+    backgroundColor: "#222",
     display: "flex",
     alignItems: "center",
-    width: "inherit",
+    width: "inherit"
     // border: '1px solid red'
   },
   logo: {
@@ -16,9 +16,9 @@ const styles = {
   },
   brand: {
     color: "#eee",
-    fontFamily: "Rajdhani, sans-serif",
+    fontFamily: "Roboto, sans-serif",
     fontSize: "1.8em",
-    fontWeight: 300,
+    fontWeight: '700i',
     textTransform: "uppercase",
     letterSpacing: "1px",
     textDecoration: "none"
@@ -29,19 +29,38 @@ const styles = {
     fontFamily: "Quicksand, sans-serif",
     height: "100%",
     padding: 17,
-    float: "right"
+    float: "right",
+    fontSize: 16
   },
   linksContainer: {
-    width: "100%",
+    width: "100%"
     // border: '1px solid blue'
   }
 };
+
+const initialState = { products: false, blog: false, company: false }
 const Navbar = props => {
   const { pad, brand } = props;
+
+  function reducer(state, action) {
+    switch (action) {
+      case "Products":
+        return { company: false, blog: false, products: true };
+      case "Blog":
+        return { company: false, blog: true, products: false };
+      case "Company":
+        return { company: true, blog: false, products: false };
+      default:
+        return state;
+    }
+  }
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+
   const links = [
-    { id: 0, path: "/company", title: "Company" },
-    { id: 1, path: "/blog", title: "Blog" },
-    { id: 2, path: "/products", title: "Products" }
+    { id: 0, path: "/company", title: "Company", active: state.company, onClick: ()=> dispatch("company") },
+    { id: 1, path: "/blog", title: "Blog", active: state.blog, onClick: ()=> dispatch("blogs") },
+    { id: 2, path: "/products", title: "Products", active: state.products, onClick: ()=> dispatch("products") }
   ];
 
   return (
@@ -51,7 +70,6 @@ const Navbar = props => {
         paddingRight: pad
       })}
     >
-      
       <div>
         <Link to="/">
           <img src={Logo} style={styles.logo} alt="" />
@@ -64,14 +82,17 @@ const Navbar = props => {
       </div>
       <div style={styles.linksContainer}>
         {links.map(link => (
-          <Link 
-            to={link.path} 
-            key={link.id} 
-            style={styles.links}
-            onMouseOver={e => (e.target.style.color = "#ffd454")}
+          <Link
+            to={link.path}
+            key={link.id}
+            style={Object.assign({}, styles.links, {fontWeight: link.active === true ? "bolder" : "regular"})}
+            onMouseOver={e => {
+              // (e.target.style.color = "#ffd454")
+              (e.target.style.fontWeight = "bolder")
+            }}
             onMouseOut={e => (e.target.style.color = "#ccc")}
-            onFocus={(e)=> (e.target.style.fontWeight = "bolder")}
-            onClick={(e)=> (e.target.style.fontWeight = "bolder")}
+            onClick={()=> console.log(link.title)}
+
           >
             {link.title}
           </Link>

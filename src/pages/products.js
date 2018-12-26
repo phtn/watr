@@ -4,12 +4,13 @@ import Layout from "../components/layout";
 import Trailer from "../components/trailer";
 import berkeyLogo from '../assets/bbwf-logo.png'
 import enagicLogo from '../assets/enagic-logo.svg'
+import berkeyImage from '../assets/go-berkey-1.jpeg'
 import Filter from '../assets/filter2.svg'
 
 const products = [
-  { id: 0, title: "Big Berkey Water Filters", image: berkeyLogo },
-  { id: 1, title: "Enagic Kangen Water", image: enagicLogo },
-  { id: 2, title: "Ion Faucet", image: Filter }
+  { id: 0, title: "Big Berkey Water Filters", logo: berkeyLogo, image: berkeyImage },
+  { id: 1, title: "Enagic Kangen Water", logo: enagicLogo, image: berkeyImage },
+  { id: 2, title: "Ion Faucet", logo: Filter, image: berkeyImage }
 ];
 
 // export const query = graphql`
@@ -26,7 +27,7 @@ const products = [
 const Products = () => {
   return (
     <Layout title={`Products`}>
-      <Trailer items={products} headerTitle={` All Products `} buttonTitle={`Shop Now`}/>
+      <Trailer items={products} headerTitle={` All Products `} buttonTitle={`Shop Now`} image={berkeyImage}/>
     </Layout>
   )
 }

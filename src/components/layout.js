@@ -20,7 +20,7 @@ const Layout = ({children, title}) => {
   }
   const getInitialBrand = () => {
     if (typeof window !== 'undefined' && window.innerWidth > 650){
-      return 'Watr'
+      return '····'
     } else {
       return ''
     }
@@ -41,21 +41,21 @@ const Layout = ({children, title}) => {
 
     if (width > 650){
       handleNavPad(100)
-      handleShowBrand('Watr')
+      handleShowBrand('····')
     } else {
       handleNavPad(10)
       handleShowBrand('')
     }
 
-    return () => typeof window !== 'undefined' && window.removeEventListener('resize', handleWidthResize)
+    return () => (typeof window !== 'undefined' && window.removeEventListener('resize', handleWidthResize))
   }, [width, navPad, brand])
 
-  const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad, width: width}))
+  const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad}))
 
   return (
     <div style={styles.container}>
       <Helmet>
-        <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
       </Helmet>
       
       <Navbar pad={navPad} brand={brand}/>
