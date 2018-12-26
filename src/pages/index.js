@@ -23,7 +23,8 @@ const styles = {
     position: 'absolute',
     top: 100,
     left: 100,
-    zIndex: 1
+    zIndex: 1,
+    fontSize: 20
   }
 }
 const Landing = props => {
