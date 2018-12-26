@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { Link } from "gatsby";
-import Logo from "../../static/sea.svg";
+
 const styles = {
   container: {
     height: 50,
@@ -17,11 +17,12 @@ const styles = {
   brand: {
     color: "#eee",
     fontFamily: "Roboto, sans-serif",
-    fontSize: "1.8em",
+    fontSize: "1.4em",
     fontWeight: '700i',
     textTransform: "uppercase",
     letterSpacing: "1px",
-    textDecoration: "none"
+    textDecoration: "none",
+    width: 300
   },
   links: {
     color: "#ccc",
@@ -40,7 +41,7 @@ const styles = {
 
 const initialState = { products: false, blog: false, company: false }
 const Navbar = props => {
-  const { pad, brand } = props;
+  const { logo, pad, brand } = props;
 
   function reducer(state, action) {
     switch (action) {
@@ -72,10 +73,10 @@ const Navbar = props => {
     >
       <div>
         <Link to="/">
-          <img src={Logo} style={styles.logo} alt="" />
+          <img src={logo} style={styles.logo} alt="" />
         </Link>
       </div>
-      <div>
+      <div >
         <Link to="/" style={styles.brand}>
           {brand}
         </Link>

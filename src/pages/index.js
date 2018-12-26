@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout';
-// import water from '../assets/water.png';
+import ClearWater from '../assets/clear-water.mp4';
 // import k8 from '../assets/k8-2.jpg';
-import lake from '../assets/lake-2.jpg'
+// import lake from '../assets/lake-2.jpg'
 // import Tilt from 'react-vanilla-tilt';
 
 const styles = {
@@ -16,8 +16,14 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '140vh',
+    // height: '100vh',
     // padding: '-20px'
+  },
+  hero: {
+    position: 'absolute',
+    top: 100,
+    left: 100,
+    zIndex: 1
   }
 }
 const Landing = props => {
@@ -34,7 +40,12 @@ const Landing = props => {
   }, [height])
   return (
     <div style={Object.assign({}, styles.tilt, {height})}>
-      <img src={lake} alt='' height={`100%`}/>
+
+      <h1 style={styles.hero}>Pure</h1>
+      {/* <img src={lake} alt='' height={`100%`}/> */}
+      <video muted autoPlay loop height='100%'>
+        <source src={ClearWater} />
+      </video>
     </div>
   )
 }

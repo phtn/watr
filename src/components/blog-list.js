@@ -8,7 +8,7 @@ const styles = {
     boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
     color: "rgba(14,30,37,.54)",
     display: "flex",
-    alignItems: "center",
+    // alignItems: "center",
     flexDirection: "column",
     marginTop: "24px",
     minWidth: "264px",
@@ -17,7 +17,7 @@ const styles = {
     paddingBottom: 30
   },
   header: {
-    textAlign: "center",
+    textAlign: "left",
     margin: 20
   },
   headerTitle: {
@@ -53,11 +53,41 @@ const styles = {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 18,
     textDecoration: "none"
-  }
+  },
+  icon: {
+    height: 15,
+    marginRight: 10,
+    // border: '1px solid green'
+  },
+  author: {
+    fontSize: 12,
+    fontFamily: "Quicksand, sans-serif"
+  },
+  jobTitle: {
+    fontSize: 10,
+    textTransform: 'uppercase',
+    fontWeight: 'bolder',
+    fontFamily: 'Roboto, sans-serif',
+    letterSpacing: 1,
+    opacity: 0.5
+  },
+  
+};
+
+const Extra = props => {
+  const { author, date, jobTitle, description } = props;
+  return (
+    <div>
+      <p style={styles.author}>
+        <strong>{author}</strong> &middot; {date}
+      </p>
+      <p style={styles.jobTitle}>{jobTitle}</p>
+      <p>{description}</p>
+    </div>
+  );
 };
 
 const Card = props => {
-
   const { title, logo, image, animate, pad, buttonTitle } = props;
   return (
     <div
@@ -70,11 +100,21 @@ const Card = props => {
         to={{ transform: "translate3d(0px, 0px, 0px)" }}
       >
         {animate => (
-          <h3 style={Object.assign({}, styles.cardTitle, animate)}>{title}</h3>
+          <>
+            <h3 style={Object.assign({}, styles.cardTitle, animate)}>
+              {title}
+            </h3>
+            <Extra
+              author="Kyle Lewis"
+              date={`Dec 25 2018`}
+              jobTitle="General Partner"
+              description="Know why Drinking Clean water is all you need to stay healthy. "
+            />
+          </>
         )}
       </Spring>
 
-      <hr style={styles.hr} />
+      {/* <hr style={styles.hr} /> */}
       <img src={logo} alt="" width={"275"} />
       <img src={image} alt="" width={"275"} />
       <Link style={styles.btn} to={`/first-post`}>
@@ -84,12 +124,16 @@ const Card = props => {
   );
 };
 
-const Trailer = props => {
-  const { items, pad, headerTitle, buttonTitle, image } = props;
+const BlogList = props => {
+  const { items, pad, headerTitle, buttonTitle, icon } = props;
   return (
     <>
-      <div style={styles.header}>
-        <h1 style={styles.headerTitle}>{headerTitle}</h1>
+      <div
+        style={Object.assign({}, styles.header, { padding: `0px ${pad}px` })}
+      >
+        <h1 style={styles.headerTitle}>
+          <img src={icon} style={styles.icon} alt="" /> {headerTitle}
+        </h1>
       </div>
       <Trail
         items={items}
@@ -103,7 +147,7 @@ const Trailer = props => {
             animate={animate}
             pad={pad}
             logo={item.logo}
-            image={image}
+            // image={image}
             buttonTitle={buttonTitle}
           />
         )}
@@ -111,4 +155,4 @@ const Trailer = props => {
     </>
   );
 };
-export default Trailer;
+export default BlogList;

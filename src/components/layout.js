@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Children, cloneElement } from 'react'
+import Logo from "../../static/sea.svg";
 import Navbar from './navbar';
 import { Helmet } from 'react-helmet'
-
+import Footer from './footer'
 import '../index.css'
 const styles = {
   container: {
@@ -20,7 +21,7 @@ const Layout = ({children, title}) => {
   }
   const getInitialBrand = () => {
     if (typeof window !== 'undefined' && window.innerWidth > 650){
-      return '····'
+      return 'Pure'
     } else {
       return ''
     }
@@ -41,7 +42,7 @@ const Layout = ({children, title}) => {
 
     if (width > 650){
       handleNavPad(100)
-      handleShowBrand('····')
+      handleShowBrand('Pure')
     } else {
       handleNavPad(10)
       handleShowBrand('')
@@ -58,12 +59,12 @@ const Layout = ({children, title}) => {
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
       </Helmet>
       
-      <Navbar pad={navPad} brand={brand}/>
+      <Navbar pad={navPad} brand={brand} logo={Logo}/>
       
       {childrenWithProps}
 
       <footer>
-        {''}
+        <Footer pad={navPad} brand={brand} logo={Logo}/>
       </footer>
 
     </div>

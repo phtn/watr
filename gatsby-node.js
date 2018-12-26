@@ -3,8 +3,8 @@ const path = require('path')
 exports.createPages = ({actions, graphql}) => {
   const { createPage } = actions;
 
-  // const postTemplate = path.resolve('src/templates/posts.js')
-  const postListTemplate = path.resolve('src/templates/post-list.js')
+  const postTemplate = path.resolve('src/templates/posts.js')
+  // const postListTemplate = path.resolve('src/templates/post-list.js')
 
   return graphql(`{
     allMarkdownRemark {
@@ -28,7 +28,7 @@ exports.createPages = ({actions, graphql}) => {
     res.data.allMarkdownRemark.edges.forEach( ({node}) => {
       createPage({
         path: node.frontmatter.path,
-        component: postListTemplate
+        component: postTemplate
       })
     })
 

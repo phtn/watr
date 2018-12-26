@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 
 export default function Template({data}) {
   const { markdownRemark: post } = data
-  // console.log(Object.keys(post).length)
   console.log(post)
   const { title } = post.frontmatter
   return(
