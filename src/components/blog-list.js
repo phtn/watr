@@ -52,7 +52,8 @@ const styles = {
     border: "none",
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 18,
-    textDecoration: "none"
+    textDecoration: "none",
+    textAlign: 'center'
   },
   icon: {
     height: 15,
@@ -88,7 +89,7 @@ const Extra = props => {
 };
 
 const Card = props => {
-  const { title, logo, image, animate, pad, buttonTitle } = props;
+  const { title, path, logo, image, animate, pad, buttonTitle } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
@@ -117,9 +118,11 @@ const Card = props => {
       {/* <hr style={styles.hr} /> */}
       <img src={logo} alt="" width={"275"} />
       <img src={image} alt="" width={"275"} />
-      <Link style={styles.btn} to={`/first-post`}>
+
+      <Link style={styles.btn} to={path}>
         {buttonTitle}
       </Link>
+
     </div>
   );
 };
@@ -137,20 +140,22 @@ const BlogList = props => {
       </div>
       <Trail
         items={items}
-        keys={item => item.id}
+        keys={item => items.indexOf(item)}
         from={{ opacity: 0, transform: "translate3d(0,5px,0)" }}
         to={{ opacity: 1, transform: "translate3d(0,0px,0)" }}
       >
         {item => animate => (
           <Card
-            title={item.title}
+            title={item.node.frontmatter.title}
+            path={item.node.frontmatter.path}
             animate={animate}
             pad={pad}
             logo={item.logo}
             // image={image}
             buttonTitle={buttonTitle}
           />
-        )}
+        )}    
+        
       </Trail>
     </>
   );

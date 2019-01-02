@@ -1,6 +1,6 @@
 import React from "react";
 import { Trail, Spring } from "react-spring";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
 const styles = {
   container: {
     backgroundColor: "#fff",
@@ -56,12 +56,16 @@ const styles = {
     height: 15,
     marginRight: 10,
     // border: '1px solid green'
+  },
+  description: {
+    fontFamily: 'Quicksand, sans-serif',
+    color: "#066b98"
   }
 };
 
 const Card = props => {
 
-  const { title, logo, image, animate, pad, buttonTitle } = props;
+  const { title, logo, image, description, link, animate, pad, buttonTitle } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
@@ -78,13 +82,13 @@ const Card = props => {
           <h3 style={Object.assign({}, styles.cardTitle, animate)}>{title}</h3>
         )}
       </Spring>
-
+      <p style={styles.description}>{description}</p>
       <hr style={styles.hr} />
 
       <img src={image} alt="" width={"275"} />
-      <Link style={styles.btn} to={`/first-post`}>
-        {buttonTitle}
-      </Link>
+        <a href={link} style={styles.btn}>
+          {buttonTitle}
+        </a>
     </div>
   );
 };
@@ -110,6 +114,8 @@ const Trailer = props => {
             pad={pad}
             logo={item.logo}
             image={item.image}
+            description={item.description}
+            link={item.link}
             buttonTitle={buttonTitle}
           />
         )}

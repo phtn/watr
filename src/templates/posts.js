@@ -13,6 +13,7 @@ const styles = {
 export default function Template({data}) {
   const { markdownRemark: post } = data
   const { title } = post.frontmatter
+  console.log(typeof post)
   return(
     <div style={styles.container}>
       <h1 style={styles.blogTitle}>{title}</h1>

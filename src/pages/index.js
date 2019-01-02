@@ -42,6 +42,10 @@ const styles = {
     zIndex: 1,
     fontSize: 20,
     fontFamily: 'Quicksand, sans-serif'
+  },
+  bridge: {
+    height: 100,
+    backgroundColor: "#666"
   }
 }
 const Landing = props => {
@@ -66,13 +70,21 @@ const Landing = props => {
       <video muted autoPlay loop height='100%'>
         <source src={ClearWater} />
       </video>
+      
     </div>
+  )
+}
+
+const Bridge = props => {
+  return(
+    <div style={styles.bridge}>hello</div>
   )
 }
 export default () => {
   return (
     <Layout title={`Watr`}>
       <Landing/>
+      <Bridge/>
     </Layout>
   )
 }
