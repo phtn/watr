@@ -147,7 +147,7 @@ const BlogList = props => {
         {item => animate => (
           <Card
             title={item.node.frontmatter.title}
-            path={item.node.frontmatter.path}
+            path ={item.node.frontmatter.path }
             animate={animate}
             pad={pad}
             logo={item.logo}
