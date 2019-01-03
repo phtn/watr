@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 
 const Blog = ({data, pad}) => {
   const { allMarkdownRemark: post } = data
-  console.log(post.edges)
+  // console.log(post.edges)
   return(
     <Layout title="Blog">
       <BlogList items={post.edges} headerTitle={`Blogs`} title={''} buttonTitle={`Read More`} pad={pad} icon={Pitcher} />
@@ -32,6 +32,13 @@ export const getBlogs = graphql`
           frontmatter {
             title
             path
+            author
+            createdAt
+            description
+            avatar
+            readTime
+            updatedAt
+            source
           }
         }
       }

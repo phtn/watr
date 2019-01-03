@@ -1,8 +1,14 @@
 ---
 path: "/second-post"
-title: "My Second Post Yarn"
+title: "What is a Blog?"
+author: " Ogi Djuraskovic and FirstSiteGuide team"
+createdAt: "April 8th 2018"
+updatedAt: "December 7th, 2018"
+description: "The Definition of Blog, Blogging, and Blogger"
+avatar: ""
+readTime: "2 min read"
+source: "https://firstsiteguide.com/what-is-blog/"
 ---
 
-Advanced Oxidation Process
 
->The invention of the “well” was a revolutionary breakthrough that has been frequently overlooked. This cradle of freshwater was the key to the growth and development of inland communities dating back nearly 10,000 years, that’s 3,000 years before the wheel was even imagined. The well is the first of its kind innovation, which spurred the advancement of a long list of water technologies. Next step has been the creation of (sophisticated) pipeline networks and treatment plants to provide us with this elixir of life, and human beings grew accustomed to an elusive abundance of water, of clean and safe drinking water. But with the passage of time, the already established water purification infrastructure have demonstrated lack of efficiency towards environmental friendliness and in decontaminating emerging water pollutants. The increasing accumulation of emerging pollutants in ground water bodies is a risk to our sustenance and necessitates advancements in water purification technologies.
+Do you know what blogs are? If you don’t, then you’ve come to the right place. In the beginning, a blog was more of a personal diary that people shared online, and it goes back to 1994. In this online journal, you could talk about your daily life or share things you do. But, people saw an opportunity to communicate any information in a new way. So began the beautiful world of blogging.

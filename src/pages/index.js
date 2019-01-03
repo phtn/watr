@@ -63,9 +63,9 @@ const Landing = props => {
   return (
     <div style={Object.assign({}, styles.tilt, {height})}>
 
-      <h1 style={styles.hero}>Pure</h1>
+      {/* <h1 style={styles.hero}>Pure</h1>
       <h1 style={styles.heroSubOne}>Drinking</h1>
-      <h1 style={styles.heroSubTwo}>Water</h1>
+      <h1 style={styles.heroSubTwo}>Water</h1> */}
       {/* <img src={lake} alt='' height={`100%`}/> */}
       <video muted autoPlay loop height='100%'>
         <source src={ClearWater} />
@@ -77,7 +77,7 @@ const Landing = props => {
 
 const Bridge = props => {
   return(
-    <div style={styles.bridge}>hello</div>
+    <div style={styles.bridge}></div>
   )
 }
 export default () => {

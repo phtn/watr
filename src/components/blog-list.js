@@ -1,6 +1,10 @@
 import React from "react";
 import { Trail, Spring } from "react-spring";
 import { Link } from "gatsby";
+import Blonde from "../assets/blonde.svg";
+import Hipster from "../assets/hipster.svg";
+import Hourglass from '../assets/hourglass.svg'
+
 const styles = {
   container: {
     backgroundColor: "#fff",
@@ -29,8 +33,9 @@ const styles = {
   cardTitle: {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 24,
-    lineHeight: "20px",
-    paddingTop: 15
+    lineHeight: "12px",
+    paddingTop: 15,
+    // border: '1px solid red'
   },
   hr: {
     backgroundColor: "#eee",
@@ -53,43 +58,72 @@ const styles = {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 18,
     textDecoration: "none",
-    textAlign: 'center'
+    textAlign: "center"
   },
   icon: {
     height: 15,
-    marginRight: 10,
+    marginRight: 10
     // border: '1px solid green'
   },
   author: {
-    fontSize: 12,
-    fontFamily: "Quicksand, sans-serif"
-  },
-  jobTitle: {
+    marginTop: "0px",
     fontSize: 10,
-    textTransform: 'uppercase',
-    fontWeight: 'bolder',
-    fontFamily: 'Roboto, sans-serif',
-    letterSpacing: 1,
+    fontFamily: "Quicksand, sans-serif",
     opacity: 0.5
   },
-  
+  read: {
+    fontSize: 9,
+    fontFamily: "Quicksand, sans-serif"
+  },
+  hourglass: {
+    height: 10,
+    float: 'left',
+    marginRight: 10,
+    opacity: 0.7
+  },
+  description: {
+    marginTop: "-12px",
+    fontSize: 10,
+    textTransform: "uppercase",
+    fontWeight: "bolder",
+    fontFamily: "Roboto, sans-serif",
+    letterSpacing: 1,
+    
+  }
 };
 
 const Extra = props => {
-  const { author, date, jobTitle, description } = props;
+  const { author, createdAt, description, readTime } = props;
+  // console.log(props)
   return (
     <div>
+      <p style={styles.description}>{description}</p>
+
       <p style={styles.author}>
-        <strong>{author}</strong> &middot; {date}
+        <strong>{author}</strong> &middot; {createdAt}
       </p>
-      <p style={styles.jobTitle}>{jobTitle}</p>
-      <p>{description}</p>
+      <div>
+        <img src={Hourglass} style={styles.hourglass}/><p style={styles.read}>{readTime}</p>
+      </div>
     </div>
   );
 };
 
 const Card = props => {
-  const { title, path, logo, image, animate, pad, buttonTitle } = props;
+  const {
+    title,
+    path,
+    author,
+    description,
+    createdAt,
+    avatar,
+    readTime,
+    logo,
+    image,
+    animate,
+    pad,
+    buttonTitle
+  } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
@@ -106,10 +140,10 @@ const Card = props => {
               {title}
             </h3>
             <Extra
-              author="Kyle Lewis"
-              date={`Dec 25 2018`}
-              jobTitle="General Partner"
-              description="Know why Drinking Clean water is all you need to stay healthy. "
+              author={author}
+              createdAt={createdAt}
+              readTime={readTime}
+              description={description}
             />
           </>
         )}
@@ -122,7 +156,6 @@ const Card = props => {
       <Link style={styles.btn} to={path}>
         {buttonTitle}
       </Link>
-
     </div>
   );
 };
@@ -147,15 +180,19 @@ const BlogList = props => {
         {item => animate => (
           <Card
             title={item.node.frontmatter.title}
-            path ={item.node.frontmatter.path }
+            path={item.node.frontmatter.path}
+            author={item.node.frontmatter.author}
+            createdAt={item.node.frontmatter.createdAt}
+            description={item.node.frontmatter.description}
+            avatar={item.node.frontmatter.avatar}
+            readTime={item.node.frontmatter.readTime}
             animate={animate}
             pad={pad}
             logo={item.logo}
             // image={image}
             buttonTitle={buttonTitle}
           />
-        )}    
-        
+        )}
       </Trail>
     </>
   );
