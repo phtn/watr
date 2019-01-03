@@ -2,12 +2,13 @@
 path: "/second-post"
 title: "What is a Blog?"
 author: " Ogi Djuraskovic and FirstSiteGuide team"
-createdAt: "April 8th 2018"
+createdAt: "April 8th, 2018"
 updatedAt: "December 7th, 2018"
 description: "The Definition of Blog, Blogging, and Blogger"
 avatar: ""
 readTime: "2 min read"
 source: "https://firstsiteguide.com/what-is-blog/"
+id: 0
 ---
 
 

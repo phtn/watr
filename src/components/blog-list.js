@@ -1,8 +1,8 @@
 import React from "react";
 import { Trail, Spring } from "react-spring";
 import { Link } from "gatsby";
-import Blonde from "../assets/blonde.svg";
-import Hipster from "../assets/hipster.svg";
+// import Blonde from "../assets/blonde.svg";
+// import Hipster from "../assets/hipster.svg";
 import Hourglass from '../assets/hourglass.svg'
 
 const styles = {
@@ -103,7 +103,7 @@ const Extra = props => {
         <strong>{author}</strong> &middot; {createdAt}
       </p>
       <div>
-        <img src={Hourglass} style={styles.hourglass}/><p style={styles.read}>{readTime}</p>
+        <img src={Hourglass} style={styles.hourglass} alt='hg' /><p style={styles.read}>{readTime}</p>
       </div>
     </div>
   );
@@ -116,7 +116,7 @@ const Card = props => {
     author,
     description,
     createdAt,
-    avatar,
+    // avatar,
     readTime,
     logo,
     image,
@@ -173,7 +173,7 @@ const BlogList = props => {
       </div>
       <Trail
         items={items}
-        keys={item => items.indexOf(item)}
+        keys={item => item.node.id}
         from={{ opacity: 0, transform: "translate3d(0,5px,0)" }}
         to={{ opacity: 1, transform: "translate3d(0,0px,0)" }}
       >

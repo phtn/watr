@@ -25,10 +25,14 @@ export default Blog;
 
 export const getBlogs = graphql`
   query BlogPosts {
-    allMarkdownRemark( limit: 10 ) {
+    allMarkdownRemark( 
+      sort: { fields: [frontmatter___id], order: DESC }
+      limit: 5
+      ) {
       totalCount
       edges {
         node {
+          id
           frontmatter {
             title
             path
@@ -39,6 +43,7 @@ export const getBlogs = graphql`
             readTime
             updatedAt
             source
+            id
           }
         }
       }
