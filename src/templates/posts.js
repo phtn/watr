@@ -14,8 +14,34 @@ const styles = {
   blogTitle: {
     fontFamily: 'Quicksand, sans-serif',
     color: '#555'
+  },
+  headerContainer: {
+    textAlign: 'center'
+  },
+  author: {
+    textTransform: 'uppercase',
+    fontFamily: 'Roboto, sans-serif',
+    fontSize: 16,
+    fontWeight: 'bolder'
+  },
+  by: {
+    fontSize: 12,
+    fontFamily: 'serif',
+    marginRight: 10
   }
 }
+
+const Header = ({}) => {
+  return(
+    <div style={styles.headerContainer}>
+      <h1>
+        Pure
+      </h1>
+      <hr/>
+    </div>
+  )
+}
+
 export default function Template({data}) {
   const { markdownRemark: post } = data
   const { title, author } = post.frontmatter
@@ -25,8 +51,9 @@ export default function Template({data}) {
       <Helmet>
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
       </Helmet>
+      <Header />
       <h1 style={styles.blogTitle}>{title}</h1>
-      <p>{author}</p>
+      <p style={styles.author}><span style={styles.by}>by</span>{author}</p>
       <div dangerouslySetInnerHTML={{__html: post.html}}></div>
     </div>
   )

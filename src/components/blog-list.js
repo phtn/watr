@@ -3,7 +3,7 @@ import { Trail, Spring } from "react-spring";
 import { Link } from "gatsby";
 // import Blonde from "../assets/blonde.svg";
 // import Hipster from "../assets/hipster.svg";
-import Hourglass from '../assets/hourglass.svg'
+import Hourglass from "../assets/hourglass.svg";
 
 const styles = {
   container: {
@@ -34,7 +34,7 @@ const styles = {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 24,
     lineHeight: "12px",
-    paddingTop: 15,
+    paddingTop: 15
     // border: '1px solid red'
   },
   hr: {
@@ -77,7 +77,7 @@ const styles = {
   },
   hourglass: {
     height: 10,
-    float: 'left',
+    float: "left",
     marginRight: 10,
     opacity: 0.7
   },
@@ -87,8 +87,7 @@ const styles = {
     textTransform: "uppercase",
     fontWeight: "bolder",
     fontFamily: "Roboto, sans-serif",
-    letterSpacing: 1,
-    
+    letterSpacing: 1
   }
 };
 
@@ -97,13 +96,26 @@ const Extra = props => {
   // console.log(props)
   return (
     <div>
-      <p style={styles.description}>{description}</p>
+      <Spring
+        from={{
+          opacity: { value: 0, delay: 1500 },
+          transform: `translate3d(0px, -10px, 0px)`
+        }}
+        to={{ opacity: 1, transform: `translate3d(0px, 0px, 0px)` }}
+      >
+        {animate => (
+          <p style={Object.assign({}, styles.description, animate)}>
+            {description}
+          </p>
+        )}
+      </Spring>
 
       <p style={styles.author}>
         <strong>{author}</strong> &middot; {createdAt}
       </p>
       <div>
-        <img src={Hourglass} style={styles.hourglass} alt='hg' /><p style={styles.read}>{readTime}</p>
+        <img src={Hourglass} style={styles.hourglass} alt="hg" />
+        <p style={styles.read}>{readTime}</p>
       </div>
     </div>
   );
