@@ -60,14 +60,11 @@ const Landing = props => {
       handleHeight('140vh')
     }
   }, [height])
+  
   return (
     <div style={Object.assign({}, styles.tilt, {height})}>
 
-      {/* <h1 style={styles.hero}>Pure</h1>
-      <h1 style={styles.heroSubOne}>Drinking</h1>
-      <h1 style={styles.heroSubTwo}>Water</h1> */}
-      {/* <img src={lake} alt='' height={`100%`}/> */}
-      <video muted autoPlay loop height='100%'>
+      <video id='landingVideo' muted autoPlay loop height='100%'>
         <source src={ClearWater} />
       </video>
       
@@ -76,6 +73,10 @@ const Landing = props => {
 }
 
 const Bridge = props => {
+  // const v = document.getElementById('landingVideo')
+  // const suspended = () => console.log('suspended.')
+  // v.addEventListener('loadeddata', suspended)
+
   return(
     <div style={styles.bridge}></div>
   )

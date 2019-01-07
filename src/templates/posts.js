@@ -7,8 +7,7 @@ const styles = {
     // margin: 20,
     padding: 20,
     // fontFamily: ', sans-serif'
-    textAlign: 'justify',
-    fontSize: 20,
+    
     color: '#333'
   },
   blogTitle: {
@@ -18,11 +17,19 @@ const styles = {
   headerContainer: {
     textAlign: 'center'
   },
+  header: {
+    color: '#222'
+  },
   author: {
     textTransform: 'uppercase',
     fontFamily: 'Roboto, sans-serif',
     fontSize: 16,
     fontWeight: 'bolder'
+  },
+  content: {
+    textAlign: 'justify',
+    fontSize: '1.2em',
+    lineHeight: '22px',
   },
   by: {
     fontSize: 12,
@@ -31,10 +38,10 @@ const styles = {
   }
 }
 
-const Header = ({}) => {
+const Header = () => {
   return(
     <div style={styles.headerContainer}>
-      <h1>
+      <h1 style={styles.header}>
         Pure
       </h1>
       <hr/>
@@ -54,7 +61,7 @@ export default function Template({data}) {
       <Header />
       <h1 style={styles.blogTitle}>{title}</h1>
       <p style={styles.author}><span style={styles.by}>by</span>{author}</p>
-      <div dangerouslySetInnerHTML={{__html: post.html}}></div>
+      <div style={styles.content} dangerouslySetInnerHTML={{__html: post.html}}></div>
     </div>
   )
 }
