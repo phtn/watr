@@ -9,7 +9,7 @@
     "start": "npm run dev",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "jests"
   },
   "dependencies": {
     "babel-plugin-transform-object-assign": "^6.22.0",
