@@ -51,7 +51,7 @@ const styles = {
     height: "2.5rem",
     lineHeight: "2.5rem",
     borderRadius: "5px",
-    background: "#0076ff",
+    background: "rgb(0,118,255)",
     boxShadow: "0 4px 14px 0 rgba(0,118,255,0.39)",
     color: "white",
     border: "none",
@@ -69,7 +69,7 @@ const styles = {
     marginTop: "0px",
     fontSize: 10,
     fontFamily: "Quicksand, sans-serif",
-    opacity: 0.5
+    opacity: 1
   },
   read: {
     fontSize: 9,
@@ -165,7 +165,7 @@ const Card = props => {
       <img src={logo} alt="" width={"275"} />
       <img src={image} alt="" width={"275"} />
 
-      <Link style={styles.btn} to={path}>
+      <Link style={styles.btn} to={path} onMouseEnter={(e)=> e.target.style.backgroundColor = "rgb(0,132,255)"} onMouseLeave={(e)=> e.target.style.backgroundColor = "rgb(0,118,255)"} >
         {buttonTitle}
       </Link>
     </div>

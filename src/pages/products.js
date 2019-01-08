@@ -26,6 +26,8 @@ const products = [
 //   }
 // `
 
+console.log(typeof window.location.pathname)
+
 const Products = () => {
   return (
     <Layout title={`Products`}>

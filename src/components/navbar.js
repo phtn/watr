@@ -87,11 +87,11 @@ const Navbar = props => {
             to={link.path}
             key={link.id}
             style={Object.assign({}, styles.links, {fontWeight: link.active === true ? "bolder" : "regular"})}
-            onMouseOver={e => {
+            onMouseEnter={e => {
               // (e.target.style.color = "#ffd454")
-              (e.target.style.fontWeight = "bolder")
+              (e.target.style.color = "#ffd454")
             }}
-            onMouseOut={e => (e.target.style.color = "#ccc")}
+            onMouseLeave={e => (e.target.style.color = "#ccc")}
             onClick={()=> console.log(link.title)}
 
           >
