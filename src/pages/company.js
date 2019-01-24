@@ -4,6 +4,8 @@ import AboutList from "../components/about-list";
 import TeamFilter from "../assets/team-filter.svg";
 import Blonde from '../assets/blonde.svg'
 import Hipster from '../assets/hipster.svg'
+import Helmet from 'react-helmet'
+
 const people = [
   {
     id: 0,
@@ -20,7 +22,7 @@ const people = [
     author: "Will Medina",
     jobTitle: "CTO",
     avatar: Hipster,
-    intro: "Advanced Oxidation Process. The invention of the “well” was a revolutionary breakthrough that has been frequently overlooked. This cradle of freshwater was the key to the growth and development of inland communities dating back nearly 10,000 years, that’s 3,000 years before the wheel was even imagined. The well is the first of its kind innovation, which spurred the advancement of a long list of water technologies. Next step has been the creation of (sophisticated) pipeline networks and treatment plants to provide us with this elixir of life, and human beings grew accustomed to an elusive abundance of water, of clean and safe drinking water. But with the passage of time, the already established water purification infrastructure have demonstrated lack of efficiency towards environmental friendliness and in decontaminating emerging water pollutants. The increasing accumulation of emerging pollutants in ground water bodies is a risk to our sustenance and necessitates advancements in water purification technologies.",
+    intro: "Understanding the value of having clean water changed my life forever. Letting everybody harvest the benefits of quality water is always been our motivation. ",
     description: "" 
   }
 ];
@@ -28,6 +30,10 @@ const people = [
 const Company = props => {
   const { pad } = props;
   return (
+    <>
+    <Helmet>
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
+    </Helmet>
     <Layout title="Company">
       <AboutList
         items={people}
@@ -36,6 +42,7 @@ const Company = props => {
         icon={TeamFilter}
       />
     </Layout>
+    </>
   );
 };
 export default Company;

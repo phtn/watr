@@ -66,6 +66,7 @@ const styles = {
 const Card = props => {
 
   const { title, logo, image, description, link, animate, pad, buttonTitle } = props;
+  
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
@@ -95,6 +96,7 @@ const Card = props => {
 
 const Trailer = props => {
   const { items, pad, headerTitle, buttonTitle, icon } = props;
+  // console.log(pad)
   return (
     <>
       <div style={Object.assign({}, styles.header, {padding: `0px ${pad}px`})}>

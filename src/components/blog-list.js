@@ -33,7 +33,7 @@ const styles = {
   cardTitle: {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 24,
-    lineHeight: "12px",
+    lineHeight: "24px",
     paddingTop: 15
     // border: '1px solid red'
   },
@@ -55,10 +55,16 @@ const styles = {
     boxShadow: "0 4px 14px 0 rgba(0,118,255,0.39)",
     color: "white",
     border: "none",
-    fontFamily: "Rajdhani, sans-serif",
+    fontFamily: "Roboto, sans-serif",
+    fontWeight: 100,
     fontSize: 18,
     textDecoration: "none",
-    textAlign: "center"
+    textAlign: "center",
+    float: "left",
+    // textTransform: "uppercase",
+    // letterSpacing: 1,
+    // width: 200,
+    position: "relative"
   },
   icon: {
     height: 15,
@@ -67,12 +73,12 @@ const styles = {
   },
   author: {
     marginTop: "0px",
-    fontSize: 10,
+    fontSize: 12,
     fontFamily: "Quicksand, sans-serif",
     opacity: 1
   },
   read: {
-    fontSize: 9,
+    fontSize: 10,
     fontFamily: "Quicksand, sans-serif"
   },
   hourglass: {
@@ -83,7 +89,7 @@ const styles = {
   },
   description: {
     marginTop: "-12px",
-    fontSize: 10,
+    fontSize: 14,
     textTransform: "uppercase",
     fontWeight: "bolder",
     fontFamily: "Roboto, sans-serif",
@@ -160,12 +166,15 @@ const Card = props => {
           </>
         )}
       </Spring>
-
       {/* <hr style={styles.hr} /> */}
       <img src={logo} alt="" width={"275"} />
       <img src={image} alt="" width={"275"} />
-
-      <Link style={styles.btn} to={path} onMouseEnter={(e)=> e.target.style.backgroundColor = "rgb(0,132,255)"} onMouseLeave={(e)=> e.target.style.backgroundColor = "rgb(0,118,255)"} >
+      <Link
+        style={styles.btn}
+        to={path}
+        onMouseEnter={e => (e.target.style.backgroundColor = "rgb(0,132,255)")}
+        onMouseLeave={e => (e.target.style.backgroundColor = "rgb(0,118,255)")}
+      >
         {buttonTitle}
       </Link>
     </div>

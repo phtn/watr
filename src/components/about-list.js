@@ -58,23 +58,26 @@ const styles = {
     // border: '1px solid green'
   },
   author: {
-    fontSize: 12,
+    fontSize: 16,
     fontFamily: "Quicksand, sans-serif"
   },
   avatar: {
-    height: 10,
+    height: 14,
     marginRight: 10,
-    opacity: 0.5
+    opacity: 0.8
   },
   jobTitle: {
-    fontSize: 10,
+    fontSize: 12,
     textTransform: 'uppercase',
     fontWeight: 'bolder',
     fontFamily: 'Roboto, sans-serif',
     letterSpacing: 1,
-    opacity: 0.5
+    opacity: 0.87
   },
-  
+  content: {
+    fontFamily: 'Quicksand, sans-serif',
+    textAlign: 'justify'
+  }
 };
 
 const Extra = props => {
@@ -86,7 +89,7 @@ const Extra = props => {
         <strong>{author}</strong>
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
-      <p>{intro}</p>
+      <p style={styles.content}>{intro}</p>
     </div>
   );
 };

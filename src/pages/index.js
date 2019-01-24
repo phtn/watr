@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout';
 import ClearWater from '../assets/clear-water.mp4';
+import Helmet from 'react-helmet'
+import Newsletter from '../components/newsletter';
 // import k8 from '../assets/k8-2.jpg';
 // import lake from '../assets/lake-2.jpg'
 // import Tilt from 'react-vanilla-tilt';
@@ -45,7 +47,7 @@ const styles = {
   },
   bridge: {
     height: 100,
-    backgroundColor: "#666"
+    backgroundColor: "#fff"
   }
 }
 const Landing = props => {
@@ -78,14 +80,23 @@ const Bridge = props => {
   // v.addEventListener('loadeddata', suspended)
 
   return(
-    <div style={styles.bridge}></div>
+    <div style={styles.bridge}>
+        <Newsletter/>
+    </div>
   )
 }
 export default () => {
   return (
+    <>
+    <Helmet>
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
+    </Helmet>
+
     <Layout title={`Watr`}>
       <Landing/>
       <Bridge/>
+      
     </Layout>
+    </>
   )
 }

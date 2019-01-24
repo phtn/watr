@@ -1,5 +1,5 @@
 import React from 'react'
-// import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
 import Layout from "../components/layout";
 import ProductList from "../components/product-list";
 import berkeyLogo from '../assets/bbwf-logo.png'
@@ -15,24 +15,18 @@ const products = [
   { id: 3, title: "RainSoft", logo: Filter, image: k8, description: "Ultimate Upgrade.", link: "https://www.bigberkeywaterfilters.com/" },
 ];
 
-// export const query = graphql`
-//   query {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-    
-//   }
-// `
-
-// console.log(typeof window.location.pathname)
 
 const Products = () => {
   return (
-    <Layout title={`Products`}>
-      <ProductList items={products} headerTitle={`All Products`} buttonTitle={`View All Products`} icon={Filter}/>
-    </Layout>
+    <>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
+      </Helmet>
+
+      <Layout title={`Products`}>
+        <ProductList items={products} headerTitle={`All Products`} buttonTitle={`View All Products`} icon={Filter}/>
+      </Layout>
+    </>
   )
 }
 export default Products;

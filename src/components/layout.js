@@ -1,9 +1,10 @@
 import React, { useState, useEffect, Children, cloneElement } from 'react'
 import Logo from "../../static/sea.svg";
 import Navbar from './navbar';
-import { Helmet } from 'react-helmet'
+// import { Helmet } from 'react-helmet'
 import Footer from './footer'
 import '../index.css'
+import Metatags from './metatags';
 const styles = {
   container: {
     margin: 0
@@ -13,27 +14,27 @@ const styles = {
 const Layout = ({children, title}) => {
 
   const getInitialPad = () => {
-    if (typeof window !== 'undefined' && window.innerWidth > 650){
+    if (typeof global !== 'undefined' && global.innerWidth > 650){
       return 100
     } else {
       return 10
     }
   }
   const getInitialBrand = () => {
-    if (typeof window !== 'undefined' && window.innerWidth > 650){
-      return 'Pure'
+    if (typeof global !== 'undefined' && global.innerWidth > 650){
+      return 'WWWater'
     } else {
       return ''
     }
   }
-  const [width, setWidth] = useState(typeof window !== 'undefined' && window.innerWidth)
+  const [width, setWidth] = useState(typeof global !== 'undefined' && global.innerWidth)
   const [navPad, setNavPad] = useState(getInitialPad())
   const [brand, setBrand] = useState(getInitialBrand)
   
 
   useEffect(()=> {
-    const handleWidthResize = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handleWidthResize)
+    const handleWidthResize = () => setWidth(global.innerWidth)
+    global.addEventListener('resize', handleWidthResize)
 
     const handleNavPad = (pad) => setNavPad(pad)
     const handleShowBrand = (brand) => setBrand(brand)
@@ -42,23 +43,21 @@ const Layout = ({children, title}) => {
 
     if (width > 650){
       handleNavPad(100)
-      handleShowBrand('Pure')
+      handleShowBrand('WWWater')
     } else {
       handleNavPad(10)
       handleShowBrand('')
     }
 
-    return () => (typeof window !== 'undefined' && window.removeEventListener('resize', handleWidthResize))
+    return () => (typeof global !== 'undefined' && global.removeEventListener('resize', handleWidthResize))
   }, [width, navPad, brand])
 
   const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad}))
 
   return (
     <div style={styles.container}>
-      <Helmet>
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
-      </Helmet>
       
+      <Metatags title={brand}/>
       <Navbar pad={navPad} brand={brand} logo={Logo}/>
       
       {childrenWithProps}

@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { Link } from "gatsby";
+// import { Helmet } from 'react-helmet' 
 
 const styles = {
   container: {
@@ -14,6 +15,10 @@ const styles = {
     width: 30,
     padding: 20
   },
+  brandContainer: {
+    // border: '1px solid red',
+    width: 100,
+  },
   brand: {
     color: "#eee",
     fontFamily: "Roboto, sans-serif",
@@ -22,7 +27,7 @@ const styles = {
     textTransform: "uppercase",
     letterSpacing: "1px",
     textDecoration: "none",
-    width: 300
+    width: 500,
   },
   links: {
     color: "#ccc",
@@ -45,11 +50,11 @@ const Navbar = props => {
 
   function reducer(state, action) {
     switch (action) {
-      case "Products":
+      case "products":
         return { company: false, blog: false, products: true };
-      case "Blog":
+      case "blog":
         return { company: false, blog: true, products: false };
-      case "Company":
+      case "company":
         return { company: true, blog: false, products: false };
       default:
         return state;
@@ -71,12 +76,13 @@ const Navbar = props => {
         paddingRight: pad
       })}
     >
+      
       <div>
         <Link to="/">
           <img src={logo} style={styles.logo} alt="" />
         </Link>
       </div>
-      <div >
+      <div style={{width: pad === 100 ? 300 : 0}}>
         <Link to="/" style={styles.brand}>
           {brand}
         </Link>
@@ -86,13 +92,13 @@ const Navbar = props => {
           <Link
             to={link.path}
             key={link.id}
-            style={Object.assign({}, styles.links, {fontWeight: link.active === true ? "bolder" : "regular"})}
+            style={Object.assign({}, styles.links, {color: link.active === true ? "#ffd454" : "#ccc"})}
             onMouseEnter={e => {
               // (e.target.style.color = "#ffd454")
               (e.target.style.color = "#ffd454")
             }}
             onMouseLeave={e => (e.target.style.color = "#ccc")}
-            onClick={()=> console.log(link.title)}
+            onClick={link.onClick}
 
           >
             {link.title}
