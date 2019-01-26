@@ -27,7 +27,7 @@ const styles = {
   headerTitle: {
     color: "#999",
     fontSize: "1.3em",
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: "Open Sans, sans-serif",
     fontWeight: 100
   },
   cardTitle: {
@@ -53,9 +53,9 @@ const styles = {
     borderRadius: "5px",
     background: "rgb(0,118,255)",
     boxShadow: "0 4px 14px 0 rgba(0,118,255,0.39)",
-    color: "white",
+    color: "#eee",
     border: "none",
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: "Open Sans, sans-serif",
     fontWeight: 100,
     fontSize: 18,
     textDecoration: "none",

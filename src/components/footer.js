@@ -42,7 +42,7 @@ export default props => {
           {brand}
         </Link>
       </div>
-      <p style={styles.label}>© Copyright {date.getFullYear()} William Wallace Water Filtration Systems. All Rights Reserved.</p>
+      <p style={styles.label}>© {date.getFullYear()} William Wallace Water Filtration Systems All Rights Reserved.</p>
     </div>
   )
 }

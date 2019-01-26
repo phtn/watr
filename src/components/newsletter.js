@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const styles = {
   container: {
@@ -9,7 +9,6 @@ const styles = {
   },
   input: {
     fontFamily: 'Quicksand, sans-serif',
-    // height: "2rem",
     padding: 10
   },
   btn: {
@@ -28,17 +27,21 @@ const styles = {
     textDecoration: "none",
     textAlign: "center",
     float: "left",
-    // textTransform: "uppercase",
-    // letterSpacing: 1,
-    // width: 200,
     position: "relative"
   },
 }
 export default props => {
+  const [isSubscribed, setSubscribe] = useState('Join Our Newsletter')
+  const [btnLabel, setBtnLabel] = useState('Submit')
+  const handleSubscribe = () => setSubscribe('Thanks!')
+  const handleBtnLabel = () => {
+    setBtnLabel('Subscribed.')
+    handleSubscribe()  
+  }
   return (
     <div style={styles.container}>
-      <input style={styles.input} placeholder='Join Our Newsletter'/>
-      <button style={styles.btn} >Submit</button>
+      <input style={styles.input} placeholder={isSubscribed}/>
+      <button style={styles.btn} onClick={handleBtnLabel}>{btnLabel}</button>
     </div>
   )
 }

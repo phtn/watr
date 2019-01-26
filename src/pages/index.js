@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Layout from '../components/layout';
 import ClearWater from '../assets/clear-water.mp4';
 import Helmet from 'react-helmet'
 import Newsletter from '../components/newsletter';
-// import k8 from '../assets/k8-2.jpg';
-// import lake from '../assets/lake-2.jpg'
-// import Tilt from 'react-vanilla-tilt';
 
 const styles = {
   container: {
@@ -14,12 +11,10 @@ const styles = {
     justifyContent: 'center',
     height: '100%',
   },
-  tilt: {
+  landingContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    // height: '100vh',
-    // padding: '-20px'
   },
   hero: {
     position: 'absolute',
@@ -51,20 +46,20 @@ const styles = {
   }
 }
 const Landing = props => {
-  const [ height, setHeight ] = useState('140vh')
-  const { pad } = props
-  const handleHeight = (h) => setHeight(h)
-  useEffect(()=> {
-    if (pad === 10){
-      handleHeight('auto')
-      // console.log(pad)
-    } else {
-      handleHeight('auto')
-    }
-  }, [height])
+  // const [ height, setHeight ] = useState('140vh')
+  // const { pad } = props
+  // const handleHeight = (h) => setHeight(h)
+  // useEffect(()=> {
+  //   if (pad === 10){
+  //     handleHeight('auto')
+  //     // console.log(pad)
+  //   } else {
+  //     handleHeight('auto')
+  //   }
+  // }, [height])
   
   return (
-    <div style={Object.assign({}, styles.tilt, {height})}>
+    <div style={styles.landingContainer}>
 
       <video id='landingVideo' muted autoPlay loop width='100%'>
         <source src={ClearWater} />
@@ -75,28 +70,26 @@ const Landing = props => {
 }
 
 const Bridge = props => {
-  // const v = document.getElementById('landingVideo')
-  // const suspended = () => console.log('suspended.')
-  // v.addEventListener('loadeddata', suspended)
-
   return(
     <div style={styles.bridge}>
         <Newsletter/>
     </div>
   )
 }
+
 export default () => {
   return (
     <>
-    <Helmet>
-      <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
-    </Helmet>
+      <Helmet>
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
+      </Helmet>
 
-    <Layout title={`Watr`}>
-      <Landing/>
-      <Bridge/>
-      
-    </Layout>
+      <Layout title={`William Wallace Water`}>
+  
+        <Landing/>
+        <Bridge/>
+        
+      </Layout>
     </>
   )
 }
