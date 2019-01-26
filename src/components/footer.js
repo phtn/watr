@@ -27,6 +27,9 @@ const styles = {
 }
 export default props => {
   const { logo, pad, brand } = props
+  const date = new Date()
+  // console.log(date.getFullYear())
+
   return (
     <div style={Object.assign({}, styles.container, {padding: `20px ${pad}px`})}>
       <div>
@@ -39,7 +42,7 @@ export default props => {
           {brand}
         </Link>
       </div>
-      <p style={styles.label}>© Copyright 2018 William Wallace Water Filtration Systems. All Rights Reserved.</p>
+      <p style={styles.label}>© Copyright {date.getFullYear()} William Wallace Water Filtration Systems. All Rights Reserved.</p>
     </div>
   )
 }

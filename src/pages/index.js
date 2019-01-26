@@ -59,14 +59,14 @@ const Landing = props => {
       handleHeight('50vh')
       // console.log(pad)
     } else {
-      handleHeight('140vh')
+      handleHeight('auto')
     }
   }, [height])
   
   return (
     <div style={Object.assign({}, styles.tilt, {height})}>
 
-      <video id='landingVideo' muted autoPlay loop height='100%'>
+      <video id='landingVideo' muted autoPlay loop width='100%'>
         <source src={ClearWater} />
       </video>
       
