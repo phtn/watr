@@ -7,7 +7,7 @@ import '../index.css'
 import Metatags from './metatags';
 
 // const WINDOW_HEIGHT = window.innerHeight
-const WINDOW_WIDTH = window.innerWidth
+// const WINDOW_WIDTH = window.innerWidth
 // console.log(WINDOW_HEIGHT)
 
 const styles = {
@@ -19,14 +19,14 @@ const styles = {
 const Layout = ({children, title}) => {
 
   const getInitialPad = () => {
-    if (WINDOW_WIDTH > 690){
+    if (typeof global !== 'undefined' && global.innerWidth > 700){
       return 100
     } else {
       return 10
     }
   }
   const getInitialBrand = () => {
-    if (WINDOW_WIDTH > 690){
+    if (typeof global !== 'undefined' && global.innerWidth > 700){
       return 'Wallace Water'
     } else {
       return ''

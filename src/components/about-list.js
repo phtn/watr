@@ -21,7 +21,7 @@ const styles = {
   headerTitle: {
     color: "#999",
     fontSize: "1.3em",
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: "Open Sans, sans-serif",
     fontWeight: 100
   },
   cardTitle: {
