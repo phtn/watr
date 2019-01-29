@@ -5,6 +5,11 @@ import Navbar from './navbar';
 import Footer from './footer'
 import '../index.css'
 import Metatags from './metatags';
+
+// const WINDOW_HEIGHT = window.innerHeight
+const WINDOW_WIDTH = window.innerWidth
+// console.log(WINDOW_HEIGHT)
+
 const styles = {
   container: {
     margin: 0
@@ -14,15 +19,15 @@ const styles = {
 const Layout = ({children, title}) => {
 
   const getInitialPad = () => {
-    if (typeof global !== 'undefined' && global.innerWidth > 650){
+    if (WINDOW_WIDTH > 690){
       return 100
     } else {
       return 10
     }
   }
   const getInitialBrand = () => {
-    if (typeof global !== 'undefined' && global.innerWidth > 650){
-      return 'WWWater'
+    if (WINDOW_WIDTH > 690){
+      return 'Wallace Water'
     } else {
       return ''
     }
@@ -41,9 +46,9 @@ const Layout = ({children, title}) => {
 
     document.title = title
 
-    if (width > 650){
+    if (width > 700){
       handleNavPad(100)
-      handleShowBrand('WWWater')
+      handleShowBrand('Wallace Water')
     } else {
       handleNavPad(10)
       handleShowBrand('')

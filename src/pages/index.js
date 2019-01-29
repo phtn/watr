@@ -4,6 +4,9 @@ import ClearWater from '../assets/clear-water.mp4';
 import Helmet from 'react-helmet'
 import Newsletter from '../components/newsletter';
 
+
+
+
 const styles = {
   container: {
     display: 'flex',

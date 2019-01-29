@@ -82,7 +82,7 @@ const Navbar = props => {
           <img src={logo} style={styles.logo} alt="" />
         </Link>
       </div>
-      <div style={{width: pad === 100 ? 300 : 0}}>
+      <div style={{width: pad === 100 ? 370 : 0}}>
         <Link to="/" style={styles.brand}>
           {brand}
         </Link>
