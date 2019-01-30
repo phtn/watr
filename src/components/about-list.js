@@ -16,7 +16,7 @@ const styles = {
   },
   header: {
     textAlign: "left",
-    margin: 20
+    paddingTop: '55px'
   },
   headerTitle: {
     color: "#999",
@@ -138,7 +138,7 @@ const AboutList = props => {
   return (
     <>
       <div
-        style={Object.assign({}, styles.header, { padding: `0px ${pad}px` })}
+        style={Object.assign({}, styles.header, { paddingLeft: `${pad + 10}px`, paddingRight: `${pad + 10}px` })}
       >
         <h1 style={styles.headerTitle}>
           <img src={icon} style={styles.icon} alt="" /> {headerTitle}

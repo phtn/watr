@@ -1,6 +1,6 @@
 import React from "react";
 import { Trail, Spring } from "react-spring";
-// import { Link } from "gatsby";
+
 const styles = {
   container: {
     backgroundColor: "#fff",
@@ -10,13 +10,14 @@ const styles = {
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
-    marginTop: "24px",
+    // marginTop: "24px",
     minWidth: "264px",
     padding: '30px 24px'
   },
   header: {
     textAlign: "left",
-    margin: 20,
+    paddingTop: '55px',
+    // border: '1px solid green'
   },
   headerTitle: {
     color: "#999",
@@ -48,7 +49,7 @@ const styles = {
     boxShadow: "0 4px 14px 0 rgba(0,118,255,0.39)",
     color: "white",
     border: "none",
-    fontFamily: "Rajdhani, sans-serif",
+    fontFamily: "Open Sans, sans-serif",
     fontSize: 18,
     textDecoration: "none"
   },
@@ -99,9 +100,8 @@ const Trailer = props => {
   // console.log(pad)
   return (
     <>
-      <div style={Object.assign({}, styles.header, {padding: `0px ${pad}px`})}>
+      <div style={Object.assign({}, styles.header, {paddingLeft: `${pad + 10}px`, paddingRight: `${pad + 10}px`})}>
          <h1 style={styles.headerTitle}><img src={icon} style={styles.icon} alt=''/> {headerTitle}</h1>
-         
       </div>
       <Trail
         items={items}

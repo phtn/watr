@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import { Link } from "gatsby";
-// import { Helmet } from 'react-helmet' 
 
 const styles = {
   container: {
@@ -8,43 +7,49 @@ const styles = {
     backgroundColor: "#222",
     display: "flex",
     alignItems: "center",
-    width: "inherit"
-    // border: '1px solid red'
+    width: "100%",
+    position: "fixed",
+    zIndex: 1,
+    // border: '1px solid red',
+    // paddingRight: '200px'
   },
   logo: {
     width: 30,
-    padding: 20
-  },
-  brandContainer: {
-    // border: '1px solid red',
-    width: 100,
+    paddingRight: 20,
+    paddingLeft: 10
   },
   brand: {
     color: "#eee",
     fontFamily: "Roboto, sans-serif",
-    fontSize: "1.4em",
-    fontWeight: '700i',
+    fontSize: "18px",
+    fontWeight: "700i",
     textTransform: "uppercase",
     letterSpacing: "1px",
     textDecoration: "none",
-    width: 500,
+    width: "100%",
+    // border: '1px solid red'
   },
   links: {
     color: "#ccc",
     textDecoration: "none",
     fontFamily: "Quicksand, sans-serif",
-    height: "100%",
-    padding: 17,
-    float: "right",
-    fontSize: 16
+    // height: "100%",
+    paddingLeft: '17px',
+    // float: "right",
+    fontSize: '16px'
   },
   linksContainer: {
-    width: "100%"
-    // border: '1px solid blue'
+    // border: "1px solid blue",
+    display: 'flex',
+    // float: "right",
+    // textAlign: "right",
+    // width: "100%",
+    // paddingRight: "100px",
+    // position: "relative"
   }
 };
 
-const initialState = { products: false, blog: false, company: false }
+const initialState = { products: false, blog: false, company: false };
 const Navbar = props => {
   const { logo, pad, brand } = props;
 
@@ -62,13 +67,33 @@ const Navbar = props => {
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
-
   const links = [
-    { id: 0, path: "/company", title: "Company", active: state.company, onClick: ()=> dispatch("company") },
-    { id: 1, path: "/blog", title: "Blog", active: state.blog, onClick: ()=> dispatch("blogs") },
-    { id: 2, path: "/products", title: "Products", active: state.products, onClick: ()=> dispatch("products") }
+    {
+      id: 2,
+      path: "/products",
+      title: "Products",
+      active: state.products,
+      onClick: () => dispatch("products")
+    },
+    {
+      id: 1,
+      path: "/blog",
+      title: "Blog",
+      active: state.blog,
+      onClick: () => dispatch("blogs")
+    },
+    {
+      id: 0,
+      path: "/company",
+      title: "Company",
+      active: state.company,
+      onClick: () => dispatch("company")
+    },
+    
+    
   ];
 
+  // console.log(width);
   return (
     <div
       style={Object.assign({}, styles.container, {
@@ -76,30 +101,31 @@ const Navbar = props => {
         paddingRight: pad
       })}
     >
-      
       <div>
         <Link to="/">
           <img src={logo} style={styles.logo} alt="" />
         </Link>
       </div>
-      <div style={{width: pad === 100 ? 370 : 0}}>
+      <div style={{ width: 'inherit', display: 'flex' }}>
         <Link to="/" style={styles.brand}>
           {brand}
         </Link>
       </div>
-      <div style={styles.linksContainer}>
+      <div
+        style={Object.assign({}, styles.linksContainer, { paddingRight: pad + pad + 10})}
+      >
         {links.map(link => (
           <Link
             to={link.path}
             key={link.id}
-            style={Object.assign({}, styles.links, {color: link.active === true ? "#ffd454" : "#ccc"})}
+            style={Object.assign({}, styles.links, {
+              color: link.active === true ? "#ffd454" : "#ccc",
+            })}
             onMouseEnter={e => {
-              // (e.target.style.color = "#ffd454")
-              (e.target.style.color = "#ffd454")
+              e.target.style.color = "#ffd454";
             }}
             onMouseLeave={e => (e.target.style.color = "#ccc")}
             onClick={link.onClick}
-
           >
             {link.title}
           </Link>

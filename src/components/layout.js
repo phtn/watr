@@ -12,7 +12,7 @@ import Metatags from './metatags';
 
 const styles = {
   container: {
-    margin: 0
+    // margin: 0
   }
 }
 
@@ -63,7 +63,7 @@ const Layout = ({children, title}) => {
     <div style={styles.container}>
       
       <Metatags title={brand}/>
-      <Navbar pad={navPad} brand={brand} logo={Logo}/>
+      <Navbar pad={navPad} width={width} brand={brand} logo={Logo}/>
       
       {childrenWithProps}
 

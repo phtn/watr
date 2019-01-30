@@ -1,8 +1,6 @@
 import React from "react";
 import { Trail, Spring } from "react-spring";
 import { Link } from "gatsby";
-// import Blonde from "../assets/blonde.svg";
-// import Hipster from "../assets/hipster.svg";
 import Hourglass from "../assets/hourglass.svg";
 
 const styles = {
@@ -16,13 +14,11 @@ const styles = {
     flexDirection: "column",
     marginTop: "24px",
     minWidth: "264px",
-    paddingLeft: "24px",
-    paddingRight: "24px",
-    paddingBottom: 30
+    padding: '30px 24px',
   },
   header: {
     textAlign: "left",
-    margin: 20
+    paddingTop: '55px'
   },
   headerTitle: {
     color: "#999",
@@ -31,7 +27,7 @@ const styles = {
     fontWeight: 100
   },
   cardTitle: {
-    fontFamily: "Rajdhani, sans-serif",
+    fontFamily: "Open Sans, sans-serif",
     fontSize: 24,
     lineHeight: "24px",
     paddingTop: 15
@@ -145,7 +141,7 @@ const Card = props => {
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
-        margin: `20px ${pad + 10}px`
+        margin: `0px ${pad + 10}px 30px ${pad + 10}px`
       })}
     >
       <Spring
@@ -186,7 +182,7 @@ const BlogList = props => {
   return (
     <>
       <div
-        style={Object.assign({}, styles.header, { padding: `0px ${pad}px` })}
+        style={Object.assign({}, styles.header, { paddingLeft: `${pad + 10}px`, paddingRight: `${pad + 10}px` })}
       >
         <h1 style={styles.headerTitle}>
           <img src={icon} style={styles.icon} alt="" /> {headerTitle}
