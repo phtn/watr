@@ -33,19 +33,12 @@ const styles = {
     color: "#ccc",
     textDecoration: "none",
     fontFamily: "Quicksand, sans-serif",
-    // height: "100%",
     paddingLeft: '17px',
-    // float: "right",
     fontSize: '16px'
   },
   linksContainer: {
     // border: "1px solid blue",
     display: 'flex',
-    // float: "right",
-    // textAlign: "right",
-    // width: "100%",
-    // paddingRight: "100px",
-    // position: "relative"
   }
 };
 

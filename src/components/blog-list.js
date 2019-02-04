@@ -12,9 +12,9 @@ const styles = {
     display: "flex",
     // alignItems: "center",
     flexDirection: "column",
-    marginTop: "24px",
+    // marginTop: "24px",
     minWidth: "264px",
-    padding: '30px 24px',
+    padding: '0px 24px 24px 30px',
   },
   header: {
     textAlign: "left",
@@ -28,28 +28,29 @@ const styles = {
   },
   cardTitle: {
     fontFamily: "Open Sans, sans-serif",
-    fontSize: 24,
+    fontSize: '24px',
     lineHeight: "24px",
-    paddingTop: 15
+    // paddingTop: 15
     // border: '1px solid red'
   },
-  hr: {
-    backgroundColor: "#eee",
-    height: 3,
-    width: "100%",
-    marginBottom: 30,
-    marginTop: "-5px",
-    border: "none"
-  },
+  // hr: {
+  //   backgroundColor: "#eee",
+  //   height: 3,
+  //   width: "100%",
+  //   marginBottom: 30,
+  //   marginTop: "-5px",
+  //   border: "none"
+  // },
   btn: {
-    marginTop: 30,
+    marginTop: '30px',
     padding: "0 2rem",
     height: "2.5rem",
     lineHeight: "2.5rem",
     borderRadius: "5px",
-    background: "rgb(0,118,255)",
-    boxShadow: "0 4px 14px 0 rgba(0,118,255,0.39)",
-    color: "#eee",
+    backgroundImage: 'linear-gradient(to right, #34CDFA, #E8D9F1',
+    // background: "rgb(0,118,255)",
+    boxShadow: "0 4px 14px 0 rgba(0,118,118,0.5)",
+    color: "#fff",
     border: "none",
     fontFamily: "Open Sans, sans-serif",
     fontWeight: 100,
@@ -64,7 +65,7 @@ const styles = {
   },
   icon: {
     height: 15,
-    marginRight: 10
+    marginRight: '10px'
     // border: '1px solid green'
   },
   author: {
