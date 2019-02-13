@@ -76,12 +76,13 @@ const styles = {
   },
   content: {
     fontFamily: 'Quicksand, sans-serif',
-    textAlign: 'justify'
+    textAlign: 'justify',
+    marginBottom: '20px'
   }
 };
 
 const Extra = props => {
-  const { author, avatar, jobTitle, intro } = props;
+  const { author, avatar, jobTitle, p1, p2, p3 } = props;
   return (
     <div>
       <p style={styles.author}>
@@ -89,13 +90,18 @@ const Extra = props => {
         <strong>{author}</strong>
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
-      <p style={styles.content}>{intro}</p>
+
+      <p style={styles.content}> <strong>Wallace Water </strong>{p1}</p>
+      
+      <p style={styles.content}>{p2}</p>
+      
+      <p style={styles.content}>{p3}</p>
     </div>
   );
 };
 
 const Card = props => {
-  const { title, author, jobTitle, avatar, intro, logo, image, animate, pad } = props;
+  const { title, author, jobTitle, avatar, p1, p2, p3, logo, image, animate, pad } = props;
   return (
     <div
       style={Object.assign({}, styles.container, animate, {
@@ -116,7 +122,9 @@ const Card = props => {
               avatar={avatar}
               date={`Dec 25 2018`}
               jobTitle={jobTitle}
-              intro={intro}
+              p1={p1}
+              p2={p2}
+              p3={p3}
               
             />
           </>
@@ -159,7 +167,9 @@ const AboutList = props => {
             pad={pad}
             logo={item.logo}
             avatar={item.avatar}
-            intro={item.intro}
+            p1={item.p1}
+            p2={item.p2}
+            p3={item.p3}
             // image={image}
           />
         )}
