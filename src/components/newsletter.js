@@ -5,11 +5,13 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 'inherit',
+    height: '100px',
+    // border: '1px solid green'
   },
   input: {
     fontFamily: 'Quicksand, sans-serif',
-    padding: 10
+    padding: 10,
+    border: '1px solid rgba(0,0,0,0.2)'
   },
   btn: {
     marginLeft: 10,

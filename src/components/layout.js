@@ -57,7 +57,7 @@ const Layout = ({children, title}) => {
     return () => (typeof global !== 'undefined' && global.removeEventListener('resize', handleWidthResize))
   }, [width, navPad, brand])
 
-  const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad}))
+  const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad, width: width}))
 
   return (
     <div style={styles.container}>
