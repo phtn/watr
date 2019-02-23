@@ -6,15 +6,21 @@ import Blonde from '../assets/blonde.svg'
 import Hipster from '../assets/hipster.svg'
 import Helmet from 'react-helmet'
 
+
 const people = [
   {
     id: 0,
-    title: "Our Vision of the Future",
+    title: "Reclaim Your Freedom",
     author: "Kyle Lewis",
-    jobTitle: "Founding Father",
+    jobTitle: "Chief Liberator",
     avatar: Blonde,
-    intro: "While the future is difficult to predict, available freshwater resources will certainly decrease in the coming years due to the increasing demand of a growing world population. Many areas of the world that are already experiencing a shortage of water resources will see their water issues worsen, causing hardships for millions. Here are 18 projections that attempt to predict the future of the world’s water supply.. ",
-    description: "" 
+    p1: `is the creation from years of research and testing water quality for homeowners, family, and friends to help them make an educated decision on what's worthwhile to purchase for their household needs. Educating the community one at a time was fulfilling, yet too much time was invested on those who really don’t have the right knowledge or drive to stop consuming city tap water and big business bottled water.`,
+
+    p2: `What we have developed here was a simple online platform that produces solutions based off each individuals needs. The goal was to take countless hours of live demonstrations, peer reviewed articles, state water testing results and give you the most comprehensive analysis about the state of our water. `,
+    
+    p3: `If you believe quarterly water reports that are tested from the water treatment plant are safe and under the federal guidelines, then this information is not for you. If you realize that your water flows from eroding underground pipes, that are 20 to 100 years old and miles away from your plant and that water is never tested by your municipality at your location, then our life changing solutions are just for you.  `,
+    
+    description: ""
   },
   {
     id: 2,
@@ -22,7 +28,7 @@ const people = [
     author: "Will Medina",
     jobTitle: "CTO",
     avatar: Hipster,
-    intro: "Understanding the value of having clean water changed my life forever. Letting everybody harvest the benefits of quality water is always been our motivation. ",
+    p2: "Understanding the value of having clean water changed my life forever. Letting everybody harvest the benefits of quality water is always been our motivation. ",
     description: "" 
   }
 ];
