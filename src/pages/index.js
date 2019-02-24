@@ -5,6 +5,12 @@ import Helmet from "react-helmet";
 import Newsletter from "../components/newsletter";
 import Fade from "react-reveal";
 import { FixedSizeList as List } from "react-window";
+import FunnelImage from '../assets/filter-sword.svg'
+import DropImage from '../assets/drop.svg'
+
+
+
+
 
 const styles = {
   container: {
@@ -42,8 +48,30 @@ const Landing = props => {
 const reasons = [
   "Greatly improves immune system",
   "Prevents Gastrointestinal diseases",
-  "Improved Hydration Levels"
+  "Improved Hydration Levels",
+  "Slows down the aging process"
 ]
+
+const FlexCenterAll = ({ child, height }) => {
+  return (
+    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: height}}>
+      {child}
+    </div>
+  )
+}
+
+const Drop = () => {
+  return (
+    <Fade top>
+      <FlexCenterAll child={<img src={DropImage} alt='' height={100}/>} height={100}/>
+    </Fade>
+  )
+}
+const Funnel = () => {
+  return (
+    <FlexCenterAll child={<img src={FunnelImage} alt='' height={150}/>} height={200 }/>
+  )
+}
 
 const Column = ({ index, style }) => (
   <div style={style}>
@@ -51,7 +79,7 @@ const Column = ({ index, style }) => (
       style={{
         height: 100,
         padding: 10,
-        backgroundColor: "rgba(52,205,250, 0.3)",
+        // backgroundColor: "rgba(52,205,250, 0.3)",
         textAlign: "center"
       }}
     >
@@ -60,14 +88,17 @@ const Column = ({ index, style }) => (
           // border: "1px solid #ccc",
           borderRadius: 5,
           boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-          backgroundColor: "#eee",
+          // backgroundColor: "#eee",
+          backgroundColor: "rgba(52,205,250, 0.3)",
           height: 100,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}
       >
+
         <p style={{fontFamily: 'Open Sans, sans-serif'}}>{reasons[index]}</p>
+
       </div>
     </div>
   </div>
@@ -140,6 +171,8 @@ export default function Index() {
         <Landing />
         <Bridge component={<Essential />} />
         <Bridge component={<Reasons width={width} />} />
+        <Bridge component={<Funnel width={width} />} />
+        <Bridge component={<Drop width={width} />} />
         <Bridge component={<Newsletter />} />
       </Layout>
     </>
