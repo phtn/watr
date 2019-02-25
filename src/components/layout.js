@@ -59,6 +59,9 @@ const Layout = ({children, title}) => {
 
   const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad, width: width}))
 
+
+  // console.log(width)
+
   return (
     <div style={styles.container}>
       

@@ -45,7 +45,7 @@ const Landing = props => {
   );
 };
 
-const reasons = [
+const reasonItems = [
   "It improves the Immune System",
   "Prevents Gastrointestinal diseases",
   "Improved Hydration Levels",
@@ -102,7 +102,7 @@ const Column = ({ index, style }) => (
         }}
       >
 
-        <p style={{fontFamily: 'Open Sans, sans-serif', fontSize: 16, color: '#333'}}>{reasons[index]}</p>
+        <p style={{fontFamily: 'Open Sans, sans-serif', fontSize: 16, color: '#333'}}>{reasonItems[index]}</p>
 
       </div>
     </div>
@@ -110,14 +110,15 @@ const Column = ({ index, style }) => (
 );
 
 const Reasons = props => {
-  const { reasons } = props
+  const { reasons, width } = props
+  console.log(reasons, width)
   return (
     <List
       direction="horizontal"
       height={120}
       itemCount={reasons.length}
-      itemSize={props.width * 0.8}
-      width={props.width}
+      itemSize={width * 0.8}
+      width={width}
     >
       {Column}
     </List>
@@ -151,18 +152,27 @@ const Bridge = props => {
   return <div style={styles.bridge}>{props.component}</div>;
 };
 
+const Slider = props => {
+  const { width } = props
+  // console.log(width)
+  return <div style={styles.bridge}>
+    <Reasons width={width} reasons={reasonItems} />
+  </div>;
+};
+
+// 🏆 🏆 🏆
 export default function Index() {
   const [width, setWidth] = useState(
     typeof global !== "undefined" && global.innerWidth
   );
 
   useEffect(() => {
-    const handleWidthResize = () => setWidth(global.innerWidth);
+    const handleWidthResize = () => setWidth(typeof global !== "undefined" && global.innerWidth);
 
     return () =>
       typeof global !== "undefined" &&
       global.removeEventListener("resize", handleWidthResize);
-  });
+  }, [width]);
 
   return (
     <>
@@ -176,7 +186,7 @@ export default function Index() {
       <Layout title={`William Wallace Water`}>
         <Landing />
         <Bridge component={<Essential />} />
-        <Bridge component={<Reasons width={width} reasons={reasons} />} />
+        <Slider />
         {/* <Bridge component={<Funnel width={width} />} /> */}
         <Bridge component={<Drop width={width} />} />
         <Bridge component={<Newsletter />} />
