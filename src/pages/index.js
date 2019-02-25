@@ -46,7 +46,7 @@ const Landing = props => {
 };
 
 const reasons = [
-  "Greatly improves immune system",
+  "It improves the Immune System",
   "Prevents Gastrointestinal diseases",
   "Improved Hydration Levels",
   "Slows down the aging process"
@@ -63,7 +63,7 @@ const FlexCenterAll = ({ child, height }) => {
 const Drop = () => {
   return (
     <Fade top>
-      <FlexCenterAll child={<img src={DropImage} alt='' height={100}/>} height={100}/>
+      <FlexCenterAll child={<img src={DropImage} alt='' height={50}/>} height={150}/>
     </Fade>
   )
 }
@@ -75,14 +75,19 @@ const Funnel = () => {
 
 const Column = ({ index, style }) => (
   <div style={style}>
+    
     <div
       style={{
         height: 100,
         padding: 10,
+        fontSize: 8,
+        fontFamily: 'Roboto, sans-serif',
+        color: '#ccc'
         // backgroundColor: "rgba(52,205,250, 0.3)",
-        textAlign: "center"
+        // textAlign: "center"
       }}
     >
+    {index + 1}
       <div
         style={{
           // border: "1px solid #ccc",
@@ -97,7 +102,7 @@ const Column = ({ index, style }) => (
         }}
       >
 
-        <p style={{fontFamily: 'Open Sans, sans-serif'}}>{reasons[index]}</p>
+        <p style={{fontFamily: 'Open Sans, sans-serif', fontSize: 16, color: '#333'}}>{reasons[index]}</p>
 
       </div>
     </div>
@@ -105,6 +110,7 @@ const Column = ({ index, style }) => (
 );
 
 const Reasons = props => {
+  const { reasons } = props
   return (
     <List
       direction="horizontal"
@@ -132,7 +138,7 @@ const Essential = props => {
           Clean Drinking Water is essential to your Health.
         </h1>
         <p style={{ fontFamily: "Open Sans, sans-serif", color: "#444" }}>
-          and here are the reasons why:
+          <i>and here are the reasons why:</i>
         </p>
       </Fade>
     </div>
@@ -170,8 +176,8 @@ export default function Index() {
       <Layout title={`William Wallace Water`}>
         <Landing />
         <Bridge component={<Essential />} />
-        <Bridge component={<Reasons width={width} />} />
-        <Bridge component={<Funnel width={width} />} />
+        <Bridge component={<Reasons width={width} reasons={reasons} />} />
+        {/* <Bridge component={<Funnel width={width} />} /> */}
         <Bridge component={<Drop width={width} />} />
         <Bridge component={<Newsletter />} />
       </Layout>
