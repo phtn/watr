@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Layout from "../components/layout";
 import ClearWater from "../assets/clear-water.mp4";
 import Helmet from "react-helmet";
 import Newsletter from "../components/newsletter";
 import Fade from "react-reveal";
 import { FixedSizeList as List } from "react-window";
-import FunnelImage from '../assets/filter-sword.svg'
-import DropImage from '../assets/drop.svg'
-
-
-
-
+// import FunnelImage from "../assets/filter-sword.svg";
+// import DropImage from "../assets/drop.svg";
+import Drop from '../components/drop'
 
 const styles = {
   container: {
@@ -45,78 +42,84 @@ const Landing = props => {
   );
 };
 
-const reasonItems = [
-  "It improves the Immune System",
-  "Prevents Gastrointestinal diseases",
-  "Improved Hydration Levels",
-  "Slows down the aging process"
-]
+// const FlexCenterAll = ({ child, height }) => {
+//   return (
+//     <div
+//       style={{
+//         display: "flex",
+//         alignItems: "center",
+//         // justifyContent: "center",
+//         height: height
+//       }}
+//     >
+//       {child}
+      
+//     </div>
+//   );
+// };
 
-const FlexCenterAll = ({ child, height }) => {
-  return (
-    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: height}}>
-      {child}
-    </div>
-  )
-}
 
-const Drop = () => {
-  return (
-    <Fade top>
-      <FlexCenterAll child={<img src={DropImage} alt='' height={50}/>} height={150}/>
-    </Fade>
-  )
-}
-const Funnel = () => {
-  return (
-    <FlexCenterAll child={<img src={FunnelImage} alt='' height={150}/>} height={200 }/>
-  )
-}
 
-const Column = ({ index, style }) => (
-  <div style={style}>
-    
-    <div
-      style={{
-        height: 100,
-        padding: 10,
-        fontSize: 8,
-        fontFamily: 'Roboto, sans-serif',
-        color: '#ccc'
-        // backgroundColor: "rgba(52,205,250, 0.3)",
-        // textAlign: "center"
-      }}
-    >
-    {index + 1}
+const Column = ({ index, style, props }) => {
+  // const { reasons } = props
+  const reasonItems = [
+    "It improves the Immune System",
+    "Prevents Gastrointestinal diseases",
+    "Improved Hydration Levels",
+    "Slows down the aging process"
+  ];
+  return (
+    <div style={style}>
       <div
         style={{
-          // border: "1px solid #ccc",
-          borderRadius: 5,
-          boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-          // backgroundColor: "#eee",
-          backgroundColor: "rgba(52,205,250, 0.3)",
           height: 100,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          padding: 10,
+          fontSize: 8,
+          fontFamily: "Roboto, sans-serif",
+          color: "#ccc"
+          // backgroundColor: "rgba(52,205,250, 0.3)",
+          // textAlign: "center"
         }}
       >
-
-        <p style={{fontFamily: 'Open Sans, sans-serif', fontSize: 16, color: '#333'}}>{reasonItems[index]}</p>
-
+        {index + 1}
+        <div
+          style={{
+            // border: "1px solid #ccc",
+            borderRadius: 5,
+            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+            // backgroundColor: "#eee",
+            backgroundColor: "rgba(52,205,250, 0.3)",
+            height: 300,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "Open Sans, sans-serif",
+              fontSize: 16,
+              color: "#333"
+            }}
+          >
+            {reasonItems[index]}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Reasons = props => {
-  const { reasons, width } = props
-  console.log(reasons, width)
+  const { width } = props;
+
+  // console.log(reasons, width)
+  // console.log(List)
   return (
     <List
       direction="horizontal"
-      height={120}
-      itemCount={reasons.length}
+      height={320}
+      itemCount={4}
       itemSize={width * 0.8}
       width={width}
     >
@@ -153,27 +156,17 @@ const Bridge = props => {
 };
 
 const Slider = props => {
-  const { width } = props
+  const { width } = props;
   // console.log(width)
-  return <div style={styles.bridge}>
-    <Reasons width={width} reasons={reasonItems} />
-  </div>;
+  return (
+    <div style={styles.bridge}>
+      <Reasons width={width} />
+    </div>
+  );
 };
 
 // 🏆 🏆 🏆
 export default function Index() {
-  const [width, setWidth] = useState(
-    typeof global !== "undefined" && global.innerWidth
-  );
-
-  useEffect(() => {
-    const handleWidthResize = () => setWidth(typeof global !== "undefined" && global.innerWidth);
-
-    return () =>
-      typeof global !== "undefined" &&
-      global.removeEventListener("resize", handleWidthResize);
-  }, [width]);
-
   return (
     <>
       <Helmet>
@@ -187,8 +180,7 @@ export default function Index() {
         <Landing />
         <Bridge component={<Essential />} />
         <Slider />
-        {/* <Bridge component={<Funnel width={width} />} /> */}
-        <Bridge component={<Drop width={width} />} />
+        <Bridge component={<Drop />} />
         <Bridge component={<Newsletter />} />
       </Layout>
     </>
