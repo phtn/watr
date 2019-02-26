@@ -9,7 +9,7 @@ const styles = {
     alignItems: "center",
     width: "100%",
     position: "fixed",
-    zIndex: 1,
+    zIndex: 2,
     // border: '1px solid red',
     // paddingRight: '200px'
   },
