@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from "../components/layout";
-import ClearWater from "../assets/clear-water.mp4";
+// import ClearWater from "../assets/clear-water.mp4";
 import Helmet from "react-helmet";
 import Newsletter from "../components/newsletter";
 
 import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 
-import { FixedSizeList as List } from "react-window";
+// import { FixedSizeList as List } from "react-window";
 // import FunnelImage from "../assets/filter-sword.svg";
 // import DropImage from "../assets/drop.svg";
 import Drop from "../components/drop";
@@ -221,26 +221,32 @@ const Reclaim = () => {
               padding: "10px 20px",
               backgroundColor: "#fff",
               borderRadius: 5,
-              boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+              boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)"
             }}
           >
             #ReclaimYourFreedomToday
           </h1>
         </div>
-        
       </Slide>
 
       <Slide left>
         <p
           style={{
-            color: "#222",
             padding: "10px 20px",
             backgroundColor: "tomato",
-            borderRadius: '0px 20px 20px 0px',
-            width: "200px"
+            borderRadius: "0px 20px 20px 0px",
+            width: "200px",
+            fontFamily: "Open Sans, sans-serif",
+
+            color: "#fff"
           }}
         >
-          code: RYFT10{" "}
+          code:{" "}
+          <span
+            style={{ letterSpacing: 1, fontWeight: "bolder", color: "#003366", marginLeft: 15 }}
+          >
+            RYFT10
+          </span>{" "}
         </p>
       </Slide>
     </div>
@@ -254,12 +260,64 @@ const Bridge = props => {
 };
 
 const Slider = props => {
-  const { width } = props;
+  // const { width } = props;
   // console.log(width)
   return (
-    <div style={styles.bridge}>
+    <div style={{ border: "0px solid blue", overflow: "auto", height: 300 }}>
       {/* <Reasons width={width} /> */}
-      <div style={{ border: "1px solid gray" }}>tesla</div>
+      <div
+        style={{
+          border: "0px solid gray",
+          width: 1600,
+          float: "left",
+          display: "flex",
+          height: 260,
+          padding: 20
+        }}
+      >
+        {/* CARD  */}
+        <div
+          style={{
+            width: 300,
+            border: "0px solid tomato",
+            borderRadius: 5,
+            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+            backgroundColor: "#fff",
+            padding: 10
+          }}
+        >
+          <div
+            style={{
+              height: 25,
+              borderRadius: 25,
+              backgroundColor: "#eee",
+              width: 25
+            }}
+          />
+        </div>
+
+        {/* CARD  */}
+        <div
+          style={{
+            width: 300,
+            border: "0px solid tomato",
+            borderRadius: 5,
+            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+            backgroundColor: "#fff",
+            padding: 10,
+            marginLeft: 20
+          }}
+        >
+          <div
+            style={{
+              height: 15,
+              borderRadius: 15,
+              backgroundColor: "#eee",
+              width: 15
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
