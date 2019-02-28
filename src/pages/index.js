@@ -6,6 +6,7 @@ import Newsletter from "../components/newsletter";
 
 import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
+import NatEnv from "../assets/natenv.jpg";
 
 // import { FixedSizeList as List } from "react-window";
 // import FunnelImage from "../assets/filter-sword.svg";
@@ -237,13 +238,17 @@ const Reclaim = () => {
             borderRadius: "0px 20px 20px 0px",
             width: "200px",
             fontFamily: "Open Sans, sans-serif",
-
             color: "#fff"
           }}
         >
           code:{" "}
           <span
-            style={{ letterSpacing: 1, fontWeight: "bolder", color: "#003366", marginLeft: 15 }}
+            style={{
+              letterSpacing: 1,
+              fontWeight: "bolder",
+              color: "#003366",
+              marginLeft: 15
+            }}
           >
             RYFT10
           </span>{" "}
@@ -260,14 +265,15 @@ const Bridge = props => {
 };
 
 const Slider = props => {
-  // const { width } = props;
-  // console.log(width)
+  const items = [1, 2, 3, 4];
+
   return (
     <div style={{ border: "0px solid blue", overflow: "auto", height: 300 }}>
       {/* <Reasons width={width} /> */}
-      <div
+
+      <div // SLIDER CONTAINER 1 👽
         style={{
-          border: "0px solid gray",
+          // border: "2px solid tomato",
           width: 1600,
           float: "left",
           display: "flex",
@@ -276,36 +282,15 @@ const Slider = props => {
         }}
       >
         {/* CARD  */}
-        <div
+        {/* <div
+          className="card"
           style={{
-            width: 300,
+            width: 280,
             border: "0px solid tomato",
             borderRadius: 5,
             boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
             backgroundColor: "#fff",
             padding: 10
-          }}
-        >
-          <div
-            style={{
-              height: 25,
-              borderRadius: 25,
-              backgroundColor: "#eee",
-              width: 25
-            }}
-          />
-        </div>
-
-        {/* CARD  */}
-        <div
-          style={{
-            width: 300,
-            border: "0px solid tomato",
-            borderRadius: 5,
-            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-            backgroundColor: "#fff",
-            padding: 10,
-            marginLeft: 20
           }}
         >
           <div
@@ -316,7 +301,49 @@ const Slider = props => {
               width: 15
             }}
           />
-        </div>
+          <span style={{float: 'right'}}>X: {'.'}</span>
+        </div> */}
+
+        {/* CARD  */}
+
+        {items.map((item, index) => {
+          return (
+            <div
+              key={index}
+              style={{
+                width: 280,
+                border: "0px solid tomato",
+                borderRadius: 5,
+                boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+                backgroundColor: "#fff",
+                padding: 10,
+                marginRight: 20
+              }}
+            >
+              <div
+                style={{
+                  height: 15,
+                  borderRadius: 15,
+                  backgroundColor: "#eee",
+                  width: 15
+                }}
+              />
+              <div
+                style={{
+                  border: "0px solid tomato",
+                  height: "200px",
+                  borderRadius: "2px",
+                  backgroundColor: "#ccc",
+                  backgroundImage: `url(${NatEnv})`,
+                  backgroundPosition: 'center'
+                }}
+              >
+                {item}
+                {/* <img src={NatEnv} alt="" height="100%" /> */}
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
