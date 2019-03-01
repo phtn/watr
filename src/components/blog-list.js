@@ -2,6 +2,12 @@ import React from "react";
 import { Trail, Spring } from "react-spring";
 import { Link } from "gatsby";
 import Hourglass from "../assets/hourglass.svg";
+import Fade from 'react-reveal/Fade'
+
+
+
+
+
 
 const styles = {
   container: {
@@ -186,7 +192,10 @@ const BlogList = props => {
         style={Object.assign({}, styles.header, { paddingLeft: `${pad + 10}px`, paddingRight: `${pad + 10}px` })}
       >
         <h1 style={styles.headerTitle}>
-          <img src={icon} style={styles.icon} alt="" /> {headerTitle}
+          <img src={icon} style={styles.icon} alt="" /> 
+          <Fade left cascade>
+            <span>{headerTitle}</span>
+          </Fade>
         </h1>
       </div>
       <Trail

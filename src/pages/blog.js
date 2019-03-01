@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
-import BlogList from "../components/blog-list";
+import BlogList from "../components/blog-list.rc";
 import Pitcher from "../assets/filter.svg";
 import { graphql } from "gatsby";
 import Helmet from 'react-helmet'
@@ -11,7 +11,6 @@ const Blog = ({ data, pad }) => {
   return (
     <>
       <Helmet>
-        <meta name="description" content="house water systems, filtration, purification"/>
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
       </Helmet>
       <Layout title="Blog">
