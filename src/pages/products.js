@@ -1,36 +1,73 @@
-// import React from 'react'
-// import Helmet from 'react-helmet'
-// import Layout from "../components/layout";
-// import ProductList from "../components/product-list";
-// import berkeyLogo from '../assets/bbwf-logo.png'
-// import enagicLogo from '../assets/enagic-logo.svg'
-// import royalBerkey from '../assets/royal-berkey.jpeg'
-// import rainsoftLogo from '../assets/rainsoft-logo.png'
-// import ionfaucetLogo from '../assets/ionfaucet-logo.png'
-// import k8 from '../assets/k8-2.jpg'
-// import Filter from '../assets/filter2.svg'
-// import ultre from '../assets/ultre1.jpg'
-// import stageIon from '../assets/3stage-ion.jpg'
+import React from "react";
+import Layout from "../components/layout";
+import ProductsList from "../components/blog-list.rc";
+import Pitcher from "../assets/filter.svg";
+import { graphql } from "gatsby";
+import Helmet from "react-helmet";
 
-// const products = [
-//   { id: 0, title: "Big Berkey Water Filters", logo: berkeyLogo, image: royalBerkey, description: "Perfect for college students & renters.", link: "https://www.bigberkeywaterfilters.com/berkey-water-filters.html" },
-//   { id: 1, title: "Enagic Kangen Water", logo: enagicLogo, image: k8, description: "Upgrade your Home.", link: "https://www.enagic.com/?c=product-k8" },
-//   { id: 2, title: "Ion Faucet", logo: ionfaucetLogo, image: stageIon, description: "Simple Filtration System that works!", link: "https://www.ionfaucet.com/category-s/1477.htm" },
-//   { id: 3, title: "RainSoft", logo: rainsoftLogo, image: ultre, description: "Get the Ultimate Upgrade!", link: "https://www.rainsoft.com/premium-water-conditioning-systems/" },
-// ];
+const Products = ({ data, pad }) => {
+  const { allMarkdownRemark: post } = data;
+  
+  let arr = []
+  for (let i = 0; i < post.totalCount; i++) {
+    arr.push(post.edges[i])
+    // post.edges[i].node.frontmatter.tag !== "BLOG" ? arr.push(post.edges[i].node.frontmatter) : null
+  }
+  console.log(arr.filter(item => item.node.frontmatter.tag === 'PRODUCT'))
 
+  const newArr = arr.filter(item => item.node.frontmatter.tag === 'PRODUCT')
+  // console.log("newArr", newArr)
+  // console.log("oldArr", post.edges)
 
-// const Products = () => {
-//   return (
-//     <>
-//       <Helmet>
-//         <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100" rel="stylesheet"/>
-//       </Helmet>
+  return (
+    <>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100"
+          rel="stylesheet"
+        />
+      </Helmet>
+      <Layout title="Products">
+        <ProductsList
+          items={newArr}
+          itemCount={post.totalCount}
+          headerTitle={`Products`}
+          title={""}
+          buttonTitle={`Read More`}
+          pad={pad}
+          icon={Pitcher}
+        />
+      </Layout>
+    </>
+  );
+};
+export default Products;
 
-//       <Layout title={`Products`}>
-//         <ProductList items={products} headerTitle={`All Products`} buttonTitle={`View All Products`} icon={Filter}/>
-//       </Layout>
-//     </>
-//   )
-// }
-// export default Products;
+export const getProducts = graphql`
+  query ProductsList {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___id], order: DESC }
+      limit: 5
+    ) {
+      totalCount
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
+            author
+            createdAt
+            description
+            avatar
+            readTime
+            updatedAt
+            source
+            id
+            tag
+          }
+        }
+      }
+    }
+  }
+`;

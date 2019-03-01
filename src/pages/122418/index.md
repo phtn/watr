@@ -1,14 +1,15 @@
 ---
 path: "/first-post"
-title: "The Future of Water Treatment"
-author: "Kyle Lewis"
+title: "Product 01"
+author: "support@wallacewater.us"
 createdAt: "Dec 25 2018"
 updatedAt: "Dec 25 2018"
-description: "Advanced Oxidation Process"
-avatar: ""
+description: "Advance Query"
+av: "test"
 readTime: "2 min read"
 source: "/"
-id: 1
+id: 2
+tag: "PRODUCT"
 ---
 
 

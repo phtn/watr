@@ -1,5 +1,12 @@
 import React from "react";
 import { useTrail, animated } from "react-spring";
+import Fade from 'react-reveal/Fade'
+
+
+
+
+
+
 
 const styles = {
   container: {
@@ -21,9 +28,13 @@ const styles = {
   },
   headerTitle: {
     color: "#999",
-    fontSize: "1.3em",
+    fontSize: ".8em",
     fontFamily: "Open Sans, sans-serif",
-    fontWeight: 100
+    fontWeight: 'bolder',
+    textTransform: 'uppercase',
+    letterSpacing: 2,
+    border: '0px solid tomato',
+    marginTop: 15
   },
   cardTitle: {
     fontFamily: "Rajdhani, sans-serif",
@@ -82,11 +93,11 @@ const styles = {
 };
 
 const Extra = props => {
-  const { author, avatar, jobTitle, intro } = props;
+  const { author, jobTitle, intro } = props;
   return (
     <div>
       <p style={styles.author}>
-        <img src={avatar} style={styles.avatar} alt="avatar" />
+        {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
         <strong>{author}</strong>
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
@@ -104,13 +115,13 @@ const Card = props => {
       })}
     >
       <h3 style={Object.assign({}, styles.cardTitle)}>{title}</h3>
-      {/* <Extra
+      <Extra
         author={author}
         avatar={avatar}
         date={`Dec 25 2018`}
         jobTitle={jobTitle}
         intro={intro}
-      /> */}
+      />
 
       {/* <hr style={styles.hr} /> */}
       <img src={logo} alt="" width={"275"} />
@@ -125,9 +136,9 @@ const Card = props => {
 const config = { mass: 5, tension: 2000, friction: 200 };
 
 const BlogList = props => {
-  const { items, pad, headerTitle, icon } = props;
+  const { items, pad, headerTitle } = props;
 
-  
+  // console.log(itemCount)
 
   // ⚠️ TRAIL
   const trail = useTrail(items.length, {
@@ -146,13 +157,17 @@ const BlogList = props => {
         })}
       >
         <h1 style={styles.headerTitle}>
-          <img src={icon} style={styles.icon} alt="" /> {headerTitle}
+          {/* <img src={icon} style={styles.icon} alt="" />  */}
+
+          <Fade left cascade>
+            {`${headerTitle}`} 
+          </Fade>
         </h1>
       </div>
 
       {/*  ⚠️  */}
       {trail.map(({ opacity, x }, index) => {
-        console.log(items[index].node.id)
+        // console.log(items[index].node.id)
         return (
           <animated.div
             key={items[index].node.id}
@@ -176,7 +191,7 @@ const BlogList = props => {
               author={items[index].node.frontmatter.author}
               // createdAt={items[index].node.frontmatter.createdAt}
               // description={items[index].node.frontmatter.description}
-              // avatar={items[index].node.frontmatter.avatar}
+              avatar={items[index].node.frontmatter.avatar}
               // readTime={items[index].node.frontmatter.readTime}
 
               // title={'tesla'}
