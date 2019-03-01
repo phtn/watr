@@ -17,6 +17,8 @@ import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 
 import { useInterval } from '../hooks/useInterval'
+import '../animate.css'
+
 
 const styles = {
   container: {
@@ -96,7 +98,7 @@ const Essential = props => {
 
 const Reclaim = () => {
   
-  const slogans = ["What's in your bottle?", "Wallace Water", "Make a difference!", "Excellent for health", "Great for the Environment", "Reclaim your Freedom", "Today!", "Let me ask you a question.."]
+  const slogans = ["What's in your bottle?", "Wallace Water", "Be the Difference", "Advanced Body Health", "Optimum Hydration" , "Maximum Energy Storage", "Clear Mind" , "All Natural Boost" , "Reclaim your Freedom", "Today!", "Let me ask you a question.."]
 
 
 
@@ -105,6 +107,14 @@ const Reclaim = () => {
   function runSlogans(items) {
     count < slogans.length - 1 ? setCount(count + 1) : setCount(0)
   }
+
+  function HeroLabel(id) {
+    return (
+      <span className='animated fadeInUp'>
+        {`${slogans[count]}`}
+      </span>
+    ) 
+  }  
 
   useInterval(() => {
     // Your custom logic here
@@ -133,11 +143,11 @@ const Reclaim = () => {
           }}
         >
 
-          <Fade bottom>
-            <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
-              {`${slogans[count]}`} 
-            </h3>
-          </Fade>
+          
+          <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
+            <HeroLabel/>
+          </h3>
+        
           
         </div>
         <div
