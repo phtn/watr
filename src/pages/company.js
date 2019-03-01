@@ -85,7 +85,6 @@ export const getPeeps = graphql`
             author
             createdAt
             description
-            avatar
             readTime
             updatedAt
             source

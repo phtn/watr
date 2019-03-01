@@ -58,7 +58,6 @@ export const getBlogs = graphql`
             author
             createdAt
             description
-            avatar
             readTime
             updatedAt
             source

@@ -59,7 +59,6 @@ export const getProducts = graphql`
             author
             createdAt
             description
-            avatar
             readTime
             updatedAt
             source
