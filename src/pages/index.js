@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout";
 // import ClearWater from "../assets/clear-water.mp4";
 import Helmet from "react-helmet";
@@ -15,6 +15,8 @@ import Drop from "../components/drop";
 
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
+
+import { useInterval } from '../hooks/useInterval'
 
 const styles = {
   container: {
@@ -44,99 +46,7 @@ const styles = {
     backgroundColor: "teal"
   }
 };
-// const Landing = props => {
-//   return (
-//     <div style={styles.landingContainer}>
-//       <video id="landingVideo" muted autoPlay loop width="100%">
-//         {/* <source src={ClearWater} /> */}
-//       </video>
-//     </div>
-//   );
-// };
 
-// const FlexCenterAll = ({ child, height }) => {
-//   return (
-//     <div
-//       style={{
-//         display: "flex",
-//         alignItems: "center",
-//         // justifyContent: "center",
-//         height: height
-//       }}
-//     >
-//       {child}
-
-//     </div>
-//   );
-// };
-
-// const Column = ({ index, style, props }) => {
-//   // const { reasons } = props
-//   const reasonItems = [
-//     "It improves the Immune System",
-//     "Prevents Gastrointestinal diseases",
-//     "Improved Hydration Levels",
-//     "Slows down the aging process"
-//   ];
-//   return (
-//     <div style={style}>
-//       <div
-//         style={{
-//           height: 100,
-//           padding: 10,
-//           fontSize: 8,
-//           fontFamily: "Roboto, sans-serif",
-//           color: "#ccc"
-//           // backgroundColor: "rgba(52,205,250, 0.3)",
-//           // textAlign: "center"
-//         }}
-//       >
-//         {index + 1}
-//         <div
-//           style={{
-//             // border: "1px solid #ccc",
-//             borderRadius: 5,
-//             boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-//             // backgroundColor: "#eee",
-//             backgroundColor: "rgba(52,205,250, 0.3)",
-//             height: 300,
-//             display: "flex",
-//             alignItems: "center",
-//             justifyContent: "center"
-//           }}
-//         >
-//           <p
-//             style={{
-//               fontFamily: "Open Sans, sans-serif",
-//               fontSize: 16,
-//               color: "#333"
-//             }}
-//           >
-//             {reasonItems[index]}
-//           </p>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const Reasons = props => {
-//   const { width } = props;
-
-//   // console.log(reasons, width)
-//   // console.log(List)
-//   return (
-//     <List
-//       direction="horizontal"
-//       height={320}
-//       itemCount={4}
-//       itemSize={width * 0.8}
-//       width={width}
-//     >
-//       {Column}
-//     </List>
-//   );
-// };
 
 const Hero = () => {
   return (
@@ -185,26 +95,50 @@ const Essential = props => {
 };
 
 const Reclaim = () => {
+  
+  const slogans = ["What's in your bottle?", "Wallace Water", "Make a difference!", "Excellent for health", "Great for the Environment", "Reclaim your Freedom", "Today!", "Let me ask you a question.."]
+
+
+
+  let [count, setCount] = useState(0);
+
+  function runSlogans(items) {
+    count < slogans.length - 1 ? setCount(count + 1) : setCount(0)
+  }
+
+  useInterval(() => {
+    // Your custom logic here
+    runSlogans(slogans)
+  }, 5000);
+
   return (
     <div
       style={{ border: "0px solid #red", width: "100%", textAlign: "center" }}
     >
       <Hero />
-      <Slide up cascade>
+      {/* <Slide up cascade> */}
         <div
           style={{
             border: "0px solid tomato",
             color: "#eee",
-            fontSize: "40px",
+            fontSize: "35px",
             position: "absolute",
             top: 125,
             zIndex: 1,
-            height: "250px"
+            height: "250px",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%'
           }}
         >
-          <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
-            What's in your bottle?
-          </h3>
+
+          <Fade bottom>
+            <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
+              {`${slogans[count]}`} 
+            </h3>
+          </Fade>
+          
         </div>
         <div
           style={{
@@ -228,7 +162,7 @@ const Reclaim = () => {
             #ReclaimYourFreedomToday
           </h1>
         </div>
-      </Slide>
+      {/* </Slide> */}
 
       <Slide left>
         <p
@@ -327,7 +261,9 @@ const Slider = props => {
                   backgroundColor: "#eee",
                   width: 15
                 }}
-              />
+              >
+                {item}
+              </div>
               <div
                 style={{
                   border: "0px solid tomato",
@@ -338,8 +274,7 @@ const Slider = props => {
                   backgroundPosition: 'center'
                 }}
               >
-                {item}
-                {/* <img src={NatEnv} alt="" height="100%" /> */}
+                {/*  */}
               </div>
             </div>
           );
