@@ -13,7 +13,7 @@ const Blog = ({ data, pad }) => {
     arr.push(post.edges[i]);
     // post.edges[i].node.frontmatter.tag !== "BLOG" ? arr.push(post.edges[i].node.frontmatter) : null
   }
-  console.log(arr.filter(item => item.node.frontmatter.tag === "BLOG"));
+  // console.log(arr.filter(item => item.node.frontmatter.tag === "BLOG"));
 
   const newArr = arr.filter(item => item.node.frontmatter.tag === "BLOG");
   // console.log("newArr", newArr)
