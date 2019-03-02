@@ -1,15 +1,15 @@
 ---
-path: "/second-post"
-title: "What is a Blog?"
-author: " Ogi Djuraskovic and FirstSiteGuide team"
+path: "/company/kyle-lewis"
+title: "Kyle Lewis"
+author: "Kyle Lewis"
 createdAt: "April 8th, 2018"
 updatedAt: "December 7th, 2018"
 description: "The Definition of Blog, Blogging, and Blogger"
 av: ""
 readTime: "2 min read"
 source: "https://firstsiteguide.com/what-is-blog/"
-id: 22
-tag: "BLOG"
+id: 50
+tag: "COMPANY"
 ---
 
 

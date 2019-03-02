@@ -8,17 +8,14 @@ import Helmet from "react-helmet";
 const Products = ({ data, pad }) => {
   const { allMarkdownRemark: post } = data;
   
-  let arr = []
-  for (let i = 0; i < post.totalCount; i++) {
-    arr.push(post.edges[i])
-    // post.edges[i].node.frontmatter.tag !== "BLOG" ? arr.push(post.edges[i].node.frontmatter) : null
-  }
-  // console.log(arr.filter(item => item.node.frontmatter.tag === 'PRODUCT'))
-
+  
+  const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === 'PRODUCT')
-  // console.log("newArr", newArr)
+  
+  console.log("newArr", newArr)
   // console.log("oldArr", post.edges)
 
+  
   return (
     <>
       <Helmet>
@@ -46,7 +43,7 @@ export default Products;
 export const getProducts = graphql`
   query ProductsList {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___id], order: DESC }
+      sort: { fields: [frontmatter___id]}
       limit: 5
     ) {
       totalCount

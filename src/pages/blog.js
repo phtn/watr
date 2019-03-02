@@ -8,15 +8,13 @@ import Helmet from "react-helmet";
 const Blog = ({ data, pad }) => {
   const { allMarkdownRemark: post } = data;
 
-  let arr = [];
-  for (let i = 0; i < post.totalCount; i++) {
-    arr.push(post.edges[i]);
-    // post.edges[i].node.frontmatter.tag !== "BLOG" ? arr.push(post.edges[i].node.frontmatter) : null
-  }
-  // console.log(arr.filter(item => item.node.frontmatter.tag === "BLOG"));
+ 
 
+
+  const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === "BLOG");
-  // console.log("newArr", newArr)
+
+  console.log("newArr", newArr)
   // console.log("oldArr", post.edges)
 
   return (
@@ -42,6 +40,7 @@ const Blog = ({ data, pad }) => {
 };
 export default Blog;
 
+// IN DESC ORDER
 export const getBlogs = graphql`
   query BlogPosts {
     allMarkdownRemark(

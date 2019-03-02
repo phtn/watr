@@ -39,16 +39,11 @@ const Company = ({data, pad}) => {
 
   const { allMarkdownRemark: post } = data;
 
-  let arr = [];
-  for (let i = 0; i < post.totalCount; i++) {
-    arr.push(post.edges[i]);
-    // post.edges[i].node.frontmatter.tag !== "BLOG" ? arr.push(post.edges[i].node.frontmatter) : null
-  }
-  console.log(arr.filter(item => item.node.frontmatter.tag === "BLOG"));
+  const arr = [...post.edges]
 
-  const newArr = arr.filter(item => item.node.frontmatter.tag === "BLOG");
-  console.log("newArr", newArr)
-  console.log("oldArr", post.edges)
+  const newArr = arr.filter(item => item.node.frontmatter.tag === "COMPANY");
+  // console.log("newArr", newArr)
+  // console.log("oldArr", post.edges)
 
   
   return (
@@ -69,10 +64,11 @@ const Company = ({data, pad}) => {
 };
 export default Company;
 
+// NOT IN ORDER
 export const getPeeps = graphql`
   query Peeps {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___id], order: DESC }
+      sort: { fields: [frontmatter___id]}
       limit: 5
     ) {
       totalCount
