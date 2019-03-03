@@ -137,6 +137,14 @@ const Static = props => {
             }
           }
 
+          blog: file(relativePath: { eq: "dawn.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
           water: file(relativePath: { eq: "water.png" }) {
             childImageSharp {
               fluid(maxWidth: 1600) {
@@ -160,9 +168,9 @@ const Static = props => {
           ],
 
           [ // blogs
-            data.water.childImageSharp.fluid,
-            data.water.childImageSharp.fluid,
-            data.ionfaucet.childImageSharp.fluid  
+            data.blog.childImageSharp.fluid,
+            data.blog.childImageSharp.fluid,
+            data.blog.childImageSharp.fluid  
           ],
 
           [ // company

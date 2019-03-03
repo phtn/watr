@@ -15,4 +15,4 @@ tag: "PRODUCT"
 
 
 
-![alt text](https://www.bigberkeywaterfilters.com/media/catalog/product/w/i/window_1_2.jpeg "Logo Title Text 1")
+![alt text](https://www.bigberkeywaterfilters.com/media/catalog/product/w/i/window_1_2.jpeg "berkey")
