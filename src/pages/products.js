@@ -12,7 +12,7 @@ const Products = ({ data, pad }) => {
   const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === 'PRODUCT')
   
-  console.log("newArr", newArr)
+  console.log("newArr", newArr[0].node.frontmatter.id)
   // console.log("oldArr", post.edges)
 
   
@@ -40,6 +40,7 @@ const Products = ({ data, pad }) => {
 };
 export default Products;
 
+// NOT IN ORDER 
 export const getProducts = graphql`
   query ProductsList {
     allMarkdownRemark(
@@ -67,3 +68,5 @@ export const getProducts = graphql`
     }
   }
 `;
+
+

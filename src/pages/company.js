@@ -42,8 +42,8 @@ const Company = ({data, pad}) => {
   const arr = [...post.edges]
 
   const newArr = arr.filter(item => item.node.frontmatter.tag === "COMPANY");
-  // console.log("newArr", newArr)
-  // console.log("oldArr", post.edges)
+  console.log("newArr", newArr)
+  console.log("oldArr", post.edges)
 
   
   return (
@@ -68,8 +68,8 @@ export default Company;
 export const getPeeps = graphql`
   query Peeps {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___id]}
-      limit: 5
+      
+      limit: 10
     ) {
       totalCount
       edges {

@@ -20,13 +20,13 @@ module.exports = {
         name: `pages`
       }
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: `${__dirname}/src/products`,
-    //     name: `products`
-    //   }
-    // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets`,
+        name: `assets`
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
