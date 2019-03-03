@@ -95,12 +95,37 @@ const styles = {
   }
 };
 
-const Static = () => {
+const Static = props => {
+  const { index } = props
   return (
     <StaticQuery
       query={graphql`
         query {
           bigberkey: file(relativePath: { eq: "bbwf-logo.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+          kangen: file(relativePath: { eq: "k8.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+          rainsoft: file(relativePath: { eq: "rainsoft-logo.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+          ionfaucet: file(relativePath: { eq: "ionfaucet-logo.png" }) {
             childImageSharp {
               fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid_tracedSVG
@@ -115,40 +140,65 @@ const Static = () => {
               }
             }
           }
+
+          
         }
       `}
       render={data => {
         // console.log(data.bigberkey.childImageSharp.fluid);
         const images2d = [
-          [
+
+          [ //products
             data.bigberkey.childImageSharp.fluid,
-            data.bigberkey.childImageSharp.fluid
+            data.kangen.childImageSharp.fluid,
+            data.rainsoft.childImageSharp.fluid,
+            data.ionfaucet.childImageSharp.fluid
           ],
-          [
-            data.water.childImageSharp.fluid
+
+          [ // blogs
+            data.water.childImageSharp.fluid,
+            data.water.childImageSharp.fluid,
+            data.ionfaucet.childImageSharp.fluid  
+          ],
+
+          [ // company
+            data.water.childImageSharp.fluid,
+            data.water.childImageSharp.fluid,
+            data.ionfaucet.childImageSharp.fluid  
           ]
+
         ];
-        console.log(images2d)
-        console.log(globalHistory.location.pathname === '/products' )
-        console.log(images2d[getPath(globalHistory.location.pathname)][0])
+        // console.log(images2d)
+        // console.log(globalHistory.location.pathname === '/products' )
+        console.log(images2d[getPath(globalHistory.location.pathname)])
+
+        function dispatchImage(index){
+          return (
+            <div>
+              <Img fluid={
+                images2d[getPath(globalHistory.location.pathname)][index]
+              } />
+            </div>
+          )
+        }
+
+        console.log(index)
         function getPath (path) {
           switch(path){
+
             case '/products': return 0
             case '/blog': return 1
-            case '/company': return 1
+            case '/company': return 2
 
             default: return 0
           }
         }
 
-        const img_0 = images2d[getPath(globalHistory.location.pathname)][0]
+        const img_0 = images2d[getPath(globalHistory.location.pathname)][1]
 
         return (
           <div>
-            <Img fluid={
-              // images2d[getPath()]
-              img_0
-            } />
+            {dispatchImage(index)}
           </div>
         );
       }}
@@ -171,7 +221,10 @@ const Extra = props => {
 };
 
 const Card = props => {
-  const { title, author, jobTitle, avatar, intro, logo, image, pad } = props;
+  const { title, author, jobTitle, avatar, intro, logo, image, pad, itemCount, index } = props;
+
+  console.log('page item count:', itemCount)
+
   return (
     <div
       style={Object.assign({}, styles.container, {
@@ -187,7 +240,7 @@ const Card = props => {
         intro={intro}
       />
 
-      <Static />
+      <Static index={index}/>
 
       {/* <hr style={styles.hr} /> */}
       <img src={logo} alt="" width={"275"} />
@@ -202,9 +255,9 @@ const Card = props => {
 const config = { mass: 5, tension: 2000, friction: 200 };
 
 const BlogList = props => {
-  const { items, pad, headerTitle } = props;
+  const { items, pad, headerTitle, itemCount } = props;
 
-  // console.log(itemCount)
+  console.log('total items:', itemCount)
 
   // ⚠️ TRAIL
   const trail = useTrail(items.length, {
@@ -247,6 +300,7 @@ const BlogList = props => {
               // author={items[index].author}
               // jobTitle={items[index].jobTitle}
               pad={pad}
+              itemCount={items.length}
               // logo={items[index].logo}
               // avatar={items[index].avatar}
               // intro={items[index].intro}
@@ -258,7 +312,7 @@ const BlogList = props => {
               // description={items[index].node.frontmatter.description}
               avatar={items[index].node.frontmatter.avatar}
               // readTime={items[index].node.frontmatter.readTime}
-
+              index={index}
               // title={'tesla'}
             />
           </animated.div>

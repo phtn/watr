@@ -12,7 +12,7 @@ const Products = ({ data, pad }) => {
   const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === 'PRODUCT')
   
-  console.log("newArr", newArr[0].node.frontmatter.id)
+  // console.log("newArr", newArr[0].node.frontmatter.id)
   // console.log("oldArr", post.edges)
 
   
