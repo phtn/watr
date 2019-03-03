@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  background-color: #f4f7f8;
+  /* background-color: #f4f7f8; */
+  background-color: #eee;
 }
 ::-webkit-scrollbar { 
   display: none; 

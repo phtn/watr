@@ -1,7 +1,7 @@
 import React from "react";
 import { useTrail, animated } from "react-spring";
 import Fade from "react-reveal/Fade";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import { globalHistory } from '@reach/router'
 
@@ -43,7 +43,8 @@ const styles = {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 24,
     lineHeight: "20px",
-    paddingTop: 15
+    paddingTop: 15,
+    color: '#333'
   },
   hr: {
     backgroundColor: "#eee",
@@ -59,13 +60,16 @@ const styles = {
     height: "2.5rem",
     lineHeight: "2.5rem",
     borderRadius: "5px",
-    background: "#0076ff",
-    boxShadow: "0 4px 14px 0 rgba(0,118,255,0.39)",
+    background: "#003366",
+    boxShadow: "0 4px 14px 0 rgba(0,51,102,0.39)",
     color: "white",
     border: "none",
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 18,
-    textDecoration: "none"
+    textDecoration: "none",
+    marginBottom: 25,
+    textTransform: 'uppercase',
+    textAlign: 'center'
   },
   icon: {
     height: 15,
@@ -117,7 +121,7 @@ const Static = props => {
             }
           }
 
-          rainsoft: file(relativePath: { eq: "rainsoft-logo.png" }) {
+          rainsoft: file(relativePath: { eq: "ec5.jpg" }) {
             childImageSharp {
               fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid_tracedSVG
@@ -216,12 +220,13 @@ const Extra = props => {
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
       <p style={styles.content}>{description}</p>
+      
     </div>
   );
 };
 
 const Card = props => {
-  const { title, author, jobTitle, avatar, description, logo, image, pad, itemCount, index } = props;
+  const { title, author, jobTitle, avatar, description, pad, itemCount, index, path, buttonTitle } = props;
 
   console.log('page item count:', itemCount)
 
@@ -243,11 +248,11 @@ const Card = props => {
       <Static index={index}/>
 
       {/* <hr style={styles.hr} /> */}
-      <img src={logo} alt="" width={"275"} />
-      <img src={image} alt="" width={"275"} />
-      {/* <Link style={styles.btn} to={`/first-post`}>
-        {buttonTitle}
-      </Link> */}
+      {/* <img src={logo} alt="" width={"275"} /> */}
+      {/* <img src={image} alt="" width={"275"} /> */}
+      <Link style={styles.btn} to={path}>
+        { globalHistory.location.pathname.substr(1, 100) === 'products' ? 'view products' : 'read more'}
+      </Link>
     </div>
   );
 };
@@ -304,7 +309,7 @@ const BlogList = props => {
               // logo={items[index].logo}
               // avatar={items[index].avatar}
               // intro={items[index].intro}
-
+              buttonTitle={index}
               title={items[index].node.frontmatter.title}
               path={items[index].node.frontmatter.path}
               author={items[index].node.frontmatter.author}
