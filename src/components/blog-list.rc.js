@@ -1,6 +1,9 @@
 import React from "react";
 import { useTrail, animated } from "react-spring";
-import Fade from 'react-reveal/Fade'
+import Fade from "react-reveal/Fade";
+import { StaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
+import { globalHistory } from '@reach/router'
 
 
 
@@ -30,10 +33,10 @@ const styles = {
     color: "#999",
     fontSize: ".8em",
     fontFamily: "Open Sans, sans-serif",
-    fontWeight: 'bolder',
-    textTransform: 'uppercase',
+    fontWeight: "bolder",
+    textTransform: "uppercase",
     letterSpacing: 2,
-    border: '0px solid tomato',
+    border: "0px solid tomato",
     marginTop: 15
   },
   cardTitle: {
@@ -92,6 +95,67 @@ const styles = {
   }
 };
 
+const Static = () => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          bigberkey: file(relativePath: { eq: "bbwf-logo.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+          water: file(relativePath: { eq: "water.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+        }
+      `}
+      render={data => {
+        // console.log(data.bigberkey.childImageSharp.fluid);
+        const images2d = [
+          [
+            data.bigberkey.childImageSharp.fluid,
+            data.bigberkey.childImageSharp.fluid
+          ],
+          [
+            data.water.childImageSharp.fluid
+          ]
+        ];
+        console.log(images2d)
+        console.log(globalHistory.location.pathname === '/products' )
+        console.log(images2d[getPath(globalHistory.location.pathname)][0])
+        function getPath (path) {
+          switch(path){
+            case '/products': return 0
+            case '/blog': return 1
+            case '/company': return 1
+
+            default: return 0
+          }
+        }
+
+        const img_0 = images2d[getPath(globalHistory.location.pathname)][0]
+
+        return (
+          <div>
+            <Img fluid={
+              // images2d[getPath()]
+              img_0
+            } />
+          </div>
+        );
+      }}
+    />
+  );
+};
+
 const Extra = props => {
   const { author, jobTitle, intro } = props;
   return (
@@ -122,6 +186,8 @@ const Card = props => {
         jobTitle={jobTitle}
         intro={intro}
       />
+
+      <Static />
 
       {/* <hr style={styles.hr} /> */}
       <img src={logo} alt="" width={"275"} />
@@ -160,7 +226,7 @@ const BlogList = props => {
           {/* <img src={icon} style={styles.icon} alt="" />  */}
 
           <Fade left cascade>
-            {`${headerTitle}`} 
+            {`${headerTitle}`}
           </Fade>
         </h1>
       </div>
@@ -185,7 +251,6 @@ const BlogList = props => {
               // avatar={items[index].avatar}
               // intro={items[index].intro}
 
-
               title={items[index].node.frontmatter.title}
               path={items[index].node.frontmatter.path}
               author={items[index].node.frontmatter.author}
@@ -195,8 +260,6 @@ const BlogList = props => {
               // readTime={items[index].node.frontmatter.readTime}
 
               // title={'tesla'}
-
-
             />
           </animated.div>
         );
