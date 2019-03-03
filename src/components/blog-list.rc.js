@@ -73,7 +73,7 @@ const styles = {
     // border: '1px solid green'
   },
   author: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: "Quicksand, sans-serif"
   },
   avatar: {
@@ -207,7 +207,7 @@ const Static = props => {
 };
 
 const Extra = props => {
-  const { author, jobTitle, intro } = props;
+  const { author, jobTitle, description } = props;
   return (
     <div>
       <p style={styles.author}>
@@ -215,13 +215,13 @@ const Extra = props => {
         <strong>{author}</strong>
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
-      <p style={styles.content}>{intro}</p>
+      <p style={styles.content}>{description}</p>
     </div>
   );
 };
 
 const Card = props => {
-  const { title, author, jobTitle, avatar, intro, logo, image, pad, itemCount, index } = props;
+  const { title, author, jobTitle, avatar, description, logo, image, pad, itemCount, index } = props;
 
   console.log('page item count:', itemCount)
 
@@ -237,7 +237,7 @@ const Card = props => {
         avatar={avatar}
         date={`Dec 25 2018`}
         jobTitle={jobTitle}
-        intro={intro}
+        description={description}
       />
 
       <Static index={index}/>
@@ -309,7 +309,7 @@ const BlogList = props => {
               path={items[index].node.frontmatter.path}
               author={items[index].node.frontmatter.author}
               // createdAt={items[index].node.frontmatter.createdAt}
-              // description={items[index].node.frontmatter.description}
+              description={items[index].node.frontmatter.description}
               avatar={items[index].node.frontmatter.avatar}
               // readTime={items[index].node.frontmatter.readTime}
               index={index}

@@ -1,10 +1,10 @@
 ---
 path: "/products/kangen-k8"
 title: "Kangen K8"
-author: "support@wallacewater.us"
+author: ""
 createdAt: "Jan 26 2019"
 updatedAt: "Jan 26 2019"
-description: "Where do we go from here?"
+description: "Upgrade Your Drinking Water"
 av: ""
 readTime: "2 min read"
 source: "/"

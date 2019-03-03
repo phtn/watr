@@ -1,10 +1,10 @@
 ---
 path: "/products/ion-faucet"
 title: "Ion Faucet"
-author: "support@wallacewater.us"
+author: ""
 createdAt: "Jan 26 2019"
 updatedAt: "Jan 26 2019"
-description: "Where do we go from here?"
+description: "Advanced Filtration Systems"
 av: ""
 readTime: "2 min read"
 source: "/"
