@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import { globalHistory } from '@reach/router'
-import { useGesture } from 'react-with-gesture'
+// import { useGesture } from 'react-with-gesture'
 import { animated } from 'react-spring'
 import Back from '../assets/left-arrow.svg'
 import Fade from 'react-reveal'
@@ -44,7 +44,7 @@ const styles = {
   },
 };
 
-let arrVel = []
+
 
 const Header = () => {
   // console.log(doc)
@@ -60,23 +60,14 @@ export default function Template({ data }) {
   const { markdownRemark: post } = data;
   const { title, author } = post.frontmatter;
 
-  const config = {
-    touch: true, // accept touch input
-    mouse: false, // accept mouse input
-    passive: { passive: true }, // event handler 3rd argument input, passive by default
-    onAction: undefined // event => eventHandler, respond to events outside Reacts render cycle
-  };
+  // const config = {
+  //   touch: true, // accept touch input
+  //   mouse: false, // accept mouse input
+  //   passive: { passive: true }, // event handler 3rd argument input, passive by default
+  //   onAction: undefined // event => eventHandler, respond to events outside Reacts render cycle
+  // };
 
-  // GESTURES
-  const [velocity, setVelocity] = useState(0)
-  const [distance, setDistance] = useState(0)
-  
-  const gesture = useGesture( e => {
-    setVelocity(e.velocity)
-    // setDistance(e.distance)
-    // e.velocity > 4 ? console.log(e.velocity) : ''
-    
-  })
+ 
   
   // arrVel.push(velocity);
   // const [max, setMax] = useState(0);
@@ -89,7 +80,7 @@ export default function Template({ data }) {
   // console.log(max)
   const handleMouseDown = () => console.log('test')
   return (
-    <animated.div {...gesture(config)} style={styles.container}>
+    <animated.div style={styles.container}>
       <Helmet>
         <link
           href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100"

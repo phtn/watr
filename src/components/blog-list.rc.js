@@ -3,13 +3,7 @@ import { useTrail, animated } from "react-spring";
 import Fade from "react-reveal/Fade";
 import { StaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
-import { globalHistory } from '@reach/router'
-
-
-
-
-
-
+import { globalHistory } from "@reach/router";
 
 const styles = {
   container: {
@@ -44,7 +38,7 @@ const styles = {
     fontSize: 24,
     lineHeight: "20px",
     paddingTop: 15,
-    color: '#333'
+    color: "#333"
   },
   hr: {
     backgroundColor: "#eee",
@@ -68,8 +62,8 @@ const styles = {
     fontSize: 18,
     textDecoration: "none",
     marginBottom: 25,
-    textTransform: 'uppercase',
-    textAlign: 'center'
+    textTransform: "uppercase",
+    textAlign: "center"
   },
   icon: {
     height: 15,
@@ -100,7 +94,7 @@ const styles = {
 };
 
 const Static = props => {
-  const { index } = props
+  const { index } = props;
   return (
     <StaticQuery
       query={graphql`
@@ -152,67 +146,69 @@ const Static = props => {
               }
             }
           }
-
-          
         }
       `}
       render={data => {
         // console.log(data.bigberkey.childImageSharp.fluid);
         const images2d = [
-
-          [ //products
+          [
+            //products
             data.bigberkey.childImageSharp.fluid,
             data.kangen.childImageSharp.fluid,
             data.rainsoft.childImageSharp.fluid,
             data.ionfaucet.childImageSharp.fluid
           ],
 
-          [ // blogs
+          [
+            // blogs
             data.blog.childImageSharp.fluid,
             data.blog.childImageSharp.fluid,
-            data.blog.childImageSharp.fluid  
+            data.blog.childImageSharp.fluid
           ],
 
-          [ // company
+          [
+            // company
             data.water.childImageSharp.fluid,
             data.water.childImageSharp.fluid,
-            data.ionfaucet.childImageSharp.fluid  
+            data.ionfaucet.childImageSharp.fluid
           ]
-
         ];
         // console.log(images2d)
         // console.log(globalHistory.location.pathname === '/products' )
-        console.log(images2d[getPath(globalHistory.location.pathname)])
+        // console.log(images2d[getPath(globalHistory.location.pathname)]);
 
-        function dispatchImage(index){
+        function dispatchImage(index) {
           return (
             <div>
-              <Img fluid={
-                images2d[getPath(globalHistory.location.pathname)][index]
-              } />
+              <Img
+                fluid={
+                  images2d[getPath(globalHistory.location.pathname)][index]
+                }
+              />
             </div>
-          )
+          );
         }
 
-        console.log(index)
-        function getPath (path) {
-          switch(path){
+        // console.log(index)
+        function getPath(path) {
+          switch (path) {
+            case "/products":
+              return 0;
+            case "/blog":
+              return 1;
+            case "/company":
+              return 2;
 
-            case '/products': return 0
-            case '/blog': return 1
-            case '/company': return 2
-
-            default: return 0
+            default:
+              return 0;
           }
         }
 
-        const img_0 = images2d[getPath(globalHistory.location.pathname)][1]
+      
 
-        return (
-          <div>
-            {dispatchImage(index)}
-          </div>
-        );
+        // const img_0 = images2d[getPath(globalHistory.location.pathname)][1]
+
+        return <div>{dispatchImage(index)}</div>;
       }}
     />
   );
@@ -228,15 +224,25 @@ const Extra = props => {
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
       <p style={styles.content}>{description}</p>
-      
     </div>
   );
 };
 
 const Card = props => {
-  const { title, author, jobTitle, avatar, description, pad, itemCount, index, path, buttonTitle } = props;
+  const {
+    title,
+    author,
+    jobTitle,
+    avatar,
+    description,
+    pad,
+    itemCount,
+    index,
+    path,
+    // buttonTitle
+  } = props;
 
-  console.log('page item count:', itemCount)
+  console.log(itemCount === 1 ? "1 = page item count" : "= page item count");
 
   return (
     <div
@@ -253,13 +259,15 @@ const Card = props => {
         description={description}
       />
 
-      <Static index={index}/>
+      <Static index={index} />
 
       {/* <hr style={styles.hr} /> */}
       {/* <img src={logo} alt="" width={"275"} /> */}
       {/* <img src={image} alt="" width={"275"} /> */}
       <Link style={styles.btn} to={path}>
-        { globalHistory.location.pathname.substr(1, 100) === 'products' ? 'view products' : 'read more'}
+        {globalHistory.location.pathname.substr(1, 100) === "products"
+          ? "view products"
+          : "read more"}
       </Link>
     </div>
   );
@@ -267,10 +275,11 @@ const Card = props => {
 
 const config = { mass: 5, tension: 2000, friction: 200 };
 
+// MAIN COMPONENT
 const BlogList = props => {
   const { items, pad, headerTitle, itemCount } = props;
 
-  console.log('total items:', itemCount)
+  console.log("total items:", itemCount);
 
   // ⚠️ TRAIL
   const trail = useTrail(items.length, {

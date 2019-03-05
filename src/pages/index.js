@@ -272,7 +272,7 @@ const Slider = props => {
                   width: 15
                 }}
               >
-                {item}
+                {/* {item} */}
               </div>
               <div
                 style={{

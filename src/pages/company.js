@@ -42,8 +42,8 @@ const Company = ({data, pad}) => {
   const arr = [...post.edges]
 
   const newArr = arr.filter(item => item.node.frontmatter.tag === "COMPANY");
-  console.log("newArr", newArr)
-  console.log("oldArr", post.edges)
+  // console.log("newArr", newArr)
+  // console.log("oldArr", post.edges)
 
   
   return (
@@ -54,6 +54,7 @@ const Company = ({data, pad}) => {
     <Layout title="Company">
       <AboutList
         items={newArr}
+        itemCount={post.totalCount}
         headerTitle={`Meet our Team`}
         pad={pad}
         icon={TeamFilter}
@@ -65,6 +66,11 @@ const Company = ({data, pad}) => {
 export default Company;
 
 // NOT IN ORDER
+
+// the quick brown fox
+
+// the wquick brown fox jumped over the lazy river
+
 export const getPeeps = graphql`
   query Peeps {
     allMarkdownRemark(

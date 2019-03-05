@@ -14,7 +14,7 @@ const Blog = ({ data, pad }) => {
   const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === "BLOG");
 
-  console.log("newArr", newArr)
+  // console.log("newArr", newArr)
   // console.log("oldArr", post.edges)
 
   return (
@@ -29,7 +29,7 @@ const Blog = ({ data, pad }) => {
         <BlogList
           items={newArr}
           headerTitle={`Blogs`}
-          title={""}
+          title={"Blog"}
           buttonTitle={`Read More`}
           pad={pad}
           icon={Pitcher}
@@ -44,7 +44,6 @@ export default Blog;
 export const getBlogs = graphql`
   query BlogPosts {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___id], order: DESC }
       limit: 5
     ) {
       totalCount
