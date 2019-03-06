@@ -264,16 +264,7 @@ const Slider = props => {
                 marginRight: 20
               }}
             >
-              <div
-                style={{
-                  height: 15,
-                  borderRadius: 15,
-                  backgroundColor: "#eee",
-                  width: 15
-                }}
-              >
-                {/* {item} */}
-              </div>
+              
               <div
                 style={{
                   border: "0px solid tomato",

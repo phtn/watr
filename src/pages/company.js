@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
-import AboutList from "../components/blog-list.rc";
+import AboutList from "../components/company-list.rc";
 import TeamFilter from "../assets/team-filter.svg";
 // import Blonde from '../assets/blonde.svg'
 // import Hipster from '../assets/hipster.svg'
