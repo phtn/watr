@@ -1,11 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
-import { globalHistory } from '@reach/router'
+import { globalHistory } from "@reach/router";
 // import { useGesture } from 'react-with-gesture'
-import { animated } from 'react-spring'
-import Back from '../assets/left-arrow.svg'
-import Fade from 'react-reveal'
+import { animated } from "react-spring";
+import Back from "../assets/left-arrow.svg";
+import Fade from "react-reveal";
 
 const styles = {
   container: {
@@ -42,9 +42,12 @@ const styles = {
     fontFamily: "serif",
     marginRight: 10
   },
+  backBtn: {
+    background: 'transparent',
+    border: 'none'
+
+  }
 };
-
-
 
 const Header = () => {
   // console.log(doc)
@@ -67,18 +70,15 @@ export default function Template({ data }) {
   //   onAction: undefined // event => eventHandler, respond to events outside Reacts render cycle
   // };
 
- 
-  
   // arrVel.push(velocity);
   // const [max, setMax] = useState(0);
   // useEffect(() => setMax(Math.max(...arrVel)), [max]);
 
   // console.log(globalHistory.navigate(-1))
 
-
   // console.log(typeof post)
   // console.log(max)
-  const handleMouseDown = () => console.log('test')
+  const handleMouseDown = () => console.log("test");
   return (
     <animated.div style={styles.container}>
       <Helmet>
@@ -92,16 +92,13 @@ export default function Template({ data }) {
       <p style={styles.author}>
         {/* <span style={styles.by}>by</span> */}
         {author}
-    
       </p>
 
-
-       <button onClick={()=> globalHistory.navigate('/products')}>
+      <button style={styles.backBtn} onClick={() => globalHistory.navigate("/products")}>
         <Fade right>
-          <img src={Back} alt='' height={20}/>
+          <img src={Back} alt="" height={20} />
         </Fade>
-       </button>
-
+      </button>
 
       <div
         onMouseDown={handleMouseDown}

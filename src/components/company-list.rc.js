@@ -4,10 +4,11 @@ import Fade from "react-reveal/Fade";
 import { StaticQuery, graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 import { globalHistory } from "@reach/router";
+import KylePlaceholder from '../assets/man.svg'
 
 const styles = {
   container: {
-    backgroundColor: "green",
+    // backgroundColor: "green",
     // borderRadius: "1600px",
     // boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
     color: "rgba(14,30,37,.54)",
@@ -36,8 +37,8 @@ const styles = {
   cardTitle: {
     fontFamily: "Rajdhani, sans-serif",
     fontSize: 24,
-    lineHeight: "20px",
-    paddingTop: 15,
+    // lineHeight: "20px",
+    // paddingTop: 15,
     color: "#333"
   },
   hr: {
@@ -92,24 +93,26 @@ const styles = {
     textAlign: "justify"
   }, 
   avatarContainer: {
-    border: '1px solid red',
-    height: 220,
+    // border: '1px solid red',
+    height: 200,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
   },
   avatarFrame: {
-    border: '1px solid blue',
+    // border: '1px solid blue',
     width: 200,
     height: 200,
     borderRadius: 200,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundImage: `url(${KylePlaceholder})`,
+    backgroundPosition: 'center'
   },
-  position: {
+  companyTitle: {
     textTransform: 'uppercase',
-    letterSpacing: '2',
+    letterSpacing: 2,
     fontFamily: 'Roboto, sans-serif',
     fontSize: 12
   }
@@ -240,12 +243,12 @@ const Static = props => {
 // ⚠️ EXTRA ⚠️
 
 const Extra = props => {
-  const { author, jobTitle, description } = props;
+  const { jobTitle, description } = props;
   return (
     <div>
       <p style={styles.author}>
         {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
-        <strong>{author}</strong>
+        {/* <strong>{author}</strong> */}
       </p>
       <p style={styles.jobTitle}>{jobTitle}</p>
       <p style={styles.content}>{description}</p>
@@ -285,6 +288,7 @@ const Card = props => {
 
       {/* 🔻🔻🔻🔻🔻 */}
 
+
       <div style={styles.avatarContainer}>
         <div style={styles.avatarFrame}>
           {author}
@@ -293,15 +297,24 @@ const Card = props => {
       </div>
 
       {/* ⚠️ AUTHOR ⚠️ */}
-      <div style={{textAlign: 'center', border: '1px solid papayawhip'}}>
+      <div style={{textAlign: 'center', border: '0px solid papayawhip'}}>
       <p style={styles.author}>
             {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
-            <strong>{author}</strong> - <span style={styles.position}>Chief Liberator</span>
+            <strong>{author}</strong> - <span style={styles.companyTitle}>Chief Liberator</span>
           </p>
       </div>
 
       
-      <h3 style={Object.assign({}, styles.cardTitle)}>{title}</h3>
+      {/* ⚠️ AUTHOR ⚠️ */}
+      <div style={{border: '0px solid red', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <h3 style={Object.assign({}, styles.cardTitle)}>{title}</h3>
+      </div>
+
+
+      {/* 🔺🔺🔺🔺🔺 */}
+
+
+
       <Extra
         author={author}
         avatar={avatar}
