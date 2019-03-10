@@ -74,7 +74,7 @@ export default Company;
 export const getPeeps = graphql`
   query Peeps {
     allMarkdownRemark(
-      
+      sort: { fields: [frontmatter___id]}
       limit: 10
     ) {
       totalCount
@@ -85,6 +85,7 @@ export const getPeeps = graphql`
             title
             path
             author
+            rank
             createdAt
             description
             readTime

@@ -28,6 +28,7 @@ const Blog = ({ data, pad }) => {
       <Layout title="Blog">
         <BlogList
           items={newArr}
+          itemCount={post.totalCount}
           headerTitle={`Blogs`}
           title={"Blog"}
           buttonTitle={`Read More`}

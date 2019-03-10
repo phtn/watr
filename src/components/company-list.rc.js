@@ -267,6 +267,7 @@ const Card = props => {
   const {
     title,
     author,
+    rank,
     jobTitle,
     avatar,
     description,
@@ -277,7 +278,7 @@ const Card = props => {
     // buttonTitle
   } = props;
 
-  console.log(itemCount === 1 ? "1 = page item count" : "= page item count");
+  console.log(itemCount === 1 ? `1 item on this page: ${globalHistory.location.pathname}` : ` items found on this page: ${globalHistory.location.pathname}`);
 
   return (
     <div
@@ -288,20 +289,26 @@ const Card = props => {
 
       {/* 🔻🔻🔻🔻🔻 */}
 
-
+      {/* 🐯🐯🐯 AVATAR 🥶🥶🥶 🐮🐮🐮 */}
       <div style={styles.avatarContainer}>
         <div style={styles.avatarFrame}>
           {author}
         </div>
-        
       </div>
 
       {/* ⚠️ AUTHOR ⚠️ */}
+      <div style={{textAlign: 'center', border: '0px solid tomato'}}>
+        <p style={styles.author}>
+          {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
+          <strong>{author}</strong>
+        </p>
+      </div>
+
       <div style={{textAlign: 'center', border: '0px solid papayawhip'}}>
-      <p style={styles.author}>
-            {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
-            <strong>{author}</strong> - <span style={styles.companyTitle}>Chief Liberator</span>
-          </p>
+        <p style={styles.author}>
+          {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
+          <span style={styles.companyTitle}>{rank}</span>
+        </p>
       </div>
 
       
@@ -323,16 +330,19 @@ const Card = props => {
         description={description}
       />
 
-      <Static index={index} />
+      {/* <Static index={index} /> */}
 
       {/* <hr style={styles.hr} /> */}
       {/* <img src={logo} alt="" width={"275"} /> */}
       {/* <img src={image} alt="" width={"275"} /> */}
-      <Link style={styles.btn} to={path}>
+      {/* <Link style={styles.btn} to={path}>
         {globalHistory.location.pathname.substr(1, 100) === "products"
           ? "view products"
           : "read more"}
-      </Link>
+      </Link> */}
+      <div style={{height: 100, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <span style={{letterSpacing: 5, color: '#fff'}}>&middot; &middot; &middot;</span>
+      </div>
     </div>
   );
 };
@@ -341,9 +351,9 @@ const config = { mass: 5, tension: 2000, friction: 200 };
 
 // ⚠️⚠️ MAIN COMPONENT ⚠️⚠️
 const BlogList = props => {
-  const { items, pad, headerTitle, itemCount } = props;
+  const { items, pad, headerTitle} = props;
 
-  console.log("total items:", itemCount);
+  // console.log(itemCount, 'items total');
 
   // ⚠️ TRAIL DEFINITIONS ⚠️
   const trail = useTrail(items.length, {
@@ -397,10 +407,13 @@ const BlogList = props => {
               title={items[index].node.frontmatter.title}
               path={items[index].node.frontmatter.path}
               author={items[index].node.frontmatter.author}
+              rank={items[index].node.frontmatter.rank}
               // createdAt={items[index].node.frontmatter.createdAt}
               description={items[index].node.frontmatter.description}
               avatar={items[index].node.frontmatter.avatar}
               // readTime={items[index].node.frontmatter.readTime}
+
+
               index={index}
               // title={'tesla'}
             />

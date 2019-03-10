@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/layout";
 // import ClearWater from "../assets/clear-water.mp4";
 import Helmet from "react-helmet";
 import Newsletter from "../components/newsletter";
 
 import Fade from "react-reveal/Fade";
-import Slide from "react-reveal/Slide";
+// import Slide from "react-reveal/Slide";
 import NatEnv from "../assets/natenv.jpg";
 
 // import { FixedSizeList as List } from "react-window";
@@ -16,9 +16,8 @@ import Drop from "../components/drop";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 
-import { useInterval } from '../hooks/useInterval'
-import '../animate.css'
-
+import { useInterval } from "../hooks/useInterval";
+import "../animate.css";
 
 const styles = {
   container: {
@@ -49,8 +48,10 @@ const styles = {
   }
 };
 
-
-const Hero = () => {
+const Hero = props => {
+  const { count } = props;
+  const imgRef = useRef();
+  // console.log(imgRef.current)
   return (
     <StaticQuery
       query={graphql`
@@ -62,12 +63,24 @@ const Hero = () => {
               }
             }
           }
+
+          lake: file(relativePath: { eq: "lake.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
         }
       `}
       render={data => {
+        const images = [
+          data.emptyBottle.childImageSharp.fluid,
+          data.lake.childImageSharp.fluid
+        ];
         return (
-          <div width={400}>
-            <Img width={450} fluid={data.emptyBottle.childImageSharp.fluid} />
+          <div width={400} height={300} style={{ overflow: "hidden" }}>
+            <Img ref={imgRef} fluid={images[count]} />
           </div>
         );
       }}
@@ -86,10 +99,10 @@ const Essential = props => {
             fontWeight: "bolder"
           }}
         >
-          Clean Drinking Water is essential to your Health.
+          Clean Water is Essential to our Health.
         </h1>
         <p style={{ fontFamily: "Open Sans, sans-serif", color: "#444" }}>
-          <i>and here are the reasons why:</i>
+          <i>{`Read these qoutes and guess who's it from`}</i>
         </p>
       </Fade>
     </div>
@@ -97,84 +110,73 @@ const Essential = props => {
 };
 
 const Reclaim = () => {
-  
-  const slogans = ["What's in your bottle?", "Wallace Water", "Be the Difference", "Advanced Body Health", "Optimum Hydration" , "Maximum Energy Storage", "Clear Mind" , "All Natural Boost" , "Reclaim your Freedom", "Today!", "Let me ask you a question.."]
-
-
+  const slogans = ["bottle", "lake"];
 
   let [count, setCount] = useState(0);
 
   function runSlogans(items) {
-    count < slogans.length - 1 ? setCount(count + 1) : setCount(0)
+    count < items.length - 1 ? setCount(count + 1) : setCount(0);
   }
 
-  function HeroLabel(id) {
-    return (
-      <span className='animated fadeInUp'>
-        {`${slogans[count]}`}
-      </span>
-    ) 
-  }  
+  function HeroLabel() {
+    return <span className="animated fadeInUp">{`${slogans[count]}`}</span>;
+  }
 
   useInterval(() => {
     // Your custom logic here
-    runSlogans(slogans)
-  }, 5000);
+    runSlogans(slogans);
+  }, 8000);
 
   return (
     <div
       style={{ border: "0px solid #red", width: "100%", textAlign: "center" }}
     >
-      <Hero />
+      <Hero count={count} />
       {/* <Slide up cascade> */}
-        <div
+      <div
+        style={{
+          border: "0px solid tomato",
+          color: "#eee",
+          fontSize: "35px",
+          position: "absolute",
+          top: 125,
+          zIndex: 1,
+          height: "250px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%"
+        }}
+      >
+        <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
+          <HeroLabel />
+        </h3>
+      </div>
+      <div
+        style={{
+          backgroundColor: "#eee",
+          height: "100px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <h1
           style={{
-            border: "0px solid tomato",
-            color: "#eee",
-            fontSize: "35px",
-            position: "absolute",
-            top: 125,
-            zIndex: 1,
-            height: "250px",
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '100%'
+            fontSize: 24,
+            color: "dark #003366",
+            padding: "10px 20px",
+            backgroundColor: "#fff",
+            borderRadius: 5,
+            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)"
           }}
         >
-
-          
-          <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
-            <HeroLabel/>
-          </h3>
-        
-          
-        </div>
-        <div
-          style={{
-            backgroundColor: "#eee",
-            height: "100px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-          }}
-        >
-          <h1
-            style={{
-              fontSize: 24,
-              color: "dark #003366",
-              padding: "10px 20px",
-              backgroundColor: "#fff",
-              borderRadius: 5,
-              boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)"
-            }}
-          >
-            #ReclaimYourFreedomToday
-          </h1>
-        </div>
+          #ReclaimYourFreedomToday
+        </h1>
+      </div>
       {/* </Slide> */}
 
-      <Slide left>
+      {/* <Slide left>
         <p
           style={{
             padding: "10px 20px",
@@ -197,7 +199,7 @@ const Reclaim = () => {
             RYFT10
           </span>{" "}
         </p>
-      </Slide>
+      </Slide> */}
     </div>
   );
 };
@@ -212,7 +214,7 @@ const Slider = props => {
   const items = [1, 2, 3, 4];
 
   return (
-    <div style={{ border: "0px solid blue", overflow: "auto", height: 300 }}>
+    <div style={{ border: "0px solid blue", overflow: "auto", height: 340 }}>
       {/* <Reasons width={width} /> */}
 
       <div // SLIDER CONTAINER 1 👽
@@ -221,35 +223,10 @@ const Slider = props => {
           width: 1600,
           float: "left",
           display: "flex",
-          height: 260,
+          height: 300,
           padding: 20
         }}
       >
-        {/* CARD  */}
-        {/* <div
-          className="card"
-          style={{
-            width: 280,
-            border: "0px solid tomato",
-            borderRadius: 5,
-            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-            backgroundColor: "#fff",
-            padding: 10
-          }}
-        >
-          <div
-            style={{
-              height: 15,
-              borderRadius: 15,
-              backgroundColor: "#eee",
-              width: 15
-            }}
-          />
-          <span style={{float: 'right'}}>X: {'.'}</span>
-        </div> */}
-
-        {/* CARD  */}
-
         {items.map((item, index) => {
           return (
             <div
@@ -264,7 +241,6 @@ const Slider = props => {
                 marginRight: 20
               }}
             >
-              
               <div
                 style={{
                   border: "0px solid tomato",
@@ -272,10 +248,34 @@ const Slider = props => {
                   borderRadius: "2px",
                   backgroundColor: "#ccc",
                   backgroundImage: `url(${NatEnv})`,
-                  backgroundPosition: 'center'
+                  backgroundPosition: "center"
                 }}
               >
                 {/*  */}
+              </div>
+
+              <div
+                style={{
+                  // border: "1px solid tomato",
+                  height: 90,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <button
+                  style={{
+                    backgroundColor: "gray",
+                    padding: "10px 50px",
+                    border: "0px solid tomato",
+                    borderRadius: 5,
+                    color: '#fff',
+                    textTransform: 'uppercase',
+                    letterSpacing: 2
+                  }}
+                >
+                  reveal
+                </button>
               </div>
             </div>
           );

@@ -242,7 +242,7 @@ const Card = props => {
     // buttonTitle
   } = props;
 
-  console.log(itemCount === 1 ? "1 = page item count" : "= page item count");
+  console.log(itemCount === 1 ? `1 item on this page: ${globalHistory.location.pathname}` : ` items found on this page: ${globalHistory.location.pathname}`);
 
   return (
     <div
