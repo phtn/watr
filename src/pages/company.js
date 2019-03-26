@@ -67,10 +67,6 @@ export default Company;
 
 // NOT IN ORDER
 
-// the quick brown fox
-
-// the wquick brown fox jumped over the lazy river
-
 export const getPeeps = graphql`
   query Peeps {
     allMarkdownRemark(

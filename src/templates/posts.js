@@ -17,7 +17,9 @@ const styles = {
   },
   blogTitle: {
     fontFamily: "Quicksand, sans-serif",
-    color: "#555"
+    color: "#555",
+    fontSize: 24,
+    fontWeight: "bolder"
   },
   headerContainer: {
     textAlign: "center"
@@ -35,7 +37,8 @@ const styles = {
     // textAlign: "justify",
     fontSize: "1.2em",
     lineHeight: "28px",
-    fontFamily: "Open Sans, sans-serif"
+    fontFamily: "Open Sans, sans-serif",
+    marginBottom: 100
   },
   by: {
     fontSize: 12,
@@ -46,6 +49,9 @@ const styles = {
     background: 'transparent',
     border: 'none'
 
+  },
+  titles: {
+    fontSize: 12
   }
 };
 
@@ -91,20 +97,21 @@ export default function Template({ data }) {
       <h1 style={styles.blogTitle}>{title}</h1>
       <p style={styles.author}>
         {/* <span style={styles.by}>by</span> */}
-        {author}
+        by: {author}
       </p>
 
-      <button style={styles.backBtn} onClick={() => globalHistory.navigate("/products")}>
+      <button style={styles.backBtn} onClick={() => globalHistory.navigate('/')}>
         <Fade right>
           <img src={Back} alt="" height={20} />
         </Fade>
       </button>
 
       <div
+        
         onMouseDown={handleMouseDown}
         onDragCapture={handleMouseDown}
         style={styles.content}
-        dangerouslySetInnerHTML={{ __html: post.html }}
+        dangerouslySetInnerHTML={{ __html: `${post.html}`  }}
       />
     </animated.div>
   );

@@ -1,14 +1,14 @@
 ---
-path: "/new-era-of-human-life"
-title: "Blog 01"
+path: "/blog/new-era-of-human-life"
+title: "Solutions for your Water"
 author: "support@wallacewater.us"
 createdAt: "Jan 26 2019"
 updatedAt: "Jan 26 2019"
-description: "Where do we go from here?"
+description: "description"
 av: ""
 readTime: "2 min read"
 source: "/"
-id: 21
+id: 22
 tag: 'BLOG'
 ---
 

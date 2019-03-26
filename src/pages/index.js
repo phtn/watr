@@ -1,20 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout";
-// import ClearWater from "../assets/clear-water.mp4";
 import Helmet from "react-helmet";
 import Newsletter from "../components/newsletter";
 
 import Fade from "react-reveal/Fade";
-// import Slide from "react-reveal/Slide";
-import NatEnv from "../assets/natenv.jpg";
+import QuotesMachine from "../components/quotes";
 
-// import { FixedSizeList as List } from "react-window";
-// import FunnelImage from "../assets/filter-sword.svg";
-// import DropImage from "../assets/drop.svg";
+import AnimatedHero from "../components/animated-hero";
 import Drop from "../components/drop";
 
 import { StaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+// import Img from "gatsby-image";
 
 import { useInterval } from "../hooks/useInterval";
 import "../animate.css";
@@ -49,9 +45,8 @@ const styles = {
 };
 
 const Hero = props => {
-  const { count } = props;
-  const imgRef = useRef();
-  // console.log(imgRef.current)
+  const { width } = props;
+  
   return (
     <StaticQuery
       query={graphql`
@@ -74,13 +69,19 @@ const Hero = props => {
         }
       `}
       render={data => {
-        const images = [
-          data.emptyBottle.childImageSharp.fluid,
-          data.lake.childImageSharp.fluid
-        ];
+        // const images = [
+        //   data.emptyBottle.childImageSharp.fluid,
+        //   data.lake.childImageSharp.fluid
+        // ];
         return (
-          <div width={400} height={300} style={{ overflow: "hidden" }}>
-            <Img ref={imgRef} fluid={images[count]} />
+          <div style={{ overflow: "hidden", height: 500 }}>
+            {/* <Img ref={imgRef} fluid={images[count]} /> */}
+
+            {/* 🚥🚥🚥🚥🚥 */}
+
+            <AnimatedHero width={width} />
+
+            {/* 🚥🚥🚥🚥🚥 */}
           </div>
         );
       }}
@@ -88,10 +89,10 @@ const Hero = props => {
   );
 };
 
-const Essential = props => {
+const Essential = () => {
   return (
     <div style={{ textAlign: "center", padding: 15 }}>
-      <Fade top>
+      <Fade bottom>
         <h1
           style={{
             fontSize: 24,
@@ -102,14 +103,15 @@ const Essential = props => {
           Clean Water is Essential to our Health.
         </h1>
         <p style={{ fontFamily: "Open Sans, sans-serif", color: "#444" }}>
-          <i>{`Read these qoutes and guess who's it from`}</i>
+          <i>{`Read qoutes below and guess who wrote them.`}</i>
         </p>
       </Fade>
     </div>
   );
 };
 
-const Reclaim = () => {
+const Reclaim = props => {
+  const { width } = props;
   const slogans = ["bottle", "lake"];
 
   let [count, setCount] = useState(0);
@@ -131,7 +133,7 @@ const Reclaim = () => {
     <div
       style={{ border: "0px solid #red", width: "100%", textAlign: "center" }}
     >
-      <Hero count={count} />
+      <Hero count={count} width={width} />
       {/* <Slide up cascade> */}
       <div
         style={{
@@ -174,32 +176,7 @@ const Reclaim = () => {
           #ReclaimYourFreedomToday
         </h1>
       </div>
-      {/* </Slide> */}
-
-      {/* <Slide left>
-        <p
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "tomato",
-            borderRadius: "0px 20px 20px 0px",
-            width: "200px",
-            fontFamily: "Open Sans, sans-serif",
-            color: "#fff"
-          }}
-        >
-          code:{" "}
-          <span
-            style={{
-              letterSpacing: 1,
-              fontWeight: "bolder",
-              color: "#003366",
-              marginLeft: 15
-            }}
-          >
-            RYFT10
-          </span>{" "}
-        </p>
-      </Slide> */}
+      
     </div>
   );
 };
@@ -210,83 +187,10 @@ const Bridge = props => {
   return <div style={styles.bridge}>{props.component}</div>;
 };
 
-const Slider = props => {
-  const items = [1, 2, 3, 4];
 
-  return (
-    <div style={{ border: "0px solid blue", overflow: "auto", height: 340 }}>
-      {/* <Reasons width={width} /> */}
-
-      <div // SLIDER CONTAINER 1 👽
-        style={{
-          // border: "2px solid tomato",
-          width: 1600,
-          float: "left",
-          display: "flex",
-          height: 300,
-          padding: 20
-        }}
-      >
-        {items.map((item, index) => {
-          return (
-            <div
-              key={index}
-              style={{
-                width: 280,
-                border: "0px solid tomato",
-                borderRadius: 5,
-                boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-                backgroundColor: "#fff",
-                padding: 10,
-                marginRight: 20
-              }}
-            >
-              <div
-                style={{
-                  border: "0px solid tomato",
-                  height: "200px",
-                  borderRadius: "2px",
-                  backgroundColor: "#ccc",
-                  backgroundImage: `url(${NatEnv})`,
-                  backgroundPosition: "center"
-                }}
-              >
-                {/*  */}
-              </div>
-
-              <div
-                style={{
-                  // border: "1px solid tomato",
-                  height: 90,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}
-              >
-                <button
-                  style={{
-                    backgroundColor: "gray",
-                    padding: "10px 50px",
-                    border: "0px solid tomato",
-                    borderRadius: 5,
-                    color: '#fff',
-                    textTransform: 'uppercase',
-                    letterSpacing: 2
-                  }}
-                >
-                  reveal
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
 
 // 🏆 🏆 🏆
-export default function Index() {
+const Index = props => {
   return (
     <>
       <Helmet>
@@ -302,10 +206,11 @@ export default function Index() {
         <Bridge component={<Reclaim />} />
         <Bridge component={<Essential />} />
 
-        <Slider />
+        <QuotesMachine />
         <Bridge component={<Drop />} />
         <Bridge component={<Newsletter />} />
       </Layout>
     </>
   );
-}
+};
+export default Index;

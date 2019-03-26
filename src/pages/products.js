@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 
 const Products = ({ data, pad }) => {
   const { allMarkdownRemark: post } = data;
-  
+  console.log(pad)
   
   const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === 'PRODUCT')
@@ -45,7 +45,7 @@ export const getProducts = graphql`
   query ProductsList {
     allMarkdownRemark(
       sort: { fields: [frontmatter___id]}
-      limit: 5
+      limit: 100
     ) {
       totalCount
       edges {

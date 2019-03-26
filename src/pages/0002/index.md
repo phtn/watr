@@ -1,6 +1,6 @@
 ---
-path: "/second-post"
-title: "What is a Blog?"
+path: "/testing-your-water"
+title: "Testing Your Water"
 author: " Ogi Djuraskovic and FirstSiteGuide team"
 createdAt: "April 8th, 2018"
 updatedAt: "December 7th, 2018"
@@ -8,7 +8,7 @@ description: "The Definition of Blog, Blogging, and Blogger"
 av: ""
 readTime: "2 min read"
 source: "https://firstsiteguide.com/what-is-blog/"
-id: 22
+id: 21
 tag: "BLOG"
 ---
 

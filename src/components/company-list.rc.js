@@ -1,8 +1,8 @@
 import React from "react";
 import { useTrail, animated } from "react-spring";
 import Fade from "react-reveal/Fade";
-import { StaticQuery, graphql, Link } from "gatsby";
-import Img from "gatsby-image";
+// import { StaticQuery, graphql } from "gatsby";
+// import Img from "gatsby-image";
 import { globalHistory } from "@reach/router";
 import KylePlaceholder from '../assets/man.svg'
 
@@ -118,126 +118,6 @@ const styles = {
   }
 };
 
-const Static = props => {
-  const { index } = props;
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          bigberkey: file(relativePath: { eq: "bbwf-logo.png" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-
-          kangen: file(relativePath: { eq: "k8.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-
-          rainsoft: file(relativePath: { eq: "ec5.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-
-          ionfaucet: file(relativePath: { eq: "ionfaucet-logo.png" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-
-          blog: file(relativePath: { eq: "dawn.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-
-          water: file(relativePath: { eq: "water.png" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-        }
-      `}
-      render={data => {
-        // console.log(data.bigberkey.childImageSharp.fluid);
-        const images2d = [
-          [
-            //products
-            data.bigberkey.childImageSharp.fluid,
-            data.kangen.childImageSharp.fluid,
-            data.rainsoft.childImageSharp.fluid,
-            data.ionfaucet.childImageSharp.fluid
-          ],
-
-          [
-            // blogs
-            data.blog.childImageSharp.fluid,
-            data.blog.childImageSharp.fluid,
-            data.blog.childImageSharp.fluid
-          ],
-
-          [
-            // company
-            data.water.childImageSharp.fluid,
-            data.water.childImageSharp.fluid,
-            data.ionfaucet.childImageSharp.fluid
-          ]
-        ];
-        // console.log(images2d)
-        // console.log(globalHistory.location.pathname === '/products' )
-        // console.log(images2d[getPath(globalHistory.location.pathname)]);
-
-        function dispatchImage(index) {
-          return (
-            <div>
-              <Img
-                fluid={
-                  images2d[getPath(globalHistory.location.pathname)][index]
-                }
-              />
-            </div>
-          );
-        }
-
-        // console.log(index)
-        function getPath(path) {
-          switch (path) {
-            case "/products":
-              return 0;
-            case "/blog":
-              return 1;
-            case "/company":
-              return 2;
-
-            default:
-              return 0;
-          }
-        }
-
-      
-
-        // const img_0 = images2d[getPath(globalHistory.location.pathname)][1]
-
-        return <div>{dispatchImage(index)}</div>;
-      }}
-    />
-  );
-};
 
 
 // ⚠️ EXTRA ⚠️
@@ -273,8 +153,8 @@ const Card = props => {
     description,
     pad,
     itemCount,
-    index,
-    path,
+    // index,
+    // path,
     // buttonTitle
   } = props;
 

@@ -45,7 +45,8 @@ export default Blog;
 export const getBlogs = graphql`
   query BlogPosts {
     allMarkdownRemark(
-      limit: 5
+      sort: { fields: [frontmatter___id]}
+      limit: 100
     ) {
       totalCount
       edges {
