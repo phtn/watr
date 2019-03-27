@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import { useSpring, animated as a } from "react-spring";
 import { FixedSizeList as List } from "react-window";
+import LeftQuote from "../assets/left-quote.svg";
+import WilliamWallace from "../assets/ww.jpg";
+import Lincoln from '../assets/lincoln.jpg'
+import JFK from '../assets/jfk.jpeg'
+
+
 
 const quotes = [
   "Freedom!!!",
-  "Today is not yesterday",
+  "Most folks are as happy as they make their minds to be.",
   "We chose to go to the moon not because it is easy but because it is hard.",
-  "I shall return."
+  // "I shall return."
 ];
 const authors = [
-  "William Wallace",
-  "Abraham Lincoln",
-  "JFK",
-  "Gen McArthur"
+  { name: "William Wallace", image: WilliamWallace },
+  { name: "Abraham Lincoln", image: Lincoln },
+  { name: "JFK", image: JFK },
+  { name: "Mc", image: WilliamWallace }
 ];
 
 const Card = ({ index }) => {
@@ -33,9 +39,9 @@ const Card = ({ index }) => {
           boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
           // border: '1px solid gray',
           height: 240,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          // display: "flex",
+          // alignItems: "center",
+          // justifyContent: "center",
           width: 260,
           opacity: opacity.interpolate(o => 1 - o),
           transform,
@@ -45,12 +51,53 @@ const Card = ({ index }) => {
       >
         <div
           style={{
-            border: "1px solid gray",
+            // border: "1px solid gray",
             padding: 20,
-            textAlign: "center"
+            textAlign: "left"
+            // height: 20
           }}
         >
-          {quotes[index]}
+          <img src={LeftQuote} height={20} alt="" />
+        </div>
+
+        <div
+          style={{
+            // border: "1px solid gray",
+            padding: 20,
+            textAlign: "center",
+            height: 80,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <h1
+            style={{
+              fontFamily: "Open Sans, sans-serif",
+              fontWeight: 100,
+              fontSize: 22,
+              color: "rgba(0,51,102,1)"
+            }}
+          >
+            {quotes[index]}
+          </h1>
+        </div>
+
+        <div
+          style={{
+            // border: "1px solid gray",
+            padding: 20,
+            textAlign: "right"
+          }}
+        >
+          <img
+            src={LeftQuote}
+            height={20}
+            alt=""
+            style={{
+              transform: "rotate(180deg)"
+            }}
+          />
         </div>
       </a.div>
       <a.div
@@ -61,13 +108,24 @@ const Card = ({ index }) => {
           margin: "20px 20px",
           borderRadius: 5,
           backgroundColor: "tomato",
+          backgroundImage: `url(${authors[index].image})`,
+          backgroundPosition: "center",
           color: "#fff",
           height: 240,
           opacity,
           transform: transform.interpolate(t => `${t} rotateX(180deg)`)
         }}
       >
-        {authors[index]}
+        <h1 style={{
+          fontFamily: 'Cinzel, serif',
+          fontWeight: 100,
+          fontSize: 20,
+          marginTop: 185,
+          padding: '5px 15px',
+          borderRadius: 3,
+          letterSpacing: 1,
+          backgroundColor: 'rgba(0,51,102,0.7)',
+        }}>{authors[index].name}</h1>
       </a.div>
     </div>
   );

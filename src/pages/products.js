@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 
 const Products = ({ data, pad }) => {
   const { allMarkdownRemark: post } = data;
-  console.log(pad)
+  // console.log(pad)
   
   const arr = [...post.edges]
   const newArr = arr.filter(item => item.node.frontmatter.tag === 'PRODUCT')

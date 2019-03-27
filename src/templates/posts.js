@@ -69,6 +69,14 @@ export default function Template({ data }) {
   const { markdownRemark: post } = data;
   const { title, author } = post.frontmatter;
 
+  const dir = globalHistory.location.pathname
+  const ten = dir.substr(1,10)
+
+  const checkDir = (firstTen) => {
+    return firstTen.includes('products') ? 'products' : 'blog'
+  }
+
+  // REACT WITH GESTURE 👋👋👋👋👋
   // const config = {
   //   touch: true, // accept touch input
   //   mouse: false, // accept mouse input
@@ -84,7 +92,10 @@ export default function Template({ data }) {
 
   // console.log(typeof post)
   // console.log(max)
+
+
   const handleMouseDown = () => console.log("test");
+
   return (
     <animated.div style={styles.container}>
       <Helmet>
@@ -100,7 +111,10 @@ export default function Template({ data }) {
         by: {author}
       </p>
 
-      <button style={styles.backBtn} onClick={() => globalHistory.navigate('/')}>
+      <button style={styles.backBtn} onClick={() => {
+        console.log(checkDir(ten))
+        globalHistory.navigate(`/${checkDir(ten)}`)
+      }}>
         <Fade right>
           <img src={Back} alt="" height={20} />
         </Fade>

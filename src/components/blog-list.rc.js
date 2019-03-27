@@ -242,7 +242,7 @@ const Card = props => {
     // buttonTitle
   } = props;
 
-  console.log(itemCount === 1 ? `1 item on this page: ${globalHistory.location.pathname}` : ` items found on this page: ${globalHistory.location.pathname}`);
+  console.log(itemCount === 1 ? `1 item on this page : ${globalHistory.location.pathname}` : ` items found on this page : ${globalHistory.location.pathname}`);
 
   return (
     <div
@@ -277,9 +277,7 @@ const config = { mass: 5, tension: 2000, friction: 200 };
 
 // MAIN COMPONENT
 const BlogList = props => {
-  const { items, pad, headerTitle, itemCount } = props;
-
-  console.log("total items:", itemCount);
+  const { items, pad, headerTitle } = props; // { itemCount }
 
   // ⚠️ TRAIL
   const trail = useTrail(items.length, {
@@ -318,24 +316,20 @@ const BlogList = props => {
             }}
           >
             <Card
-              // title={items[index].title}
-              // author={items[index].author}
-              // jobTitle={items[index].jobTitle}
+              
               pad={pad}
               itemCount={items.length}
-              // logo={items[index].logo}
-              // avatar={items[index].avatar}
-              // intro={items[index].intro}
+              
               buttonTitle={index}
               title={items[index].node.frontmatter.title}
               path={items[index].node.frontmatter.path}
               author={items[index].node.frontmatter.author}
-              // createdAt={items[index].node.frontmatter.createdAt}
+              
               description={items[index].node.frontmatter.description}
               avatar={items[index].node.frontmatter.avatar}
-              // readTime={items[index].node.frontmatter.readTime}
+              
               index={index}
-              // title={'tesla'}
+              
             />
           </animated.div>
         );

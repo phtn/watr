@@ -1,5 +1,5 @@
 ---
-path: "/the-state-of-our-water"
+path: "/blog/the-state-of-our-water"
 title: "The State of Our Water"
 author: "Kyle Lewis"
 createdAt: "Mar 21 2019"

@@ -195,7 +195,7 @@ const Index = props => {
     <>
       <Helmet>
         <link
-          href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100"
+          href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Quicksand|Roboto:100|Abril+Fatface|Cinzel"
           rel="stylesheet"
         />
       </Helmet>
