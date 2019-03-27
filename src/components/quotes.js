@@ -5,6 +5,7 @@ import LeftQuote from "../assets/left-quote.svg";
 import WilliamWallace from "../assets/ww.jpg";
 import Lincoln from '../assets/lincoln.jpg'
 import JFK from '../assets/jfk.jpeg'
+import Trump from '../assets/trump.jpg'
 
 
 
@@ -12,12 +13,14 @@ const quotes = [
   "Freedom!!!",
   "Most folks are as happy as they make their minds to be.",
   "We chose to go to the moon not because it is easy but because it is hard.",
+  "Make America Great Again"
   // "I shall return."
 ];
 const authors = [
   { name: "William Wallace", image: WilliamWallace },
   { name: "Abraham Lincoln", image: Lincoln },
   { name: "JFK", image: JFK },
+  { name: "Donald Trump", image: Trump },
   { name: "Mc", image: WilliamWallace }
 ];
 
