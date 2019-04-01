@@ -3,6 +3,7 @@ import { useTransition, animated } from "react-spring";
 import AnimatedHero from '../components/animated-hero'
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
+import Fade from 'react-reveal/Fade'
 
 const pages = [
   ({ style, image }) => (
@@ -55,7 +56,24 @@ const pages = [
         >
           Berkey Bundle
         </p>{" "}
-        <br />
+        
+        <Fade left>
+          <p  
+            style={{
+              fontSize: "0.8em",
+              marginTop: 0,
+              marginBottom: 0,
+              paddingTop: 75  ,
+              position: "absolute",
+              left: '76%',
+              zIndex: 0,
+              color: 'rgba(0,51,102, 1.0)'
+            }}
+          >
+            $450
+          </p>{" "}
+        </Fade>
+
         {/* <img src={BerkeyPack} height={270} alt='' /> */}
         <Img fixed={image} />
       </div>
@@ -76,8 +94,26 @@ const pages = [
             zIndex: 1
           }}
         >
-          Berkey Crown
+          The Crown Berkey™
         </p>{" "}
+        <Fade bottom>
+          <p  
+            style={{
+              fontSize: "0.8em",
+              marginTop: 0,
+              marginBottom: 0,
+              paddingTop: 75  ,
+              position: "absolute",
+              left: '25%',
+              zIndex: 0,
+              color: 'rgba(0,51,102, 1.0)'
+            }}
+          >
+            6 gallons
+          </p>{" "}
+        </Fade>
+        
+
         <br />
         {/* <img src={BerkeyCrown} height={270} alt='' /> */}
         <Img fixed={image} />

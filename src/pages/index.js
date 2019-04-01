@@ -181,7 +181,7 @@ const ProductsLink = props => {
       fontSize: 16,
       borderRadius: 5,
       padding: '0 20'
-    }}>View Our Products</button></div>
+    }}>View All Products</button></div>
   )
 }
 
