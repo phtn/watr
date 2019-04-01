@@ -38,6 +38,7 @@ const styles = {
 }
 
 const trans1 = (x, y) => `translate3d(${x / 10}px,${y / 10}px,0)`
+const trans1b = (x, y) => `translate3d(${x / 100}px,${y / 4-100}px,0)`
 const trans2 = (x, y) => `translate3d(${x / 8 + 35}px,${y / 8 - 30}px,0)`
 const trans3 = (x, y) => `translate3d(${x / 6 -   0}px,${y / 6 - 50}px,0)`
 const trans4 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5}px,0)`
@@ -49,6 +50,7 @@ export default function Card() {
   return (
     <div onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })} style={styles.container}>
       <animated.div className="card1" style={Object.assign({}, styles.card1, { transform: props.xy.interpolate(trans1) })} />
+      <animated.div className="card1" style={Object.assign({}, styles.card1, { transform: props.xy.interpolate(trans1b) })} />
       <animated.div className="card2" style={Object.assign({}, styles.card2, { transform: props.xy.interpolate(trans2) })} />
       <animated.div className="card3" style={Object.assign({}, styles.card3, { transform: props.xy.interpolate(trans3) })} />
       <animated.div className="card4" style={Object.assign({}, styles.card4, { transform: props.xy.interpolate(trans4) })} />

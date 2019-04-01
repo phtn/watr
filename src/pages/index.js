@@ -6,7 +6,9 @@ import Newsletter from "../components/newsletter";
 import Fade from "react-reveal/Fade";
 import QuotesMachine from "../components/quotes";
 
-import AnimatedHero from "../components/animated-hero";
+// import AnimatedHero from "../components/animated-hero";
+import AnimatedTransition from '../components/animated-transition'
+
 import Drop from "../components/drop";
 
 import { StaticQuery, graphql } from "gatsby";
@@ -14,6 +16,8 @@ import { StaticQuery, graphql } from "gatsby";
 
 import { useInterval } from "../hooks/useInterval";
 import "../animate.css";
+
+import TwitterLogo from '../assets/twitter.svg'
 
 const styles = {
   container: {
@@ -43,8 +47,9 @@ const styles = {
     backgroundColor: "teal"
   }
 };
-
+// eslint-disable-next-line
 const Hero = props => {
+  // eslint-disable-next-line
   const { width } = props;
   
   return (
@@ -74,12 +79,12 @@ const Hero = props => {
         //   data.lake.childImageSharp.fluid
         // ];
         return (
-          <div style={{ overflow: "hidden", height: 500 }}>
+          <div style={{ height: 500 }}>
             {/* <Img ref={imgRef} fluid={images[count]} /> */}
 
             {/* 🚥🚥🚥🚥🚥 */}
 
-            <AnimatedHero width={width} />
+            {/* <AnimatedTransition width={width} /> */}
 
             {/* 🚥🚥🚥🚥🚥 */}
           </div>
@@ -100,7 +105,7 @@ const Essential = () => {
             fontWeight: "bolder"
           }}
         >
-          Clean Water is Essential to our Health.
+          Foundation of Clean Water Program
         </h1>
         <p style={{ fontFamily: "Open Sans, sans-serif", color: "#444" }}>
           <i>{`Read qoutes below and guess who wrote them.`}</i>
@@ -111,6 +116,7 @@ const Essential = () => {
 };
 
 const Reclaim = props => {
+  // eslint-disable-next-line
   const { width } = props;
   const slogans = ["bottle", "lake"];
 
@@ -119,7 +125,7 @@ const Reclaim = props => {
   function runSlogans(items) {
     count < items.length - 1 ? setCount(count + 1) : setCount(0);
   }
-
+  // eslint-disable-next-line
   function HeroLabel() {
     return <span className="animated fadeInUp">{`${slogans[count]}`}</span>;
   }
@@ -133,9 +139,13 @@ const Reclaim = props => {
     <div
       style={{ border: "0px solid #red", width: "100%", textAlign: "center" }}
     >
-      <Hero count={count} width={width} />
+      <div style={{height: 300, display: 'flex', margin: 0, padding: 0, overflow: 'hidden'}}>
+        <AnimatedTransition />
+      </div>
+
+      {/* <Hero count={count} width={width} /> */}
       {/* <Slide up cascade> */}
-      <div
+      {/* <div
         style={{
           border: "0px solid tomato",
           color: "#eee",
@@ -153,7 +163,7 @@ const Reclaim = props => {
         <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
           <HeroLabel />
         </h3>
-      </div>
+      </div> */}
       <div
         style={{
           backgroundColor: "#eee",
@@ -165,15 +175,19 @@ const Reclaim = props => {
       >
         <h1
           style={{
-            fontSize: 24,
-            color: "dark #003366",
+            fontSize: 17,
+            color: "rgb(0,51,102)",
             padding: "10px 20px",
             backgroundColor: "#fff",
             borderRadius: 5,
-            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)"
+            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+            lineHeight: '20px'
           }}
         >
-          #ReclaimYourFreedomToday
+          <img src={TwitterLogo} height={18} alt='' style={{
+            marginRight: 10,
+            lineHeight: 24
+          }}/> #ReclaimYourFreedom
         </h1>
       </div>
       
