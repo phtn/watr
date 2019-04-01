@@ -131,7 +131,15 @@ const Static = props => {
             }
           }
 
-          blog: file(relativePath: { eq: "dawn.jpg" }) {
+          dawn: file(relativePath: { eq: "dawn.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+          waterSplash: file(relativePath: { eq: "water-splash.jpg" }) {
             childImageSharp {
               fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid_tracedSVG
@@ -161,9 +169,9 @@ const Static = props => {
 
           [
             // blogs
-            data.blog.childImageSharp.fluid,
-            data.blog.childImageSharp.fluid,
-            data.blog.childImageSharp.fluid
+            data.dawn.childImageSharp.fluid,
+            data.waterSplash.childImageSharp.fluid,
+            data.water.childImageSharp.fluid
           ],
 
           [

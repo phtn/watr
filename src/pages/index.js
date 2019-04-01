@@ -6,18 +6,17 @@ import Newsletter from "../components/newsletter";
 import Fade from "react-reveal/Fade";
 import QuotesMachine from "../components/quotes";
 
-// import AnimatedHero from "../components/animated-hero";
-import AnimatedTransition from '../components/animated-transition'
+import AnimatedTransition from "../components/animated-transition";
 
-import Drop from "../components/drop";
+import Drop from "../assets/drop.svg";
 
-import { StaticQuery, graphql } from "gatsby";
-// import Img from "gatsby-image";
+
+
 
 import { useInterval } from "../hooks/useInterval";
 import "../animate.css";
 
-import TwitterLogo from '../assets/twitter.svg'
+import TwitterLogo from "../assets/twitter.svg";
 
 const styles = {
   container: {
@@ -40,75 +39,54 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
-  },
-
-  slideContainer: {
-    border: "1px solid tomato",
-    backgroundColor: "teal"
   }
 };
-// eslint-disable-next-line
-const Hero = props => {
-  // eslint-disable-next-line
-  const { width } = props;
-  
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          emptyBottle: file(relativePath: { eq: "empty-bottle.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
 
-          lake: file(relativePath: { eq: "lake.jpg" }) {
-            childImageSharp {
-              fluid(maxWidth: 1600) {
-                ...GatsbyImageSharpFluid_tracedSVG
-              }
-            }
-          }
-        }
-      `}
-      render={data => {
-        // const images = [
-        //   data.emptyBottle.childImageSharp.fluid,
-        //   data.lake.childImageSharp.fluid
-        // ];
-        return (
-          <div style={{ height: 500 }}>
-            {/* <Img ref={imgRef} fluid={images[count]} /> */}
-
-            {/* 🚥🚥🚥🚥🚥 */}
-
-            {/* <AnimatedTransition width={width} /> */}
-
-            {/* 🚥🚥🚥🚥🚥 */}
-          </div>
-        );
-      }}
-    />
-  );
-};
 
 const Essential = () => {
   return (
-    <div style={{ textAlign: "center", padding: 15 }}>
-      <Fade bottom>
+    <div style={{ textAlign: "justify", padding: 15 }}>
+      <Fade top>
         <h1
           style={{
             fontSize: 24,
-            fontFamily: "Quicksand",
-            fontWeight: "bolder"
+
+            fontFamily: "Roboto, sans-serif",
+            fontWeight: "100px",
+            textAlign: "center"
           }}
         >
-          Foundation of Clean Water Program
+          Wallace Water
         </h1>
-        <p style={{ fontFamily: "Open Sans, sans-serif", color: "#444" }}>
-          <i>{`Read qoutes below and guess who wrote them.`}</i>
+
+        <div // hr -----
+          style={{
+            height: 3,
+            width: 75,
+            backgroundColor: "rgba(0,51,102, 1)",
+            margin: "-10px auto",
+            // opacity: 0.5
+          }}
+        />
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <img src={Drop} alt='' height={50} style={{margin: '30px auto'}} />
+        </div>
+        <h3>Research</h3>
+        <p
+          style={{
+            fontFamily: "Open Sans, sans-serif",
+            color: "#444",
+            fontSize: 12
+          }}
+        >
+          {/* <i>{`Read qoutes below and guess who wrote them.`}</i> */}
+          Wallace Water is the creation from years of research and testing water
+          quality for homeowners, family, and friends to help them make an
+          educated decision on what's worthwhile to purchase for their household
+          needs. Educating the community one at a time was fulfilling, yet too
+          much time was invested on those who really don’t have the right
+          knowledge or drive to stop consuming city tap water and big business
+          bottled water.
         </p>
       </Fade>
     </div>
@@ -139,31 +117,18 @@ const Reclaim = props => {
     <div
       style={{ border: "0px solid #red", width: "100%", textAlign: "center" }}
     >
-      <div style={{height: 300, display: 'flex', margin: 0, padding: 0, overflow: 'hidden'}}>
+      <div
+        style={{
+          height: 300,
+          display: "flex",
+          margin: 0,
+          padding: 0,
+          overflow: "hidden"
+        }}
+      >
         <AnimatedTransition />
       </div>
 
-      {/* <Hero count={count} width={width} /> */}
-      {/* <Slide up cascade> */}
-      {/* <div
-        style={{
-          border: "0px solid tomato",
-          color: "#eee",
-          fontSize: "35px",
-          position: "absolute",
-          top: 125,
-          zIndex: 1,
-          height: "250px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "100%"
-        }}
-      >
-        <h3 style={{ fontFamily: "Quicksand, sans-serif" }}>
-          <HeroLabel />
-        </h3>
-      </div> */}
       <div
         style={{
           backgroundColor: "#eee",
@@ -181,16 +146,21 @@ const Reclaim = props => {
             backgroundColor: "#fff",
             borderRadius: 5,
             boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-            lineHeight: '20px'
+            lineHeight: "20px"
           }}
         >
-          <img src={TwitterLogo} height={18} alt='' style={{
-            marginRight: 10,
-            lineHeight: 24
-          }}/> #ReclaimYourFreedom
+          <img
+            src={TwitterLogo}
+            height={18}
+            alt=""
+            style={{
+              marginRight: 10,
+              lineHeight: 24
+            }}
+          />{" "}
+          #ReclaimYourFreedom
         </h1>
       </div>
-      
     </div>
   );
 };
@@ -201,7 +171,19 @@ const Bridge = props => {
   return <div style={styles.bridge}>{props.component}</div>;
 };
 
-
+const ProductsLink = props => {
+  return (
+    <div style={{border: '0px solid red'}}><button style={{
+      backgroundColor: 'rgb(0,51,102)',
+      color: 'white',
+      height: 50,
+      width: 200,
+      fontSize: 16,
+      borderRadius: 5,
+      padding: '0 20'
+    }}>View Our Products</button></div>
+  )
+}
 
 // 🏆 🏆 🏆
 const Index = props => {
@@ -220,8 +202,8 @@ const Index = props => {
         <Bridge component={<Reclaim />} />
         <Bridge component={<Essential />} />
 
+        <Bridge component={<ProductsLink />} />
         <QuotesMachine />
-        <Bridge component={<Drop />} />
         <Bridge component={<Newsletter />} />
       </Layout>
     </>
