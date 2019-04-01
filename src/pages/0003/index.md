@@ -1,7 +1,7 @@
 ---
 path: "/blog/new-era-of-human-life"
 title: "Solutions for your Water"
-author: "support@wallacewater.us"
+author: "Kyle Lewis"
 createdAt: "Jan 26 2019"
 updatedAt: "Jan 26 2019"
 description: "description"

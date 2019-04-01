@@ -1,7 +1,7 @@
 ---
 path: "/testing-your-water"
 title: "Testing Your Water"
-author: " Ogi Djuraskovic and FirstSiteGuide team"
+author: " Kyle Lewis"
 createdAt: "April 8th, 2018"
 updatedAt: "December 7th, 2018"
 description: "description"
