@@ -137,7 +137,7 @@ export default function App() {
           berkeyCrown: file(relativePath: { eq: "berkey-crown.png" }) {
             childImageSharp {
               fixed(height: 300) {
-                ...GatsbyImageSharpFixed
+                ...GatsbyImageSharpFixed_tracedSVG
               }
             }
           }
@@ -145,7 +145,7 @@ export default function App() {
           berkeyPack: file(relativePath: { eq: "berkey-pack.png" }) {
             childImageSharp {
               fixed(height: 300) {
-                ...GatsbyImageSharpFixed
+                ...GatsbyImageSharpFixed_tracedSVG
               }
             }
           }
@@ -153,7 +153,7 @@ export default function App() {
           bottle: file(relativePath: { eq: "empty-bottle.jpg" }) {
             childImageSharp {
               fixed(height: 300) {
-                ...GatsbyImageSharpFixed
+                ...GatsbyImageSharpFixed_tracedSVG
               }
             }
           }
