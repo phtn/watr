@@ -14,28 +14,46 @@ const pages = [
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center"
+          // alignItems: "center"
         }}
       >
         <p
           style={{
-            fontSize: "1em",
+            fontSize: "1.2em",
             marginTop: 0,
             marginBottom: 0,
             paddingTop: 50,
             position: "absolute",
-            color: "white",
+            // color: "rgba(0,51,102, 1.0)",
             zIndex: 3
           }}
         >
-          {`What's in your bottle?`}
+          {`Travel Berkey`}
         </p>{" "}
+
+        <Fade bottom>
+          <p  
+            style={{
+              fontSize: "0.6em",
+              marginTop: 0,
+              marginBottom: 0,
+              paddingTop: 100  ,
+              position: "absolute",
+              left: '25%',
+              zIndex: 0,
+              color: 'rgba(0,51,102, 1.0)'
+            }}
+          >
+            2.75 gallons/hr
+          </p>{" "}
+        </Fade>
+
         <br />
         {/* <img src={Bottle} height={300} alt=''/> */}
         <Img fixed={image} />
 
         <div style={{position: 'absolute', zIndex: 2}}>
-          <AnimatedHero/>
+          {/* <AnimatedHero/> */}
         </div>
       </div>
     </animated.div>
@@ -150,7 +168,7 @@ export default function App() {
             }
           }
 
-          bottle: file(relativePath: { eq: "empty-bottle.jpg" }) {
+          berkeyTravel: file(relativePath: { eq: "berkey-travel.png" }) {
             childImageSharp {
               fixed(height: 300) {
                 ...GatsbyImageSharpFixed_tracedSVG
@@ -161,7 +179,7 @@ export default function App() {
       `}
       render={data => {
         const images = [
-          data.bottle.childImageSharp.fixed,
+          data.berkeyTravel.childImageSharp.fixed,
           data.berkeyPack.childImageSharp.fixed,
           data.berkeyCrown.childImageSharp.fixed
         ];
