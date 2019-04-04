@@ -122,6 +122,44 @@ const Static = props => {
             }
           }
 
+          blackBerkey: file(relativePath: { eq: "black-berkey.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+          fluorideRedux: file(relativePath: { eq: "fluoride-redux.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+          berkeyShower: file(relativePath: { eq: "berkey-shower.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+          waterviewSpigot: file(relativePath: { eq: "waterview-spigot.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
+
+          white: file(relativePath: { eq: "white.jpg" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
         }
       `}
       render={data => {
@@ -129,7 +167,12 @@ const Static = props => {
         const bundle = [
           data.berkeyBundle.childImageSharp.fluid,
           data.berkeyCrown.childImageSharp.fluid,
-          data.berkeyBundle.childImageSharp.fluid
+          data.blackBerkey.childImageSharp.fluid,
+          data.fluorideRedux.childImageSharp.fluid,
+          data.berkeyShower.childImageSharp.fluid,
+          data.waterviewSpigot.childImageSharp.fluid,
+
+          data.white.childImageSharp.fluid,
         ];
 
         const Column = ({ index, style }) => {
@@ -138,7 +181,7 @@ const Static = props => {
             <div style={style}>
               <div
                 style={{
-                  border: "1px solid gray",
+                  border: "0px solid gray",
                   height: 330,
                   borderRadius: 3,
                   // display: "flex",
@@ -236,7 +279,7 @@ const Card = props => {
       {/* <img src={image} alt="" width={"275"} /> */}
       <Link style={styles.btn} to={path}>
         {globalHistory.location.pathname.substr(1, 100) === "products"
-          ? "get this product"
+          ? "get this bundle"
           : "read more"}
       </Link>
     </div>

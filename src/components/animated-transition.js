@@ -246,7 +246,7 @@ const desktopPages = [
               marginBottom: 0,
               paddingTop: 100,
               position: "absolute",
-              left: "58%",
+              left: "60%",
               zIndex: 0,
               color: "rgba(0,51,102, 1.0)"
             }}
@@ -309,7 +309,7 @@ const desktopPages = [
 
 export default function AnimatedTransition(props) {
   const { width } = props;
-  console.log(width);
+  // console.log(width);
 
   const [index, set] = useState(0);
   const onClick = useCallback(() => set(state => (state + 1) % 3), []);

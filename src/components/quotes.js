@@ -21,7 +21,7 @@ const authors = [
   { name: "Abraham Lincoln", image: Lincoln },
   { name: "JFK", image: JFK },
   { name: "Donald Trump", image: Trump },
-  { name: "Douglas MacArthur", image: WilliamWallace }
+  { name: "Douglas MacArthur", image: null }
 ];
 
 const Card = ({ index }) => {
@@ -96,7 +96,7 @@ const Card = ({ index }) => {
           <img
             src={LeftQuote}
             height={20}
-            alt=""
+            alt="😀"
             style={{
               transform: "rotate(180deg)"
             }}

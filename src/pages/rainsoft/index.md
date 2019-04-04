@@ -9,7 +9,7 @@ av: ""
 readTime: "2 min read"
 source: "/"
 id: 7
-tag: "PRODUCT"
+tag: "xPRODUCT"
 ---
 
 # RainSoft

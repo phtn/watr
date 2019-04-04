@@ -11,7 +11,7 @@ import AnimatedTransition from "../components/animated-transition";
 
 import Drop from "../assets/drop.svg";
 
-import { useInterval } from "../hooks/useInterval";
+// import { useInterval } from "../hooks/useInterval";
 import "../animate.css";
 
 import TwitterLogo from "../assets/twitter.svg";
@@ -40,8 +40,8 @@ const styles = {
   }
 };
 
-const Essential = () => {
-
+const Essential = ({width}) => {
+  console.log(width)
   return (
     <div style={{ textAlign: "justify", padding: 15 }}>
       <Fade top>
@@ -54,7 +54,7 @@ const Essential = () => {
             textAlign: "center"
           }}
         >
-          Wallace Water
+          About Wallace Water
         </h1>
 
         <div // hr -----
@@ -75,23 +75,27 @@ const Essential = () => {
         >
           <img src={Drop} alt="" height={50} style={{ margin: "30px auto" }} />
         </div>
-        <h3>Research</h3>
-        <p
-          style={{
-            fontFamily: "Open Sans, sans-serif",
-            color: "#444",
-            fontSize: 12
-          }}
-        >
-          {/* <i>{`Read qoutes below and guess who wrote them.`}</i> */}
-          Wallace Water is the creation from years of research and testing water
-          quality for homeowners, family, and friends to help them make an
-          educated decision on what's worthwhile to purchase for their household
-          needs. Educating the community one at a time was fulfilling, yet too
-          much time was invested on those who really don’t have the right
-          knowledge or drive to stop consuming city tap water and big business
-          bottled water.
-        </p>
+        <div style={{padding: `0px ${width > 1000 ? 300 : 20}px`}}>
+
+          <h3 style={{color: 'rgb(0, 51,102)'}}>Research</h3>
+          <p
+            style={{
+              fontFamily: "Open Sans, sans-serif",
+              color: "#444",
+              fontSize: 14,
+
+            }}
+          >
+            {/* <i>{`Read qoutes below and guess who wrote them.`}</i> */}
+            Wallace Water is the creation from years of research and testing water
+            quality for homeowners, family, and friends to help them make an
+            educated decision on what's worthwhile to purchase for their household
+            needs. Educating the community one at a time was fulfilling, yet too
+            much time was invested on those who really don’t have the right
+            knowledge or drive to stop consuming city tap water and big business
+            bottled water.
+          </p>
+        </div>
       </Fade>
     </div>
   );
@@ -134,39 +138,43 @@ const Reclaim = props => {
       >
         <AnimatedTransition width={width}/>
       </div>
+      
+      <a href='https://twitter.com/wallace_water' style={{textDecoration: 'none'}}>
 
-      <div
-        style={{
-          backgroundColor: "#eee",
-          height: "100px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
-      >
-        <h1
+        <div
           style={{
-            fontSize: 17,
-            color: "rgb(0,51,102)",
-            padding: "10px 20px",
-            backgroundColor: "#fff",
-            borderRadius: 5,
-            boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
-            lineHeight: "20px"
+            backgroundColor: "#eee",
+            height: "100px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
           }}
         >
-          <img
-            src={TwitterLogo}
-            height={18}
-            alt=""
+          <h1
             style={{
-              marginRight: 10,
-              lineHeight: 24
+              fontSize: 17,
+              color: "rgb(0,51,102)",
+              padding: "10px 20px",
+              backgroundColor: "#fff",
+              borderRadius: 5,
+              boxShadow: "0 2px 4px 0 rgba(14,30,37,.12)",
+              lineHeight: "20px"
             }}
-          />{" "}
-          #ReclaimYourFreedom
-        </h1>
-      </div>
+          >
+            <img
+              src={TwitterLogo}
+              height={18}
+              alt=""
+              style={{
+                marginRight: 10,
+                lineHeight: 24
+              }}
+            />{" "}
+            #ReclaimYourFreedom
+          </h1>
+        </div>
+      </a>
+
     </div>
   );
 };
@@ -233,8 +241,8 @@ const Index = () => {
         <div style={{ height: 50 }} />
         {/* <Landing /> */}
         <Bridge component={<Reclaim width={width}/>} />
-        
-        <Bridge component={<Essential />} />
+
+        <Bridge component={<Essential width={width}/>} />
 
         <Bridge component={<ProductsLink />} />
         <hr/>
