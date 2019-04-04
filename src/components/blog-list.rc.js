@@ -99,7 +99,7 @@ const Static = props => {
     <StaticQuery
       query={graphql`
         query {
-          bigberkey: file(relativePath: { eq: "bbwf-logo.png" }) {
+          bigberkey: file(relativePath: { eq: "berkey-logo.png" }) {
             childImageSharp {
               fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid_tracedSVG

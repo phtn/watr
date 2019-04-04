@@ -25,8 +25,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FFB55C;
-  font-weight: 800;
+  color: rgb(220,180,92);
+  font-weight: 100;
   font-size: 2em;
   will-change: transform, opacity;
   text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;

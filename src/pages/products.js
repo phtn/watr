@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../components/layout";
-import ProductsList from "../components/blog-list.rc";
+import ProductsList from "../components/products-list.rc";
 import Pitcher from "../assets/filter.svg";
 import { graphql } from "gatsby";
 import Helmet from "react-helmet";

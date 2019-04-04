@@ -55,7 +55,7 @@ const Layout = ({children, title}) => {
     }
 
     return () => (typeof global !== 'undefined' && global.removeEventListener('resize', handleWidthResize))
-  }, [])
+  }, [width])
 
   const childrenWithProps = Children.map(children, child => cloneElement(child, {pad: navPad, width: width}))
 
