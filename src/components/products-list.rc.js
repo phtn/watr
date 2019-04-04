@@ -133,7 +133,7 @@ const Static = props => {
         ];
 
         const Column = ({ index, style }) => {
-          console.log(bundle[0])
+          // console.log(bundle[0])
           return (
             <div style={style}>
               <div

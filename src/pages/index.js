@@ -233,6 +233,7 @@ const Index = () => {
         <div style={{ height: 50 }} />
         {/* <Landing /> */}
         <Bridge component={<Reclaim width={width}/>} />
+        
         <Bridge component={<Essential />} />
 
         <Bridge component={<ProductsLink />} />
