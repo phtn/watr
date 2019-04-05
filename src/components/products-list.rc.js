@@ -94,19 +94,14 @@ const styles = {
   }
 };
 
-
-
 const Static = props => {
-  const { index } = props;
-
-  
-
+  // const { index } = props;
 
   return (
     <StaticQuery
       query={graphql`
         query {
-          berkeyBundle: file(relativePath: { eq: "berkey-pack.png" }) {
+          berkeyBundle: file(relativePath: { eq: "big-berkey-pack.png" }) {
             childImageSharp {
               fluid(maxWidth: 1600) {
                 ...GatsbyImageSharpFluid_tracedSVG
@@ -152,6 +147,14 @@ const Static = props => {
             }
           }
 
+          berkeyCutOut: file(relativePath: { eq: "berkey-cut.png" }) {
+            childImageSharp {
+              fluid(maxWidth: 1600) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+
 
           white: file(relativePath: { eq: "white.jpg" }) {
             childImageSharp {
@@ -165,14 +168,15 @@ const Static = props => {
       render={data => {
         // console.log(data.bigberkey.childImageSharp.fluid);
         const bundle = [
-          data.berkeyBundle.childImageSharp.fluid,
-          data.berkeyCrown.childImageSharp.fluid,
-          data.blackBerkey.childImageSharp.fluid,
-          data.fluorideRedux.childImageSharp.fluid,
-          data.berkeyShower.childImageSharp.fluid,
-          data.waterviewSpigot.childImageSharp.fluid,
+          {image: data.berkeyBundle.childImageSharp.fluid, title: "Complete Set"},
+          {image: data.berkeyCrown.childImageSharp.fluid, title: "The Crown Berkey™"},
+          {image: data.blackBerkey.childImageSharp.fluid, title: "2 Black Berkey™ Filters"},
+          {image: data.fluorideRedux.childImageSharp.fluid, title: "2 Fluoride Reduction Filters"},
+          {image: data.berkeyShower.childImageSharp.fluid, title: "Berkey Shower Head"},
+          {image: data.waterviewSpigot.childImageSharp.fluid, title: "Water View Spigot"},
+          {image: data.berkeyCutOut.childImageSharp.fluid, title: "Inside the Berkey"},
 
-          data.white.childImageSharp.fluid,
+          {image: data.white.childImageSharp.fluid, title: ""}
         ];
 
         const Column = ({ index, style }) => {
@@ -187,22 +191,32 @@ const Static = props => {
                   // display: "flex",
                   // alignItems: "center",
                   // justifyContent: "center",
-                  marginRight: 20,
+                  marginRight: 20
                 }}
               >
-                <Img fluid={bundle[index]} />
+                <Img fluid={bundle[index].image} />
+
+                <div
+                  style={{
+                    position: "absolute",
+                    border: "0px solid red",
+                    display: "flex",
+                    justifyContent: 'center',
+                    width: "100%",
+                    textAlign: "center"
+                  }}
+                >
+                  <p style={{ color: "rgb(0,51,102)" }}>{bundle[index].title}</p>
+                </div>
               </div>
             </div>
           );
         };
 
-
         return (
-          <div style={{ overflow: "hidden", padding: 0, height: 340 }}>
-
-
+          <div style={{ overflow: "hidden", padding: 0, height: 400 }}>
             <List // LIST  ️️️️️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-              height={340}
+              height={400}
               itemCount={bundle.length}
               itemSize={360}
               layout="horizontal"
@@ -213,9 +227,6 @@ const Static = props => {
             >
               {Column}
             </List>
-
-
-
           </div>
         );
       }}
@@ -223,27 +234,11 @@ const Static = props => {
   );
 };
 
-const Extra = props => {
-  const { author, jobTitle, description } = props;
-  return (
-    <div>
-      <p style={styles.author}>
-        {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
-        <strong>{author}</strong>
-      </p>
-      <p style={styles.jobTitle}>{jobTitle}</p>
-      <p style={styles.content}>{description}</p>
-    </div>
-  );
-};
+
 
 const Card = props => {
   const {
     title,
-    author,
-    jobTitle,
-    avatar,
-    description,
     pad,
     itemCount,
     index,

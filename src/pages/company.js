@@ -35,7 +35,7 @@ import Helmet from 'react-helmet'
 
 
 
-const Company = ({data, pad}) => {
+const Company = ({data}) => {
 
   const { allMarkdownRemark: post } = data;
 
@@ -44,6 +44,8 @@ const Company = ({data, pad}) => {
   const newArr = arr.filter(item => item.node.frontmatter.tag === "COMPANY");
   // console.log("newArr", newArr)
   // console.log("oldArr", post.edges)
+
+  
 
   
   return (
@@ -56,7 +58,7 @@ const Company = ({data, pad}) => {
         items={newArr}
         itemCount={post.totalCount}
         headerTitle={`Meet our Team`}
-        pad={pad}
+        
         icon={TeamFilter}
       />
     </Layout>
@@ -71,7 +73,7 @@ export const getPeeps = graphql`
   query Peeps {
     allMarkdownRemark(
       sort: { fields: [frontmatter___id]}
-      limit: 10
+      limit: 20
     ) {
       totalCount
       edges {

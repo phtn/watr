@@ -248,7 +248,7 @@ const Index = () => {
         <hr/>
         <Bridge component={<Newsletter />} />
         
-        <Bridge component={<Placeholder value={`Here are some quotes from the founding fathers 😀`}/>} />
+        <Bridge component={<Placeholder value={`Qoutes from our fathers. 😁`}/>} />
         <QuotesMachine />
       </Layout>
     </>

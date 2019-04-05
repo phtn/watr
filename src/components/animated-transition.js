@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import { useTransition, animated } from "react-spring";
-import AnimatedHero from "../components/animated-hero";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import Fade from "react-reveal/Fade";
