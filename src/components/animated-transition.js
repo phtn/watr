@@ -82,7 +82,7 @@ const mobilePages = [
             position: "absolute"
           }}
         >
-          Berkey Bundle
+          Big Berkey Bundle
         </p>{" "}
         <Fade left>
           <p
@@ -158,7 +158,7 @@ const mobilePages = [
 // ********************************************************** //
 
 const desktopPages = [
-  ({ style, image, width }) => ( // TRAVEL DESKTOP
+  ({ style, image, index }) => ( // TRAVEL DESKTOP
     <animated.div
       style={{
         ...style,
@@ -172,7 +172,7 @@ const desktopPages = [
         style={{
           display: "flex",
           justifyContent: "center",
-          // alignItems: "center"
+        
         }}
       >
         <p
@@ -203,7 +203,7 @@ const desktopPages = [
             }}
           >
             2.75 gallons <span style={{fontWeight: 100}}>/</span> hr
-          </p>{" "}
+          </p>
         </Fade>
         <br />
         {/* <img src={Bottle} height={300} alt=''/> */}
@@ -313,10 +313,14 @@ export default function AnimatedTransition(props) {
   const [index, set] = useState(0);
   const onClick = useCallback(() => set(state => (state + 1) % 3), []);
   const transitions = useTransition(index, p => p, {
-    from: { opacity: 0, transform: "translate3d(150%,0,0)" },
-    enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-    leave: { opacity: 0, transform: "translate3d(-100%,0,0)" }
+    from: { opacity: 0, transform: "translate3d(150%,0,0)" , x: 0},
+    enter: { opacity: 1, transform: "translate3d(0%,0,0)", x: 10 },
+    
+    leave: { opacity: 0, transform: "translate3d(-100%,0,0)", x: 0 }
   });
+  
+  // const spring = useSpring()
+
   return (
     <StaticQuery
       query={graphql`
@@ -382,7 +386,9 @@ export default function AnimatedTransition(props) {
           <div className={"animated-trans"} onClick={onClick}>
             {transitions.map(({ item, props, key }) => {
               const Page = width < 450 ? mobilePages[item] : desktopPages[item];
-              // console.log(images[item])
+              // console.log(props.x.lastPosition)
+
+
               return (
                 <Page
                   key={key}
@@ -391,6 +397,8 @@ export default function AnimatedTransition(props) {
                     width > 1000 ? desktopImages[item] : mobileImages[item]
                   }
                   width={width}
+                  num={props.x}
+                  index={index}
                 />
               );
             })}

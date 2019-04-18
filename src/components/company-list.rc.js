@@ -4,7 +4,8 @@ import Fade from "react-reveal/Fade";
 // import { StaticQuery, graphql } from "gatsby";
 // import Img from "gatsby-image";
 import { globalHistory } from "@reach/router";
-import KylePlaceholder from '../assets/man.svg'
+import Kyle from "../assets/man.svg";
+import Will from "../assets/will.jpg";
 
 const styles = {
   container: {
@@ -91,34 +92,32 @@ const styles = {
   content: {
     fontFamily: "Quicksand, sans-serif",
     textAlign: "justify"
-  }, 
+  },
   avatarContainer: {
     // border: '1px solid red',
     height: 200,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   avatarFrame: {
     // border: '1px solid blue',
     width: 200,
     height: 200,
     borderRadius: 200,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundImage: `url(${KylePlaceholder})`,
-    backgroundPosition: 'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundImage: `url(${KylePlaceholder})`,
+    backgroundPosition: "center"
   },
   companyTitle: {
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
     letterSpacing: 2,
-    fontFamily: 'Roboto, sans-serif',
+    fontFamily: "Roboto, sans-serif",
     fontSize: 12
   }
 };
-
-
 
 // ⚠️ EXTRA ⚠️
 
@@ -136,12 +135,7 @@ const Extra = props => {
   );
 };
 
-
-
-
 // ⚠️⚠️ CARD COMPONENT ⚠️⚠️
-
-
 
 const Card = props => {
   const {
@@ -153,12 +147,18 @@ const Card = props => {
     description,
     pad,
     itemCount,
-    // index,
+    index
     // path,
     // buttonTitle
   } = props;
 
-  console.log(itemCount === 1 ? `1 item on this page: ${globalHistory.location.pathname}` : ` items found on this page: ${globalHistory.location.pathname}`);
+  console.log(
+    itemCount === 1
+      ? `1 item on this page: ${globalHistory.location.pathname}`
+      : ` items found on this page: ${globalHistory.location.pathname}`
+  );
+
+  const images = [Kyle, Kyle, Will];
 
   return (
     <div
@@ -166,41 +166,50 @@ const Card = props => {
         margin: `20px ${pad + 10}px`
       })}
     >
-
       {/* 🔻🔻🔻🔻🔻 */}
 
-      {/* 🐯🐯🐯 AVATAR 🥶🥶🥶 🐮🐮🐮 */}
+      {/* 🐯🐯🐯 AVATAR 🥶🥶🥶 🐮🐮🐮 ⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠ */}
       <div style={styles.avatarContainer}>
-        <div style={styles.avatarFrame}>
-          {author}
+        <div
+          style={Object.assign({}, styles.avatarFrame, {
+            backgroundImage: `url(${images[index]})`,
+            backgroundPosition: "center center",
+            backgroundSize: 'cover'
+            
+          })}
+        >
+          {/* {author} */}
         </div>
       </div>
 
-      {/* ⚠️ AUTHOR ⚠️ */}
-      <div style={{textAlign: 'center', border: '0px solid tomato'}}>
+      {/*  AUTHOR  */}
+      <div style={{ textAlign: "center", border: "0px solid tomato" }}>
         <p style={styles.author}>
           {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
           <strong>{author}</strong>
         </p>
       </div>
 
-      <div style={{textAlign: 'center', border: '0px solid papayawhip'}}>
+      <div style={{ textAlign: "center", border: "0px solid papayawhip" }}>
         <p style={styles.author}>
           {/* <img src={avatar} style={styles.avatar} alt="avatar" /> */}
           <span style={styles.companyTitle}>{rank}</span>
         </p>
       </div>
 
-      
       {/* ⚠️ AUTHOR ⚠️ */}
-      <div style={{border: '0px solid red', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <div
+        style={{
+          border: "0px solid red",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
         <h3 style={Object.assign({}, styles.cardTitle)}>{title}</h3>
       </div>
 
-
       {/* 🔺🔺🔺🔺🔺 */}
-
-
 
       <Extra
         author={author}
@@ -220,8 +229,17 @@ const Card = props => {
           ? "view products"
           : "read more"}
       </Link> */}
-      <div style={{height: 100, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <span style={{letterSpacing: 5, color: '#fff'}}>&middot; &middot; &middot;</span>
+      <div
+        style={{
+          height: 100,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
+        <span style={{ letterSpacing: 5, color: "#fff" }}>
+          &middot; &middot; &middot;
+        </span>
       </div>
     </div>
   );
@@ -231,7 +249,7 @@ const config = { mass: 5, tension: 2000, friction: 200 };
 
 // ⚠️⚠️ MAIN COMPONENT ⚠️⚠️
 const BlogList = props => {
-  const { items, pad, headerTitle} = props;
+  const { items, pad, headerTitle } = props;
 
   // console.log(itemCount, 'items total');
 
@@ -260,8 +278,6 @@ const BlogList = props => {
         </h1>
       </div>
 
-
-
       {/*  ⚠️ TRAIL ️m⚠P️  ⚠️ */}
       {trail.map(({ opacity, x }, index) => {
         // console.log(items[index].node.id)
@@ -273,7 +289,6 @@ const BlogList = props => {
               transform: x.interpolate(x => `translate3d(0,${x}px,0)`)
             }}
           >
-          
             <Card
               // title={items[index].title}
               // author={items[index].author}
@@ -292,7 +307,6 @@ const BlogList = props => {
               description={items[index].node.frontmatter.description}
               avatar={items[index].node.frontmatter.avatar}
               // readTime={items[index].node.frontmatter.readTime}
-
 
               index={index}
               // title={'tesla'}

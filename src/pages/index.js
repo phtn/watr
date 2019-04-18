@@ -40,8 +40,8 @@ const styles = {
   }
 };
 
-const Essential = ({width}) => {
-  console.log(width)
+const Essential = ({width, title, header, content}) => {
+  // console.log(width)
   return (
     <div style={{ textAlign: "justify", padding: 15 }}>
       <Fade top>
@@ -54,7 +54,7 @@ const Essential = ({width}) => {
             textAlign: "center"
           }}
         >
-          About Wallace Water
+          {title}
         </h1>
 
         <div // hr -----
@@ -62,7 +62,7 @@ const Essential = ({width}) => {
             height: 3,
             width: 75,
             backgroundColor: "rgba(0,51,102, 1)",
-            margin: "-10px auto"
+            margin: "30px auto"
             // opacity: 0.5
           }}
         />
@@ -73,11 +73,11 @@ const Essential = ({width}) => {
             justifyContent: "center"
           }}
         >
-          <img src={Drop} alt="" height={50} style={{ margin: "30px auto" }} />
+          {/* <img src={Drop} alt="" height={50} style={{ margin: "30px auto" }} /> */}
         </div>
         <div style={{padding: `0px ${width > 1000 ? 300 : 20}px`}}>
 
-          <h3 style={{color: 'rgb(0, 51,102)'}}>Research</h3>
+          <h3 style={{color: 'rgb(0, 51,102)'}}>{header}</h3>
           <p
             style={{
               fontFamily: "Open Sans, sans-serif",
@@ -87,13 +87,7 @@ const Essential = ({width}) => {
             }}
           >
             {/* <i>{`Read qoutes below and guess who wrote them.`}</i> */}
-            Wallace Water is the creation from years of research and testing water
-            quality for homeowners, family, and friends to help them make an
-            educated decision on what's worthwhile to purchase for their household
-            needs. Educating the community one at a time was fulfilling, yet too
-            much time was invested on those who really don’t have the right
-            knowledge or drive to stop consuming city tap water and big business
-            bottled water.
+            {content}
           </p>
         </div>
       </Fade>
@@ -207,15 +201,38 @@ const ProductsLink = props => {
   );
 };
 
-const Placeholder = props => {
+const Placeholder0 = props => {
   const { value } = props
   return (
     <div>{value}</div>
   )
 }
 
+const Placeholder = props => {
+  const { value } = props
+  return (
+    <div style={{
+      textAlign: 'center',
+      fontFamily: 'Open Sans, sans-serif',
+      fontWeight: 800,
+      fontSize: '1.05rem'
+    }}><h1>{value}</h1></div>
+  )
+}
+
+const cardBoardList = [
+  {title: 'About Wallace Water', header: 'Research',  content: `Wallace Water is the creation from years of research and testing water
+  quality for homeowners, family, and friends to help them make an
+  educated decision on what's worthwhile to purchase for their household
+  needs. Educating the community one at a time was fulfilling, yet too
+  much time was invested on those who really don’t have the right
+  knowledge or drive to stop consuming city tap water and big business
+  bottled water.`},
+  {title: 'Drinking Water Contaminants', header: 'EPA', content: 'Contaminants may refer to any physical, chemical, biological or radiological substance or matter found in your drinking water. '}
+]
+
 // 🏆 🏆 🏆
-const Index = () => {
+const Index = ({pad}) => {
   const [width, setWidth] = useState(typeof global !== 'undefined' && global.innerWidth)
 
   useEffect(()=> {
@@ -227,7 +244,7 @@ const Index = () => {
     return () => (typeof global !== 'undefined' && global.removeEventListener('resize', handleWidthResize))
   }, [width])
   
-  // console.log(width)
+  // console.log(pad)
   return (
     <>
       <Helmet>
@@ -242,14 +259,16 @@ const Index = () => {
         {/* <Landing /> */}
         <Bridge component={<Reclaim width={width}/>} />
 
-        <Bridge component={<Essential width={width}/>} />
+        <Bridge component={<Essential width={width} title={cardBoardList[0].title} header={cardBoardList[0].header} content={cardBoardList[0].content} />} />
 
-        <Bridge component={<ProductsLink />} />
+        {/* <Bridge component={<ProductsLink />} /> */}
         <hr/>
-        <Bridge component={<Newsletter />} />
         
-        <Bridge component={<Placeholder value={`Qoutes from our fathers. 😁`}/>} />
+        {/* <Bridge component={<Placeholder value={`Types of Drinking Water Contaminants`}/>} /> */}
+
+        <Bridge component={<Essential width={width} title={cardBoardList[1].title} header={cardBoardList[1].header} content={cardBoardList[1].content} />} />
         <QuotesMachine />
+        <Bridge component={<Newsletter />} />
       </Layout>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSpring, animated as a } from "react-spring";
 import { FixedSizeList as List } from "react-window";
-import LeftQuote from "../assets/left-quote.svg";
+import CornerSVG from "../assets/corner.svg";
 import WilliamWallace from "../assets/ww.jpg";
 import Lincoln from '../assets/lincoln.jpg'
 import JFK from '../assets/jfk.jpeg'
@@ -10,18 +10,20 @@ import Trump from '../assets/trump.jpg'
 
 
 const quotes = [
-  "FREEDOM!",
-  "Most folks are as happy as they make their minds to be.",
-  "We chose to go to the moon not because it is easy but because it is hard.",
-  "Make America Great Again.",
-  "I shall return."
+  "Arsenic",
+  "Pesticides",
+  "Radium",
+  "Fluoride",
+  "Microbes",
+  "Chlorine"
 ];
 const authors = [
-  { name: "William Wallace", image: WilliamWallace },
-  { name: "Abraham Lincoln", image: Lincoln },
-  { name: "JFK", image: JFK },
-  { name: "Donald Trump", image: Trump },
-  { name: "Douglas MacArthur", image: null }
+  { name: "Null", image: null },
+  { name: "Null", image: null },
+  { name: "Null", image: null },
+  { name: "Null", image: null },
+  { name: "Null", image: null },
+  { name: "Null", image: null }
 ];
 
 const Card = ({ index }) => {
@@ -60,7 +62,7 @@ const Card = ({ index }) => {
             // height: 20
           }}
         >
-          <img src={LeftQuote} height={20} alt="" />
+          <img src={CornerSVG} height={20} alt="" />
         </div>
 
         <div
@@ -94,7 +96,7 @@ const Card = ({ index }) => {
           }}
         >
           <img
-            src={LeftQuote}
+            src={CornerSVG}
             height={20}
             alt="😀"
             style={{
