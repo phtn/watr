@@ -44,7 +44,7 @@ const Essential = ({width, title, header, content}) => {
   // console.log(width)
   return (
     <div style={{ textAlign: "justify", padding: 15 }}>
-      <Fade top>
+      <Fade bottom>
         <h1
           style={{
             fontSize: 24,
@@ -123,7 +123,7 @@ const Reclaim = props => {
     >
       <div
         style={{
-          height: width < 450 ? 300 : 400,
+          height: width < 450 ? 300 : 300,
           display: "flex",
           margin: 0,
           padding: 0,
