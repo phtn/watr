@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import Helmet from "react-helmet";
 import { Link } from "gatsby";
-import Newsletter from "../components/newsletter";
-
 import Fade from "react-reveal/Fade";
-import QuotesMachine from "../components/quotes";
+
 
 import AnimatedTransition from "../components/animated-transition";
 
+import QuotesMachine from "../components/quotes";
+import Newsletter from "../components/newsletter";
 import Drop from "../assets/drop.svg";
 
 // import { useInterval } from "../hooks/useInterval";
@@ -201,22 +201,31 @@ const ProductsLink = props => {
   );
 };
 
-const Placeholder0 = props => {
-  const { value } = props
+const Links = props => {
+  const { url } = props
   return (
-    <div>{value}</div>
+    <div style={{
+      backgroundColor: "rgb(0,51,102)",
+      color: "white",
+      height: 50,
+      width: 200,
+      fontSize: 16,
+      borderRadius: 5,
+      padding: "0 20",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+
+      <Link style={{color: 'white', letterSpacing: '0.5px', textDecoration: 'none'}} to={url}>Learn More</Link>
+    </div>
   )
 }
 
-const Placeholder = props => {
+const Divider = props => {
   const { value } = props
   return (
-    <div style={{
-      textAlign: 'center',
-      fontFamily: 'Open Sans, sans-serif',
-      fontWeight: 800,
-      fontSize: '1.05rem'
-    }}><h1>{value}</h1></div>
+    <hr style={{width: '300px', border: '1px solid #eee',}}/>
   )
 }
 
@@ -228,11 +237,11 @@ const cardBoardList = [
   much time was invested on those who really don’t have the right
   knowledge or drive to stop consuming city tap water and big business
   bottled water.`},
-  {title: 'Drinking Water Contaminants', header: 'EPA', content: 'Contaminants may refer to any physical, chemical, biological or radiological substance or matter found in your drinking water. '}
+  {title: 'Benefits of Filtered Water', header: 'Global', content: 'Effects of by products from water products'}
 ]
 
 // 🏆 🏆 🏆
-const Index = ({pad}) => {
+const Index = () => {
   const [width, setWidth] = useState(typeof global !== 'undefined' && global.innerWidth)
 
   useEffect(()=> {
@@ -262,7 +271,9 @@ const Index = ({pad}) => {
         <Bridge component={<Essential width={width} title={cardBoardList[0].title} header={cardBoardList[0].header} content={cardBoardList[0].content} />} />
 
         {/* <Bridge component={<ProductsLink />} /> */}
-        <hr/>
+        <Bridge component={<Links url={'blog/the-state-of-our-water'}/>} />
+
+        <Bridge component={<Divider/>} />
         
         {/* <Bridge component={<Placeholder value={`Types of Drinking Water Contaminants`}/>} /> */}
 

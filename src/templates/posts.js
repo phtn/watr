@@ -9,10 +9,8 @@ import Fade from "react-reveal";
 
 const styles = {
   container: {
-    // margin: 20,
+    backgroundColor: 'white',
     padding: 20,
-    // fontFamily: ', sans-serif'
-
     color: "#333"
   },
   blogTitle: {
@@ -105,11 +103,17 @@ export default function Template({ data }) {
         />
       </Helmet>
       <Header />
-      <h1 style={styles.blogTitle}>{title}</h1>
-      <p style={styles.author}>
-        {/* <span style={styles.by}>by</span> */}
-        by: {author}
-      </p>
+
+      <Fade top>
+        <h1 style={styles.blogTitle}>{title}</h1>
+      </Fade>
+
+      <Fade left>
+        <p style={styles.author}>
+          {/* <span style={styles.by}>by</span> */}
+          by: {author}
+        </p>
+      </Fade>
 
       <button style={styles.backBtn} onClick={() => {
         console.log(checkDir(ten))
