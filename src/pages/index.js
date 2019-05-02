@@ -237,7 +237,7 @@ const cardBoardList = [
   much time was invested on those who really don’t have the right
   knowledge or drive to stop consuming city tap water and big business
   bottled water.`},
-  {title: 'Benefits of Filtered Water', header: 'Global', content: 'Effects of by products from water products'}
+  {title: 'Benefits of Filtered Water', header: 'Life Changing Effects', content: 'Water is Essential to our health.'}
 ]
 
 // 🏆 🏆 🏆
@@ -271,7 +271,7 @@ const Index = () => {
         <Bridge component={<Essential width={width} title={cardBoardList[0].title} header={cardBoardList[0].header} content={cardBoardList[0].content} />} />
 
         {/* <Bridge component={<ProductsLink />} /> */}
-        <Bridge component={<Links url={'blog/the-state-of-our-water'}/>} />
+        <Bridge component={<Links url={'/blog/the-state-of-our-water'}/>} />
 
         <Bridge component={<Divider/>} />
         

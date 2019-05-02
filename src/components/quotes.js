@@ -10,12 +10,12 @@ import Trump from '../assets/trump.jpg'
 
 
 const quotes = [
-  "Arsenic",
-  "Pesticides",
-  "Radium",
-  "Fluoride",
-  "Microbes",
-  "Chlorine"
+  // "Arsenic",
+  // "Pesticides",
+  // "Radium",
+  // "Fluoride",
+  "Environment",
+  "Overall Health"
 ];
 const authors = [
   { name: "Null", image: null },
